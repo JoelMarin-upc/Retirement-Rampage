@@ -28,19 +28,12 @@ For a C++ project simply rename the file to .cpp and re-run the build script
 
 #include "resource_dir.h"	// utility header for SearchAndSetResourceDir
 
-typedef struct Tubes {
-	Rectangle rec;
-	Color color;
-	bool active;
-} Tubes;
-
-
-static Tubes tubes[MAX_TUBES * 2] = { 0 };
-static Vector2 tubesPos[MAX_TUBES] = { 0 };
+#include "tubes.cpp"
 
 
 int main ()
 {
+	tubes.SpawnTubes();
 	// Tell the window to use vysnc and work on high DPI displays
 	SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
 
