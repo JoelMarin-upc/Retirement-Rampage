@@ -27,7 +27,7 @@
 //----------------------------------------------------------------------------------
 #define MAX_BUILDINGS                    15
 #define MAX_EXPLOSIONS                  200
-#define MAX_PLAYERS                       2
+#define MAX_PLAYERS                       1
 
 #define BUILDING_RELATIVE_ERROR          30        // Building size random range %
 #define BUILDING_MIN_RELATIVE_HEIGHT     20        // Minimum height in % of the screenHeight
@@ -63,23 +63,8 @@ typedef struct Player {
     bool isAlive;
 } Player;
 
-typedef struct Building {
-    Rectangle rectangle;
-    Color color;
-} Building;
 
-typedef struct Explosion {
-    Vector2 position;
-    int radius;
-    bool active;
-} Explosion;
 
-typedef struct Ball {
-    Vector2 position;
-    Vector2 speed;
-    int radius;
-    bool active;
-} Ball;
 
 //------------------------------------------------------------------------------------
 // Global Variables Declaration
@@ -91,9 +76,7 @@ static bool gameOver = false;
 static bool pause = false;
 
 static Player player[MAX_PLAYERS] = { 0 };
-static Building building[MAX_BUILDINGS] = { 0 };
-static Explosion explosion[MAX_EXPLOSIONS] = { 0 };
-static Ball ball = { 0 };
+
 
 static int playerTurn = 0;
 static bool ballOnAir = false;
@@ -108,10 +91,8 @@ static void UnloadGame(void);       // Unload game
 static void UpdateDrawFrame(void);  // Update and Draw (one frame)
 
 // Additional module functions
-static void InitBuildings(void);
 static void InitPlayers(void);
 static bool UpdatePlayer(int playerTurn);
-static bool UpdateBall(int playerTurn);
 
 //------------------------------------------------------------------------------------
 // Program main entry point
@@ -158,69 +139,17 @@ int main(void)
 // Initialize game variables
 void InitGame(void)
 {
-    // Init shoot
-    ball.radius = 10;
-    ballOnAir = false;
-    ball.active = false;
 
-    InitBuildings();
+
     InitPlayers();
-
-    // Init explosions
-    for (int i = 0; i < MAX_EXPLOSIONS; i++)
-    {
-        explosion[i].position = (Vector2){ 0.0f, 0.0f };
-        explosion[i].radius = 30;
-        explosion[i].active = false;
-    }
 }
-
+    
 // Update game (one frame)
 void UpdateGame(void)
 {
     if (!gameOver)
     {
-        if (IsKeyPressed('P')) pause = !pause;
-
-        if (!pause)
-        {
-            if (!ballOnAir) ballOnAir = UpdatePlayer(playerTurn); // If we are aiming
-            else
-            {
-                if (UpdateBall(playerTurn))                       // If collision
-                {
-                    // Game over logic
-                    bool leftTeamAlive = false;
-                    bool rightTeamAlive = false;
-
-                    for (int i = 0; i < MAX_PLAYERS; i++)
-                    {
-                        if (player[i].isAlive)
-                        {
-                            if (player[i].isLeftTeam) leftTeamAlive = true;
-                            if (!player[i].isLeftTeam) rightTeamAlive = true;
-                        }
-                    }
-
-                    if (leftTeamAlive && rightTeamAlive)
-                    {
-                        ballOnAir = false;
-                        ball.active = false;
-
-                        playerTurn++;
-
-                        if (playerTurn == MAX_PLAYERS) playerTurn = 0;
-                    }
-                    else
-                    {
-                        gameOver = true;
-
-                        // if (leftTeamAlive) left team wins
-                        // if (rightTeamAlive) right team wins
-                    }
-                }
-            }
-        }
+        UpdatePlayer(playerTurn);
     }
     else
     {
@@ -241,14 +170,6 @@ void DrawGame(void)
 
     if (!gameOver)
     {
-        // Draw buildings
-        for (int i = 0; i < MAX_BUILDINGS; i++) DrawRectangleRec(building[i].rectangle, building[i].color);
-
-        // Draw explosions
-        for (int i = 0; i < MAX_EXPLOSIONS; i++)
-        {
-            if (explosion[i].active) DrawCircle(explosion[i].position.x, explosion[i].position.y, explosion[i].radius, RAYWHITE);
-        }
 
         // Draw players
         for (int i = 0; i < MAX_PLAYERS; i++)
@@ -262,11 +183,9 @@ void DrawGame(void)
             }
         }
 
-        // Draw ball
-        if (ball.active) DrawCircle(ball.position.x, ball.position.y, ball.radius, MAROON);
-
+        
         // Draw the angle and the power of the aim, and the previous ones
-        if (!ballOnAir)
+        if (true)
         {
             // Draw shot information
             /*
@@ -291,37 +210,23 @@ void DrawGame(void)
             */
 
             // Draw aim
-            if (player[playerTurn].isLeftTeam)
+            if (true)
             {
                 // Previous aiming
-                DrawTriangle((Vector2) { player[playerTurn].position.x - player[playerTurn].size.x / 4, player[playerTurn].position.y - player[playerTurn].size.y / 4 },
-                    (Vector2) {
-                    player[playerTurn].position.x + player[playerTurn].size.x / 4, player[playerTurn].position.y + player[playerTurn].size.y / 4
-                },
-                    player[playerTurn].previousPoint, GRAY);
+              //  DrawTriangle((Vector2) ( (player[playerTurn].position.x - player[playerTurn].size.x / 4, player[playerTurn].position.y - player[playerTurn].size.y / 4),
+             //       (Vector2) {
+               //     player[playerTurn].position.x + player[playerTurn].size.x / 4, player[playerTurn].position.y + player[playerTurn].size.y / 4
+              //  },
+              //      player[playerTurn].previousPoint, GRAY);
 
                 // Actual aiming
-                DrawTriangle((Vector2) { player[playerTurn].position.x - player[playerTurn].size.x / 4, player[playerTurn].position.y - player[playerTurn].size.y / 4 },
-                    (Vector2) {
-                    player[playerTurn].position.x + player[playerTurn].size.x / 4, player[playerTurn].position.y + player[playerTurn].size.y / 4
-                },
-                    player[playerTurn].aimingPoint, DARKBLUE);
-            }
-            else
-            {
-                // Previous aiming
-                DrawTriangle((Vector2) { player[playerTurn].position.x - player[playerTurn].size.x / 4, player[playerTurn].position.y + player[playerTurn].size.y / 4 },
-                    (Vector2) {
-                    player[playerTurn].position.x + player[playerTurn].size.x / 4, player[playerTurn].position.y - player[playerTurn].size.y / 4
-                },
-                    player[playerTurn].previousPoint, GRAY);
 
-                // Actual aiming
-                DrawTriangle((Vector2) { player[playerTurn].position.x - player[playerTurn].size.x / 4, player[playerTurn].position.y + player[playerTurn].size.y / 4 },
-                    (Vector2) {
-                    player[playerTurn].position.x + player[playerTurn].size.x / 4, player[playerTurn].position.y - player[playerTurn].size.y / 4
-                },
-                    player[playerTurn].aimingPoint, MAROON);
+                Vector2 p1 = new Vector2((player[playerTurn].position.x - player[playerTurn].size.x / 4), (player[playerTurn].position.y - player[playerTurn].size.y / 4));
+                Vector2 p2 = new Vector2(player[playerTurn].position.x + player[playerTurn].size.x / 4, player[playerTurn].position.y + player[playerTurn].size.y / 4);
+                Vector2 aim = new Vector2(player[playerTurn].aimingPoint);
+
+
+                DrawTriangle( p1,p2,aim, BLACK);
             }
         }
 
