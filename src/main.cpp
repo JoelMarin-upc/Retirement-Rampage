@@ -221,9 +221,15 @@ void DrawGame(void)
 
                 // Actual aiming
 
-                Vector2 p1 = new Vector2((player[playerTurn].position.x - player[playerTurn].size.x / 4), (player[playerTurn].position.y - player[playerTurn].size.y / 4));
-                Vector2 p2 = new Vector2(player[playerTurn].position.x + player[playerTurn].size.x / 4, player[playerTurn].position.y + player[playerTurn].size.y / 4);
-                Vector2 aim = new Vector2(player[playerTurn].aimingPoint);
+                Vector2 p1 = Vector2();
+                p1.x = player[playerTurn].position.x - player[playerTurn].size.x / 4;
+                p1.y = player[playerTurn].position.y - player[playerTurn].size.y / 4;
+                
+                Vector2 p2 = Vector2();
+                p2.x = player[playerTurn].position.x + player[playerTurn].size.x / 4;
+                p2.y = player[playerTurn].position.y + player[playerTurn].size.y / 4;
+
+                Vector2 aim = player[playerTurn].aimingPoint;
 
 
                 DrawTriangle( p1,p2,aim, BLACK);
@@ -253,40 +259,7 @@ void UpdateDrawFrame(void)
 //--------------------------------------------------------------------------------------
 // Additional module functions
 //--------------------------------------------------------------------------------------
-static void InitBuildings(void)
-{
-    // Horizontal generation
-    int currentWidth = 0;
 
-    // We make sure the absolute error randomly generated for each building, has as a minimum value the screenWidth.
-    // This way all the screen will be filled with buildings. Each building will have a different, random width.
-
-    float relativeWidth = 100 / (100 - BUILDING_RELATIVE_ERROR);
-    float buildingWidthMean = (screenWidth * relativeWidth / MAX_BUILDINGS) + 1;        // We add one to make sure we will cover the whole screen.
-
-    // Vertical generation
-    int currentHeighth = 0;
-    int grayLevel;
-
-    // Creation
-    for (int i = 0; i < MAX_BUILDINGS; i++)
-    {
-        // Horizontal
-        building[i].rectangle.x = currentWidth;
-        building[i].rectangle.width = GetRandomValue(buildingWidthMean * (100 - BUILDING_RELATIVE_ERROR / 2) / 100 + 1, buildingWidthMean * (100 + BUILDING_RELATIVE_ERROR) / 100);
-
-        currentWidth += building[i].rectangle.width;
-
-        // Vertical
-        currentHeighth = GetRandomValue(BUILDING_MIN_RELATIVE_HEIGHT, BUILDING_MAX_RELATIVE_HEIGHT);
-        building[i].rectangle.y = screenHeight - (screenHeight * currentHeighth / 100);
-        building[i].rectangle.height = screenHeight * currentHeighth / 100 + 1;
-
-        // Color
-        grayLevel = GetRandomValue(BUILDING_MIN_GRAYSCALE_COLOR, BUILDING_MAX_GRAYSCALE_COLOR);
-        building[i].color = (Color){ grayLevel, grayLevel, grayLevel, 255 };
-    }
-}
 
 static void InitPlayers(void)
 {
@@ -302,23 +275,15 @@ static void InitPlayers(void)
         player[i].isPlayer = true;
 
         // Set size, by default by now
-        player[i].size = (Vector2){ 40, 40 };
+        player[i].size = { 40, 40 };
 
         // Set position
         if (player[i].isLeftTeam) player[i].position.x = GetRandomValue(screenWidth * MIN_PLAYER_POSITION / 100, screenWidth * MAX_PLAYER_POSITION / 100);
         else player[i].position.x = screenWidth - GetRandomValue(screenWidth * MIN_PLAYER_POSITION / 100, screenWidth * MAX_PLAYER_POSITION / 100);
 
-        for (int j = 0; j < MAX_BUILDINGS; j++)
-        {
-            if (building[j].rectangle.x > player[i].position.x)
-            {
-                // Set the player in the center of the building
-                player[i].position.x = building[j - 1].rectangle.x + building[j - 1].rectangle.width / 2;
-                // Set the player at the top of the building
-                player[i].position.y = building[j - 1].rectangle.y - player[i].size.y / 2;
-                break;
-            }
-        }
+        
+        player[i].position.x = player[i].position.x;
+        player[i].position.y = screenHeight / 2;
 
         // Set statistics to 0
         player[i].aimingPoint = player[i].position;
@@ -328,14 +293,15 @@ static void InitPlayers(void)
         player[i].aimingAngle = 0;
         player[i].aimingPower = 0;
 
-        player[i].impactPoint = (Vector2){ -100, -100 };
+        player[i].impactPoint = { -100, -100 };
     }
 }
 
 static bool UpdatePlayer()
+{
 
         // Left team
-        {
+       // {
             // Distance (calculating the fire power)
             player[playerTurn].aimingPower = sqrt(pow(player[playerTurn].position.x - GetMousePosition().x, 2) + pow(player[playerTurn].position.y - GetMousePosition().y, 2));
             // Calculates the angle via arcsin
@@ -349,98 +315,12 @@ static bool UpdatePlayer()
                 player[playerTurn].previousPoint = player[playerTurn].aimingPoint;
                 player[playerTurn].previousPower = player[playerTurn].aimingPower;
                 player[playerTurn].previousAngle = player[playerTurn].aimingAngle;
-                ball.position = player[playerTurn].position;
+                //ball.position = player[playerTurn].position;
 
                 return true;
             }
-        }
-      
-    }
 
 
     return false;
 }
 
-static bool UpdateBall(int playerTurn)
-{
-    static int explosionNumber = 0;
-
-    // Activate ball
-    if (!ball.active)
-    {
-        if (player[playerTurn].isLeftTeam)
-        {
-            ball.speed.x = cos(player[playerTurn].previousAngle * DEG2RAD) * player[playerTurn].previousPower * 3 / DELTA_FPS;
-            ball.speed.y = -sin(player[playerTurn].previousAngle * DEG2RAD) * player[playerTurn].previousPower * 3 / DELTA_FPS;
-            ball.active = true;
-        }
-        else
-        {
-            ball.speed.x = -cos(player[playerTurn].previousAngle * DEG2RAD) * player[playerTurn].previousPower * 3 / DELTA_FPS;
-            ball.speed.y = -sin(player[playerTurn].previousAngle * DEG2RAD) * player[playerTurn].previousPower * 3 / DELTA_FPS;
-            ball.active = true;
-        }
-    }
-
-    ball.position.x += ball.speed.x;
-    ball.position.y += ball.speed.y;
-    ball.speed.y += GRAVITY / DELTA_FPS;
-
-    // Collision
-    if (ball.position.x + ball.radius < 0) return true;
-    else if (ball.position.x - ball.radius > screenWidth) return true;
-    else
-    {
-        // Player collision
-        for (int i = 0; i < MAX_PLAYERS; i++)
-        {
-            if (CheckCollisionCircleRec(ball.position, ball.radius, (Rectangle) {
-                player[i].position.x - player[i].size.x / 2, player[i].position.y - player[i].size.y / 2,
-                    player[i].size.x, player[i].size.y
-            }))
-            {
-                // We can't hit ourselves
-                if (i == playerTurn) return false;
-                else
-                {
-                    // We set the impact point
-                    player[playerTurn].impactPoint.x = ball.position.x;
-                    player[playerTurn].impactPoint.y = ball.position.y + ball.radius;
-
-                    // We destroy the player
-                    player[i].isAlive = false;
-                    return true;
-                }
-            }
-        }
-
-        // Building collision
-        // NOTE: We only check building collision if we are not inside an explosion
-        for (int i = 0; i < MAX_EXPLOSIONS; i++)
-        {
-            if (CheckCollisionCircles(ball.position, ball.radius, explosion[i].position, explosion[i].radius - ball.radius))
-            {
-                return false;
-            }
-        }
-
-        for (int i = 0; i < MAX_BUILDINGS; i++)
-        {
-            if (CheckCollisionCircleRec(ball.position, ball.radius, building[i].rectangle))
-            {
-                // We set the impact point
-                player[playerTurn].impactPoint.x = ball.position.x;
-                player[playerTurn].impactPoint.y = ball.position.y + ball.radius;
-
-                // We create an explosion
-                explosion[explosionNumber].position = player[playerTurn].impactPoint;
-                explosion[explosionNumber].active = true;
-                explosionNumber++;
-
-                return true;
-            }
-        }
-    }
-
-    return false;
-}
