@@ -10,26 +10,13 @@
 #include <memory>
 
 #include <vector>
+#include <iostream>
 
 std::vector<std::unique_ptr<GameObject>> gameObjects;
 
 void InitPhase();
 void UpdatingPhase();
 void PaintingPhase();
-
-//int main() {
-//	InitWindow(0, 0, "Game");
-//	//BeginDrawing();
-//	DrawRectangle(100, 100, 100, 100, WHITE);
-//	//EndDrawing();
-//	while (!WindowShouldClose())
-//	{
-//		BeginDrawing();
-//		DrawRectangle(200, 200, 100, 100, RED);
-//		EndDrawing();
-//	}
-//	return 0;
-//}
 
 int main()
 {
