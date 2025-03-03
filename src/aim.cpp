@@ -5,12 +5,12 @@
 class Aim {
 private:
     Vector2 aimingPoint;
-    Vector2 vectorDirector = { 1,0 };
+    
     Vector2 centerPosition;
 
 public:
+    Vector2 vectorDirector = { 1,0 };
 	Color color;
-	bool aiming = false;
 	Vector2 crosshairSize = { 10,10 };
     bool facingRight = true;
     float angle = 0;
@@ -58,6 +58,6 @@ public:
 	}
 
 	void Destroy() {
-		aiming = false;
+	//	aiming = false;
 	}
 };

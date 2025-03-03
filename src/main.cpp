@@ -3,6 +3,7 @@
 #include <math.h>
 
 #include "Aim.cpp"
+#include "Launcher.cpp"
 
 
 #define GRAVITY                       9.81f
@@ -13,7 +14,11 @@ static const int screenWidth = 800;
 static const int screenHeight = 450;
 
 Aim playerAim;
+Launcher playerLauncherEmpty;
+Launcher playerLauncher;
 
+bool aiming = true;
+bool charging = false;
 
 Vector2 playerSize = { 30,30 };
 Vector2 position = { screenWidth / 2, screenHeight / 2 };
@@ -35,6 +40,8 @@ int main(void)
     SetTargetFPS(60);
 
     playerAim.InitAim(centerPosition);
+    playerLauncherEmpty.InitLauncher(centerPosition);
+    playerLauncher.InitLauncher(centerPosition);
    
     while (!WindowShouldClose())   
     {
@@ -45,7 +52,26 @@ int main(void)
 
 void UpdateGame(void)
 {
-    playerAim.Update();
+   // if (IsKeyPressed) playerLauncher = playerLauncherEmpty;
+    if (IsKeyDown(KEY_SPACE)) {
+        if (!charging) {
+            aiming = true;
+            charging = true;
+            playerLauncher = playerLauncherEmpty;
+        }
+        if(playerAim.facingRight)  playerLauncher.Charging();
+        else  playerLauncher.Charging();
+    }
+
+    if (IsKeyReleased(KEY_SPACE)) {
+        aiming = false;
+        charging = false;
+        if(playerAim.facingRight)playerLauncher.InitialVelocity(playerAim.vectorDirector);
+        else playerLauncher.InitialVelocity({-playerAim.vectorDirector.x, playerAim.vectorDirector.y});
+    }
+    //if (aiming) 
+    if(!charging)playerAim.Update();
+    if(!aiming) playerLauncher.Shoot();
       
 }
 
