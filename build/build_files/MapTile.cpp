@@ -1,27 +1,17 @@
-#include <raylib.h>
-#include "GameObject.cpp"
+#include "MapTile.h"
 
-class MapTile : public GameObject {
-public:
-	Color color;
-	bool hasTerrain;
+MapTile::MapTile(Color c, bool hasTerrain, Vector2 position, Vector2 size)
+    : GameObject(position, size), color(c), hasTerrain(hasTerrain) {
+}
 
-	MapTile(Color c, bool hasTerrain, Vector2 position, Vector2 size) : GameObject(position, size)
-	{
-		color = c;
-		this->hasTerrain = hasTerrain;
-	}
+void MapTile::Update() {
+}
 
-	void Update() override {
+void MapTile::Draw() {
+    if (!hasTerrain) return;  
+    DrawRectangle(position.x, position.y, size.x, size.y, color);
+}
 
-	}
-
-	void Draw() override {
-		if (!hasTerrain) return;
-		DrawRectangle(position.x, position.y, size.x, size.y, color);
-	}
-
-	void Destroy() {
-		hasTerrain = false;
-	}
-};
+void MapTile::Destroy() {
+    hasTerrain = false;
+}

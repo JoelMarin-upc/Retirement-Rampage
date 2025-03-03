@@ -3,19 +3,45 @@
 
 #include "resource_dir.h"
 
-#include "MapReader.cpp"
+#include "MapReader.h"
 
-vector<GameObject> gameObjects;
+#include "GameObject.h"
+
+#include <memory>
+
+#include <vector>
+
+std::vector<std::unique_ptr<GameObject>> gameObjects;
+
+void InitPhase();
+void UpdatingPhase();
+void PaintingPhase();
+
+//int main() {
+//	InitWindow(0, 0, "Game");
+//	//BeginDrawing();
+//	DrawRectangle(100, 100, 100, 100, WHITE);
+//	//EndDrawing();
+//	while (!WindowShouldClose())
+//	{
+//		BeginDrawing();
+//		DrawRectangle(200, 200, 100, 100, RED);
+//		EndDrawing();
+//	}
+//	return 0;
+//}
 
 int main()
 {
-	gameObjects = vector<GameObject>();
+	std::string mapName = "map1.txt";
+	gameObjects = std::vector<std::unique_ptr<GameObject>>();
 	SearchAndSetResourceDir("resources");
-	string path = GetDirectoryPath("mapa1.txt");
+	std::string path = GetDirectoryPath(mapName.c_str());
+	std::string fullPath = path + mapName;
 
 	InitWindow(0, 0, "Game");
-	MapReader map(path);
-	gameObjects.push_back(map);
+	std::unique_ptr<GameObject> map = std::make_unique<MapReader>(fullPath);
+	gameObjects.push_back(std::move(map));
 
 	InitPhase();
 	while (!WindowShouldClose())
@@ -25,57 +51,25 @@ int main()
 	}
 
 	CloseWindow();
-
-	// Tell the window to use vysnc and work on high DPI displays
-	//SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
-
-	//// Create the window and OpenGL context
-	//InitWindow(1280, 800, "Hello Raylib");
-
-	//// Utility function from resource_dir.h to find the resources folder and set it as the current working directory so we can load from it
-	//SearchAndSetResourceDir("resources");
-
-	//// Load a texture from the resources directory
-	//Texture wabbit = LoadTexture("wabbit_alpha.png");
-	//
-	//// game loop
-	//while (!WindowShouldClose())		// run the loop untill the user presses ESCAPE or presses the Close button on the window
-	//{
-	//	// drawing
-	//	BeginDrawing();
-
-	//	// Setup the backbuffer for drawing (clear color and depth buffers)
-	//	ClearBackground(BLACK);
-
-	//	// draw some text using the default font
-	//	DrawText("Hello Raylib", 200,200,20,WHITE);
-
-	//	// draw our texture to the screen
-	//	DrawTexture(wabbit, 400, 200, WHITE);
-	//	
-	//	// end the frame and get ready for the next one  (display frame, poll input, etc...)
-	//	EndDrawing();
-	//}
-
-	//// cleanup
-	//// unload our texture so it can be cleaned up
-	//UnloadTexture(wabbit);
-
-	//// destory the window and cleanup the OpenGL context
-	//CloseWindow();
 	return 0;
 }
 
-static void InitPhase() {
-	for (int i = 0; i < gameObjects.size(); i++) gameObjects[i].Init();
+void InitPhase() {
+	for (const auto& gameObject : gameObjects) {
+		gameObject->Init();
+	}
 }
 
-static void UpdatingPhase() {
-	for (int i = 0; i < gameObjects.size(); i++) gameObjects[i].Update();
+void UpdatingPhase() {
+	for (const auto& gameObject : gameObjects) {
+		gameObject->Update();
+	}
 }
 
-static void PaintingPhase() {
+void PaintingPhase() {
 	BeginDrawing();
-	for (int i = 0; i < gameObjects.size(); i++) gameObjects[i].Draw();
+	for (const auto& gameObject : gameObjects) {
+		gameObject->Draw();
+	}
 	EndDrawing();
 }
