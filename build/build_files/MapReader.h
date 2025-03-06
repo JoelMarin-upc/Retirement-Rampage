@@ -10,8 +10,7 @@ class MapReader : public GameObject {
 private:
     std::string filePath;
     std::vector<std::vector<MapTile>> map;
-    int screenX;
-    int screenY;
+    std::vector<MapTile> optimizedTiles;
     bool shouldDraw;
 
 public:
@@ -20,6 +19,8 @@ public:
     void Init() override;
 
     void LoadMap();
+
+    void OptimizeTiles();
 
     void Update() override;
    

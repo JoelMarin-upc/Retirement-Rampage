@@ -8,8 +8,9 @@ class MapTile : public GameObject {
 public:
     Color color;
     bool hasTerrain;
+    char tileChar;
 
-    MapTile(Color c, bool hasTerrain, Vector2 position, Vector2 size);
+    MapTile(Color c, bool hasTerrain, char tileChar, Vector2 position, Vector2 size);
 
     void Update() override;
 
