@@ -1,4 +1,6 @@
 #include <raylib.h>
+#include <math.h>
+
 //#include "GameObject.cpp"
 //#include "Aim.h"
 

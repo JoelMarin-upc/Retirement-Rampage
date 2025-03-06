@@ -19,7 +19,9 @@ public:
 
 	
 
+    void Update() {
 
+    }
 
     void InitLauncher(Vector2 center) {
         position = center;

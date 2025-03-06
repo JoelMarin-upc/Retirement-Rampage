@@ -6,8 +6,8 @@
 #include "Launcher.cpp"
 
 
-//#define GRAVITY                       9.81f
-//#define DELTA_FPS                        60
+#define GRAVITY                       9.81f
+#define DELTA_FPS                        60
 
 
 static const int screenWidth = 800;
