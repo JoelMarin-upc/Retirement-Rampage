@@ -31,8 +31,8 @@ void MapReader::LoadMap() {
     std::ifstream file(filePath);
     map = std::vector<std::vector<MapTile>>();
 
-    screenX = GetScreenWidth();
-    screenY = GetScreenHeight();
+    int screenX = GetScreenWidth();
+    int screenY = GetScreenHeight();
 
     if (!file.is_open()) file.open(filePath);
 
@@ -66,7 +66,7 @@ void MapReader::LoadMap() {
                 hasTerrain = false;
                 break;
             }
-            //color = GetRandomColor();
+            //color = GetRandomColor(); // TESTING
             int xPos = column * size;
             int yPos = screenY - size - row * size;
             Vector2 pos = { xPos, yPos };
@@ -100,15 +100,14 @@ void MapReader::OptimizeTiles() {
             unsigned int tileSize = map[y][x].size.x;
             int maxWidth = 0, maxHeight = 0;
 
-            for (int w = x; w < cols && map[y][w].tileChar == tileType && !visited[y][w]; ++w)
-                maxWidth++;
+            for (int w = x; w < cols && map[y][w].tileChar == tileType && !visited[y][w]; ++w) maxWidth++;
 
             bool canExpand = true;
             while (canExpand && (y + maxHeight < rows)) {
                 for (int w = 0; w < maxWidth; ++w) {
                     if (map[y + maxHeight][x + w].tileChar != tileType || visited[y + maxHeight][x + w]) {
                         canExpand = false;
-                        //position = map[y + maxHeight][x + w].position;  // testear
+                        position.y = map[y + maxHeight][x + w].position.y;
                         break;
                     }
                 }
