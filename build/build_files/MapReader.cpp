@@ -14,8 +14,7 @@ MapReader::MapReader(const std::string& filePath) : GameObject() {
 }
 
 void MapReader::Init() {
-    LoadMap();
-    OptimizeTiles();
+    if (!mapLoaded) LoadMap(true);
 }
 
 Color GetRandomColor() {
@@ -27,7 +26,7 @@ Color GetRandomColor() {
     };
 }
 
-void MapReader::LoadMap() {
+void MapReader::LoadMap(bool optimize) {
     std::ifstream file(filePath);
     map = std::vector<std::vector<MapTile>>();
 
@@ -81,6 +80,8 @@ void MapReader::LoadMap() {
     }
 
     file.close();
+    if (optimize) OptimizeTiles();
+    mapLoaded = true;
 }
 
 void MapReader::OptimizeTiles() {
@@ -125,6 +126,10 @@ void MapReader::OptimizeTiles() {
     }
 
     this->optimizedTiles = optimizedTiles;
+}
+
+void MapReader::ChangeMap(std::string& path) {
+    filePath = path;
 }
 
 void MapReader::Update() {

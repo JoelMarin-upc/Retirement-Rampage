@@ -1,5 +1,6 @@
 #include "Aim.h"
 #include <math.h>
+#include <raylib.h>
 
 void Aim::Update() {
     if (IsKeyDown(KEY_RIGHT)) {

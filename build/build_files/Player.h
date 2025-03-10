@@ -16,9 +16,10 @@ public:
 	bool charging = false;
 
 	Player(Vector2 playerPosition, Vector2 playerSize) : GameObject(playerPosition, playerSize) {
-		playerAim = Aim(playerPosition);
-		playerLauncher = Bullet(playerPosition);
-		playerLauncherEmpty = Bullet(playerPosition);
+		Vector2 centerPosition = { playerPosition.x + playerSize.x / 2, playerPosition.y + playerSize.y / 2 };
+		playerAim = Aim(centerPosition);
+		playerLauncher = Bullet(centerPosition);
+		playerLauncherEmpty = Bullet(centerPosition);
 	}
 
 	void Update() override;

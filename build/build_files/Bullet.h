@@ -1,5 +1,5 @@
-#ifndef LAUNCHER_H
-#define LAUNCHER_H
+#ifndef BULLET_H
+#define BULLET_H
 
 #include "GameObject.h"
 #include "raylib.h"  
@@ -24,4 +24,4 @@ public:
     void Destroy();
 };
 
-#endif // LAUNCHER_H
+#endif
