@@ -1,23 +1,28 @@
 #include "Player.h"
 
 void Player::Update() {
-    if (IsKeyDown(KEY_SPACE)) {
-        if (!charging) {
-            aiming = true;
-            charging = true;
-            playerLauncher = playerLauncherEmpty;
+    if (IsKeyDown(KEY_ONE))isTurn = true;
+    if (isTurn) {
+        if (IsKeyDown(KEY_SPACE)) {
+            if (!charging) {
+                aiming = true;
+                charging = true;
+                playerLauncher = playerLauncherEmpty;
+            }
+            if (!playerLauncher.Charging()) charging = false;
         }
-        playerLauncher.Charging();
-    }
 
-    if (IsKeyReleased(KEY_SPACE)) {
-        aiming = false;
-        charging = false;
-        if (playerAim.facingRight)playerLauncher.InitialVelocity(playerAim.vectorDirector);
-        else playerLauncher.InitialVelocity({ -playerAim.vectorDirector.x, playerAim.vectorDirector.y });
-    }
+        if (IsKeyReleased(KEY_SPACE) || (IsKeyDown(KEY_SPACE) && !charging)) {
+            aiming = false;
+            charging = false;
+            isTurn = false;
+            if (playerAim.facingRight)playerLauncher.InitialVelocity(playerAim.vectorDirector);
+            else playerLauncher.InitialVelocity({ -playerAim.vectorDirector.x, playerAim.vectorDirector.y });
+        }
 
-    if (!charging) playerAim.Update();
+        if (!charging) playerAim.Update();
+
+    }
     if (!aiming) playerLauncher.Shoot();
 }
 

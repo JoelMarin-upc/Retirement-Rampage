@@ -12,8 +12,11 @@ public:
 	Bullet playerLauncherEmpty;
 	Bullet playerLauncher;
 
+	float healthPoints;
+
 	bool aiming = true;
 	bool charging = false;
+	bool isTurn = false;
 
 	Player(Vector2 playerPosition, Vector2 playerSize) : GameObject(playerPosition, playerSize) {
 		Vector2 centerPosition = { playerPosition.x + playerSize.x / 2, playerPosition.y + playerSize.y / 2 };

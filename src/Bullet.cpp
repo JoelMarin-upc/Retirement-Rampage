@@ -5,10 +5,20 @@ void Bullet::Update() {
 
 }
 
-void Bullet::Charging()  {
+//int barMax = 10;
+//int barCounter;
+//int barVelocity;
+
+bool Bullet::Charging()  {
 		
     velocityModule += velocityIncrease;
-    return;
+    barCounter = velocityModule / barVelocity;
+    if (barCounter == 60) {
+        barCounter = 0;
+        return false;
+    }
+    std::cout << barCounter;
+    return true;
 }
 
 void Bullet::Shoot() {
@@ -24,9 +34,15 @@ void Bullet::InitialVelocity(Vector2 direction) {
 void Bullet::Draw()  {
 		
     DrawCircle(position.x, position.y, launcherRadius, RED);
+    for (int i = 0; i < barCounter; i++) {
+        DrawRectangle(i * barSize.x + barPosition.x, barPosition.y, barSize.x, barSize.y, ORANGE);
+
+    }
         
     return;
 }
+
+
 
 void Bullet::Destroy() {
 }

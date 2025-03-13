@@ -8,8 +8,8 @@
 #include <vector>
 #include <iostream>
 
-//static const int screenWidth = 800;
-//static const int screenHeight = 450;
+static const int screenWidth = 800;
+static const int screenHeight = 450;
 //Vector2 playerSize = { 30,30 };
 //Vector2 playerPosition = { screenWidth / 2, screenHeight / 2 };
 //Vector2 centerPosition = { playerPosition.x + (playerSize.x / 2) - (playerAim.crosshairSize.x / 2) ,playerPosition.y + (playerSize.y / 2) - (playerAim.crosshairSize.x / 2) };
@@ -27,7 +27,7 @@ int main()
 
     SetTargetFPS(60);
 
-    InitWindow(0, 0, "Game");
+    InitWindow(screenWidth, screenHeight, "Game");
 
     // MAPA
     std::string mapName = "map1.txt";
