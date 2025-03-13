@@ -2,18 +2,18 @@
 //#include "GameObject.cpp"
 //#include "Bullet.h"
 
-class Launcher {
+class Shotgun {
 private:
     float distance = 30;
     Vector2 position;
 
 public:
-	Color color;
+    Color color;
     Vector2 endPosition;
     float launcherRadius = 10;
 
 
-	
+
 
     void Update() {
 
@@ -26,17 +26,17 @@ public:
 
 
     void CalculateShot(Vector2 direction) {
-        endPosition=position + direction*distance;   
+        endPosition = position + direction * distance;
         Draw();
     }
 
-	void Draw()  {
-		
-        DrawLine(position, endPosition, RED);
-        
-        return;
-	}
+    void Draw() {
 
-	void Destroy() {
-	}
+        DrawLine(position, endPosition, RED);
+
+        return;
+    }
+
+    void Destroy() {
+    }
 };
