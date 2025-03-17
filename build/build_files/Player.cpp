@@ -46,10 +46,9 @@ void Player::Draw() {
     DrawRectangle(position.x, position.y, size.x, size.y, BLUE);
     playerAim.Draw();
     playerLauncher.Draw();
-    playerLauncherEmpty.Draw();
     // DIBUJAR COLLIDER
-    Rectangle r = GetFloorCollider();
-    DrawRectangle(r.x, r.y, r.width, r.height, YELLOW);
+    //Rectangle r = GetFloorCollider();
+    //DrawRectangle(r.x, r.y, r.width, r.height, YELLOW);
 }
 
 Rectangle Player::GetFloorCollider() {
