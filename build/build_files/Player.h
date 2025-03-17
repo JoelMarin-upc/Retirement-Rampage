@@ -11,7 +11,7 @@ public:
 	Aim playerAim;
 	Bullet playerLauncherEmpty;
 	Bullet playerLauncher;
-
+	float speed = 0;
 	bool aiming = true;
 	bool charging = false;
 
@@ -24,6 +24,9 @@ public:
 
 	void Update() override;
 	void Draw() override;
+	void MoveY(int ammount, bool add);
+	void Fall();
+	Rectangle GetFloorCollider();
 };
 
 #endif

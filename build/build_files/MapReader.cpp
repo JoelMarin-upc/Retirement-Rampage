@@ -1,16 +1,16 @@
 #include "MapReader.h"
+#include "raylib.h"
+#include "raymath.h"
 #include <cmath>
 #include <fstream>
-#include <raylib.h>
 #include <iostream>
-
 #include <cstdlib>
+#include <cctype>
 
 using namespace std;
 
 MapReader::MapReader(const std::string& filePath) : GameObject() {
     this->filePath = filePath;
-    shouldDraw = true;
 }
 
 void MapReader::Init() {
@@ -74,6 +74,10 @@ void MapReader::LoadMap(bool optimize) {
             MapTile tile(color, hasTerrain, c, pos, sizeVector);
             rowTiles.push_back(tile);
             column++;
+
+            if (c != '0' && isdigit(c)) {
+                playerPositions.push_back(tile);
+            }
         }
         map.push_back(rowTiles);
         row++;
@@ -133,20 +137,30 @@ void MapReader::ChangeMap(std::string& path) {
 }
 
 void MapReader::Update() {
-    //if (hit) shouldDraw = true;
+
 }
 
 void MapReader::Draw() {
-    //if (!shouldDraw) return;
+    
+    //DRAW UNOPTIMIZED TILES
     /*for (int x = 0; x < map.size(); x++) {
         for (int y = 0; y < map[x].size(); y++) {
             map[x][y].Draw();
         }
     }*/
+
     for (MapTile tile : optimizedTiles) tile.Draw();
-    shouldDraw = false;
 }
 
-void MapReader::DestroyTiles() {
+bool IsFullCollision(Explosion exp, MapTile tile) {
+    float distance = abs(Vector2Distance(exp.position, tile.GetCenter()));
+    return distance >= exp.radius + tile.size.x;
+}
 
+void MapReader::DestroyTiles(Explosion exp) {
+    for (int i = 0; i < map.size(); i++)
+        for (int j = 0; j < map[i].size(); j++)
+            if (CheckCollisionCircleRec(exp.position, exp.radius, map[i][j].GetRectangle()) /*&& IsFullCollision(exp, map[i][j])*/)
+                map[i][j].Destroy();
+    OptimizeTiles();
 }
