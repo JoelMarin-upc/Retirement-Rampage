@@ -5,6 +5,7 @@
 #include "Explosion.h"
 #include "raylib.h"  
 
+
 class Bullet : public GameObject {
 public:
     Vector2 missileSize = { 10, 10 };
