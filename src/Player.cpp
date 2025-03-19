@@ -1,14 +1,52 @@
 #include "Player.h"
 #include "MapReader.h"
 #include "Game.h"
-#include <vector>
-#include <iostream>
 
 #define G 0.1
 
-void Player::Update() {
-    if (IsKeyDown(KEY_ONE))isTurn = true;
 
+void Player::Update() {
+    if (IsKeyDown(KEY_ENTER)) {
+        isTurn = true;
+        playerAim.isTurn = true;
+    }
+    if (IsKeyDown(KEY_ONE)) {
+        currentWeapon = "bullet";
+    }
+    if (IsKeyDown(KEY_TWO)) {
+        currentWeapon = "shotgun";
+    }
+    if (currentWeapon == "bullet") BulletEquipped();
+    else if (currentWeapon == "shotgun") ShotgunEquipped();
+    Fall();
+
+    //tendría que actualizarse solo cuando recibe daño
+    healthString = std::to_string(healthPoints);
+
+}
+
+
+void  Player::BulletEquipped() {
+    charging = false;
+    if (isTurn) {
+        if (IsKeyPressed(KEY_SPACE)) {
+            if (!charging) {
+                playerShotgun = playerShotgunEmpty;
+                aiming = false;
+                charging = true;
+                isTurn = false;
+                playerAim.isTurn = false;
+                if (playerAim.facingRight)playerLauncher.InitialVelocity(playerAim.vectorDirector);
+                else playerLauncher.InitialVelocity({ -playerAim.vectorDirector.x, playerAim.vectorDirector.y });
+            }
+        }
+        if (!charging) playerAim.Update();
+    }
+    if (!aiming) playerShotgun.Update();
+}
+
+
+void  Player::ShotgunEquipped() {
     if (isTurn) {
         if (IsKeyDown(KEY_SPACE)) {
             if (!charging) {
@@ -18,21 +56,19 @@ void Player::Update() {
             }
             if (!playerLauncher.Charging()) charging = false;
         }
-
         if (IsKeyReleased(KEY_SPACE) || (IsKeyDown(KEY_SPACE) && !charging)) {
             aiming = false;
             charging = false;
             isTurn = false;
+            playerAim.isTurn = false;
             if (playerAim.facingRight)playerLauncher.InitialVelocity(playerAim.vectorDirector);
             else playerLauncher.InitialVelocity({ -playerAim.vectorDirector.x, playerAim.vectorDirector.y });
         }
-
+        if (!charging) playerAim.Update();
     }
-    Fall();
-
-    if (!charging) playerAim.Update();
     if (!aiming) playerLauncher.Update();
 }
+
 
 void Player::MoveY(int ammount, bool add) {
     if (add) {
@@ -53,6 +89,8 @@ void Player::Draw() {
     DrawRectangle(position.x, position.y, size.x, size.y, BLUE);
     playerAim.Draw();
     playerLauncher.Draw();
+    const char* cstr = healthString.c_str();
+    DrawText(cstr, position.x, position.y-30, 20, WHITE);
     // DIBUJAR COLLIDER
     //Rectangle r = GetFloorCollider();
     //DrawRectangle(r.x, r.y, r.width, r.height, YELLOW);

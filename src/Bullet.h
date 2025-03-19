@@ -4,7 +4,8 @@
 #include "GameObject.h"
 #include "Explosion.h"
 #include "raylib.h"  
-
+#include <vector>
+#include <iostream>
 
 class Bullet : public GameObject {
 public:
@@ -21,10 +22,9 @@ public:
 
     int barMax = 40;
     int barCounter = 0;
-    float barVelocity = 0.5;
+    float barVelocity = 0.3;
     Vector2 barSize = { 4,20 };
-    Vector2 barPosition = {400,400 };
-    //vector<GameObject> bars;
+    Vector2 barPosition = { 400,400 };
 
     Bullet() : GameObject() {}
     Bullet(Vector2 center) : GameObject(center, Vector2()) {}
@@ -36,7 +36,6 @@ public:
     void Draw() override;
     bool HasCollision();
     void Explode();
-
 };
 
 #endif

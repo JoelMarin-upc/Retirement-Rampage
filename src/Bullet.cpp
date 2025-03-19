@@ -1,6 +1,5 @@
 #include <raylib.h>
 #include <vector>
-#include <iostream>
 #include "Bullet.h"
 #include "Explosion.h"
 #include "MapReader.h"
@@ -34,7 +33,7 @@ void Bullet::Shoot() {
 
 void Bullet::InitialVelocity(Vector2 direction) { actualVelocity = { direction.x * velocityModule, direction.y * velocityModule}; }
 
-void Bullet::Draw() { 
+void Bullet::Draw() {
     if (destroyed) explosion.Draw();
     else DrawCircle(position.x, position.y, bulletRadius, RED);
     for (int i = 0; i < barCounter; i++) {
