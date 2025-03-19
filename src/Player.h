@@ -11,12 +11,15 @@ public:
 	Aim playerAim;
 	Bullet playerLauncherEmpty;
 	Bullet playerLauncher;
-
-	float healthPoints;
-
+	float speed = 0;
 	bool aiming = true;
 	bool charging = false;
 	bool isTurn = false;
+	float healthPoints;
+
+    
+
+
 
 	Player(Vector2 playerPosition, Vector2 playerSize) : GameObject(playerPosition, playerSize) {
 		Vector2 centerPosition = { playerPosition.x + playerSize.x / 2, playerPosition.y + playerSize.y / 2 };
@@ -27,6 +30,10 @@ public:
 
 	void Update() override;
 	void Draw() override;
+	void MoveY(int ammount, bool add);
+	void Fall();
+	Rectangle GetFloorCollider();
+
 };
 
 #endif

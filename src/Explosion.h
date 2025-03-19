@@ -6,11 +6,14 @@
 
 class Explosion : public GameObject {
 private:
-    int radius;
     int milisecondsToEnd;
     int lastTime;
 
 public:
+    int radius;
+
+    Explosion();
+
     Explosion(Vector2 position, int radius, int milisecondsToEnd);
 
     void Update() override;

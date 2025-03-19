@@ -2,26 +2,28 @@
 #define BULLET_H
 
 #include "GameObject.h"
+#include "Explosion.h"
 #include "raylib.h"  
-#include <vector>
-#include <iostream>
-
-
 
 class Bullet : public GameObject {
 public:
     Vector2 missileSize = { 10, 10 };
     Vector2 actualVelocity = { 0, 0 };
+    float velocityModule = 0.0f;
+    float velocityIncrease = 0.15f;
+    float bulletRadius = 10.0f;
+    float explosionRadius = 50.0f;
+    int explosionMiliseconds = 600;
+    float gravity = 0.1f;
+    bool destroyed = false;
+    Explosion explosion = Explosion();
+
     int barMax = 40;
     int barCounter = 0;
     float barVelocity = 0.5;
     Vector2 barSize = { 4,20 };
     Vector2 barPosition = {400,400 };
     //vector<GameObject> bars;
-    float velocityModule = 0.0f;
-    float velocityIncrease = 0.15f;
-    float launcherRadius = 10.0f;
-    float gravity = 0.1f;
 
     Bullet() : GameObject() {}
     Bullet(Vector2 center) : GameObject(center, Vector2()) {}
@@ -31,9 +33,9 @@ public:
     void Shoot();
     void InitialVelocity(Vector2 direction);
     void Draw() override;
-    void DrawCharge();
+    bool HasCollision();
+    void Explode();
 
-    void Destroy();
 };
 
 #endif
