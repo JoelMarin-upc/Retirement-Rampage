@@ -21,7 +21,7 @@ bool Bullet::Charging() {
         barCounter = 0;
         return false;
     }
-    std::cout << barCounter;
+    
     return true;
 }
 

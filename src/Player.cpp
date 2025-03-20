@@ -12,9 +12,13 @@ void Player::Update() {
     }
     if (IsKeyDown(KEY_ONE)) {
         currentWeapon = "bullet";
+        aiming = true;
+        charging = false;
     }
     if (IsKeyDown(KEY_TWO)) {
         currentWeapon = "shotgun";
+        aiming = true;
+        charging = false;
     }
     if (currentWeapon == "bullet") BulletEquipped();
     else if (currentWeapon == "shotgun") ShotgunEquipped();
@@ -25,28 +29,7 @@ void Player::Update() {
 
 }
 
-
 void  Player::BulletEquipped() {
-    charging = false;
-    if (isTurn) {
-        if (IsKeyPressed(KEY_SPACE)) {
-            if (!charging) {
-                playerShotgun = playerShotgunEmpty;
-                aiming = false;
-                charging = true;
-                isTurn = false;
-                playerAim.isTurn = false;
-                if (playerAim.facingRight)playerLauncher.InitialVelocity(playerAim.vectorDirector);
-                else playerLauncher.InitialVelocity({ -playerAim.vectorDirector.x, playerAim.vectorDirector.y });
-            }
-        }
-        if (!charging) playerAim.Update();
-    }
-    if (!aiming) playerShotgun.Update();
-}
-
-
-void  Player::ShotgunEquipped() {
     if (isTurn) {
         if (IsKeyDown(KEY_SPACE)) {
             if (!charging) {
@@ -70,25 +53,50 @@ void  Player::ShotgunEquipped() {
 }
 
 
+void  Player::ShotgunEquipped() {
+    if (isTurn) {
+        if (IsKeyPressed(KEY_SPACE)) {
+            if (!charging) {
+                playerShotgun = playerShotgunEmpty;
+                aiming = false;
+                charging = true;
+                isTurn = false;
+                playerAim.isTurn = false;
+                if (playerAim.facingRight)playerShotgun.InitialVelocity(playerAim.vectorDirector);
+                else playerShotgun.InitialVelocity({ -playerAim.vectorDirector.x, playerAim.vectorDirector.y });
+            }
+        }
+        if (!charging) playerAim.Update();
+    }
+    if (!aiming) playerShotgun.Update();
+}
+
+
+
 void Player::MoveY(int ammount, bool add) {
     if (add) {
         position.y += ammount;
         playerAim.position.y += ammount;
         playerLauncher.position.y += ammount;
         playerLauncherEmpty.position.y += ammount;
+        playerShotgun.position.y += ammount;
+        playerShotgunEmpty.position.y += ammount;
     }
     else {
         position.y = ammount;
         playerAim.position.y = ammount;
         playerLauncher.position.y = ammount;
         playerLauncherEmpty.position.y = ammount;
+        playerShotgun.position.y = ammount;
+        playerShotgunEmpty.position.y = ammount;
     }
 }
 
 void Player::Draw() {
     DrawRectangle(position.x, position.y, size.x, size.y, BLUE);
     playerAim.Draw();
-    playerLauncher.Draw();
+    if(currentWeapon == "bullet") playerLauncher.Draw();
+    if (currentWeapon == "shotgun")playerShotgun.Draw();
     const char* cstr = healthString.c_str();
     DrawText(cstr, position.x, position.y-30, 20, WHITE);
     // DIBUJAR COLLIDER

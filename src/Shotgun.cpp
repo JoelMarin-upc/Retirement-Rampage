@@ -7,15 +7,18 @@
 
 void Shotgun::Update() {
     if (destroyed) {
+        explosion.Update();
         return;
     }
-    else Shoot(); 
+    if (HasCollision()) Explode();
+    else Shoot();
 }
 
 
 void Shotgun::Shoot() {
     position.x += actualVelocity.x;
     position.y += actualVelocity.y;
+    std::cout << actualVelocity.x;
 }
 
 void Shotgun::InitialVelocity(Vector2 direction) { actualVelocity = { direction.x * velocityModule, direction.y * velocityModule}; }

@@ -22,6 +22,7 @@ public:
 	float speed = 0;
 	bool aiming = true;
 	bool charging = false;
+	//falta añadir una variable que detecte cuando hay un disparo en el aire y no es turno de nadie
 
 	int healthPoints = 100;
 	std::string healthString = "100";
@@ -36,6 +37,8 @@ public:
 		playerAim = Aim(centerPosition);
 		playerLauncher = Bullet(centerPosition);
 		playerLauncherEmpty = Bullet(centerPosition);
+		playerShotgunEmpty = Shotgun(centerPosition);
+		playerShotgun = Shotgun(centerPosition);
 	}
 
 	void Update() override;
