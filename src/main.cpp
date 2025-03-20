@@ -39,7 +39,7 @@ int main()
     Game::gameObjects.push_back(std::move(map)); // Tiene que ser el 1r game object en la lista
 
     // PLAYER 1
-        //std::vector<Player>playerList(playerNum);
+        std::vector<Player*>playerList(playerNum);
 
         int i = 0;
         Vector2 size = { 30, 30 };
@@ -52,11 +52,11 @@ int main()
                 std::unique_ptr<GameObject> player = std::make_unique<Player>(pos, size);
                 Game::gameObjects.push_back(std::move(player));
                
-               // playerList[i] = player;
+               playerList[i] = static_cast<Player*>(player.get());
                 ++i;
             }
         }
-       // playerList[0].isTurn;
+       playerList[0]->isTurn=true;
             
         
        
