@@ -23,6 +23,8 @@ void Player::Update() {
 
     Fall();
 
+    animation.position = position;
+    animation.Update();
     if (!charging) playerAim.Update();
     if (!aiming) playerLauncher.Update();
 }
@@ -43,16 +45,17 @@ void Player::MoveY(int ammount, bool add) {
 }
 
 void Player::Draw() {
-    DrawRectangle(position.x, position.y, size.x, size.y, BLUE);
+    animation.Draw();
     playerAim.Draw();
     playerLauncher.Draw();
     // DIBUJAR COLLIDER
     //Rectangle r = GetFloorCollider();
     //DrawRectangle(r.x, r.y, r.width, r.height, YELLOW);
+    //DrawRectangle(position.x, position.y, size.x, size.y, BLUE);
 }
 
 Rectangle Player::GetFloorCollider() {
-    return {position.x+(size.x/3), position.y + (size.y/2), size.x/3, size.y / 2};
+    return { position.x+(size.x/3), position.y + (size.y/2), size.x/3, size.y / 2 };
 }
 
 void Player::Fall() {
