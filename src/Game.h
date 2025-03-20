@@ -1,4 +1,5 @@
 #include "GameObject.h"
+#include "SoundEffects.h"
 #include <vector>
 #include <memory>
 

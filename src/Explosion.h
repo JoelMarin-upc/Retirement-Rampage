@@ -2,6 +2,7 @@
 #define EXPLOSION_H
 
 #include "GameObject.h"
+#include "SoundEffects.h"
 #include "raylib.h"
 
 class Explosion : public GameObject {

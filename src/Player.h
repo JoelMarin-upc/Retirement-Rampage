@@ -6,6 +6,7 @@
 #include "Aim.h"
 #include "Bullet.h"
 #include "Shotgun.h"
+#include "SoundEffects.h"
 #include <string> 
 #include <map>
 #include <iostream>

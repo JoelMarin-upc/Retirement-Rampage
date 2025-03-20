@@ -4,6 +4,7 @@
 #include "GameObject.h"
 #include "Explosion.h"
 #include "raylib.h"  
+#include "SoundEffects.h"
 #include <vector>
 #include <iostream>
 

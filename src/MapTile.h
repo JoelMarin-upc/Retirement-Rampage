@@ -3,6 +3,7 @@
 
 #include "GameObject.h"
 #include <raylib.h>
+#include "SoundEffects.h"
 
 class MapTile : public GameObject {
 public:

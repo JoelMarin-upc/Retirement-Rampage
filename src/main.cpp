@@ -3,10 +3,12 @@
 #include "MapReader.h"
 #include "GameObject.h"
 #include "Player.h"
+#include "SoundEffects.h"
 
 #include <memory>
 #include <vector>
 #include <iostream>
+#include <map>
 #include "Game.h"
 
 static const int screenWidth = 800;
@@ -29,6 +31,12 @@ int main()
     SetTargetFPS(60);
 
     InitWindow(screenWidth, screenHeight, "Game");
+
+    // Load Sounds
+    SoundEffects::loadsounds();
+    SoundEffects::playsound("Explosion");
+
+
 
     // MAPA
     std::string mapName = "map1.txt";

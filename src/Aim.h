@@ -2,6 +2,7 @@
 #define AIM_H
 
 #include "GameObject.h"
+#include "SoundEffects.h"
 
 
 class Aim : public GameObject {

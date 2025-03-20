@@ -2,6 +2,7 @@
 #define GAMEOBJECT_H
 
 #include <raylib.h>
+#include "SoundEffects.h"
 
 class GameObject {
 public:

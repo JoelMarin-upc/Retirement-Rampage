@@ -6,6 +6,7 @@
 #include "Explosion.h"
 #include <string>
 #include <vector>
+#include "SoundEffects.h"
 
 class MapReader : public GameObject {
 private:
