@@ -35,10 +35,11 @@ void Bullet::InitialVelocity(Vector2 direction) { actualVelocity = { direction.x
 
 void Bullet::Draw() {
     if (destroyed) explosion.Draw();
-    else DrawCircle(position.x, position.y, bulletRadius, RED);
-    for (int i = 0; i < barCounter; i++) {
-        DrawRectangle(i * barSize.x + barPosition.x, barPosition.y, barSize.x, barSize.y, ORANGE);
-
+    else {
+        DrawCircle(position.x, position.y, bulletRadius, RED);
+        for (int i = 0; i < barCounter; i++) {
+            DrawRectangle(i * barSize.x + barPosition.x, barPosition.y, barSize.x, barSize.y, ORANGE);
+        }
     }
 }
 

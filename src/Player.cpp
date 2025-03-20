@@ -6,10 +6,10 @@
 
 
 void Player::Update() {
-    if (IsKeyDown(KEY_ENTER)) {
-        isTurn = true;
-        playerAim.isTurn = true;
-    }
+    //if (IsKeyDown(KEY_ENTER)) {
+      //  isTurn = true;
+      //  playerAim.isTurn = true;
+   // }
     if (IsKeyDown(KEY_ONE)) {
         currentWeapon = "bullet";
         aiming = true;

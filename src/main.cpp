@@ -13,6 +13,11 @@ static const int screenWidth = 800;
 static const int screenHeight = 450;
 
 int playerNum = 2;
+std::vector<Player*>playerList(playerNum);
+int currentPlayer = 0;
+
+
+
 //Vector2 playerSize = { 30,30 };
 //Vector2 playerPosition = { screenWidth / 2, screenHeight / 2 };
 //Vector2 centerPosition = { playerPosition.x + (playerSize.x / 2) - (playerAim.crosshairSize.x / 2) ,playerPosition.y + (playerSize.y / 2) - (playerAim.crosshairSize.x / 2) };
@@ -20,6 +25,7 @@ int playerNum = 2;
 void InitPhase();
 void UpdatingPhase();
 void PaintingPhase();
+void CheckTurn();
 
 int main()
 {
@@ -31,7 +37,7 @@ int main()
     InitWindow(screenWidth, screenHeight, "Game");
 
     // MAPA
-    std::string mapName = "map1.txt";
+    std::string mapName = "map2.txt";
     std::string path = GetDirectoryPath(mapName.c_str()) + mapName;
     std::unique_ptr<GameObject> map = std::make_unique<MapReader>(path);
     MapReader* mapObj = dynamic_cast<MapReader*>(map.get());
@@ -39,9 +45,8 @@ int main()
     Game::gameObjects.push_back(std::move(map)); // Tiene que ser el 1r game object en la lista
 
     // PLAYER 1
-        std::vector<Player*>playerList(playerNum);
+        
 
-        int i = 0;
         Vector2 size = { 30, 30 };
         Vector2 defPos = { 1, 1 };
         Vector2 pos = defPos;
@@ -50,13 +55,14 @@ int main()
                 pos = tile.position;
                 if (pos.x != defPos.x || pos.y != defPos.y) pos.y -= size.y;
                 std::unique_ptr<GameObject> player = std::make_unique<Player>(pos, size);
-                Game::gameObjects.push_back(std::move(player));
-               
-               playerList[i] = static_cast<Player*>(player.get());
-                ++i;
+                playerList[currentPlayer] = static_cast<Player*>(player.get());
+                Game::gameObjects.push_back(std::move(player));               
+                ++currentPlayer;
             }
         }
-       playerList[0]->isTurn=true;
+        currentPlayer = 0;
+        playerList[currentPlayer]->isTurn=true;
+        playerList[currentPlayer]->playerAim.isTurn = true;
             
         
        
@@ -80,13 +86,30 @@ void InitPhase() {
 
 void UpdatingPhase() {
     for (const auto& gameObject : Game::gameObjects) {
-        gameObject->Update();
+        gameObject->Update(); 
+    }
+    CheckTurn();
+}
+
+
+void CheckTurn() {
+    if (playerList[currentPlayer]->isTurn == false) {
+        if (currentPlayer < (playerNum - 1)) ++currentPlayer;
+        else currentPlayer = 0;
+        playerList[currentPlayer]->isTurn = true;
+        playerList[currentPlayer]->playerAim.isTurn = true;
+        std::cout << currentPlayer;
     }
 }
+
 
 void PaintingPhase() {
     BeginDrawing();
     ClearBackground(SKYBLUE);
+    std::string s = std::to_string(currentPlayer + 1);
+    const char* cstr = s.c_str();
+    DrawText("player", 300, 20, 20, BLACK);
+    DrawText(cstr, 370, 20, 20, BLACK);
     for (const auto& gameObject : Game::gameObjects) {
         gameObject->Draw();
     }
