@@ -13,5 +13,6 @@ void MapTile::Draw() {
 }
 
 void MapTile::Destroy() {
+    tileChar = '0';
     hasTerrain = false;
 }

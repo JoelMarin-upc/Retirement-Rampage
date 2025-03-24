@@ -3,6 +3,7 @@
 
 #include "GameObject.h"
 #include "MapTile.h"
+#include "Explosion.h"
 #include <string>
 #include <vector>
 
@@ -11,7 +12,7 @@ private:
     std::string filePath;
     std::vector<std::vector<MapTile>> map;
     std::vector<MapTile> optimizedTiles;
-    bool shouldDraw;
+    std::vector<MapTile> playerPositions;
     bool mapLoaded = false;
 
 public:
@@ -28,11 +29,15 @@ public:
 
     void Update() override;
    
-    void Draw();
+    void Draw() override;
 
-    void DestroyTiles();
+    void DestroyTiles(Explosion exp);
 
     std::vector<std::vector<MapTile>> GetMap() { return map; }
+
+    std::vector<MapTile> GetOptimizedMap() { return optimizedTiles; }
+    
+    std::vector<MapTile> GetPlayers() { return playerPositions; }
 };
 
 #endif

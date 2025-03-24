@@ -16,6 +16,10 @@ public:
     virtual void Update() = 0;
 
     virtual void Draw() = 0;
+
+    Rectangle GetRectangle();
+
+    Vector2 GetCenter();
 };
 
 #endif
