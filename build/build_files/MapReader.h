@@ -39,7 +39,6 @@ public:
     std::vector<MapTile> GetOptimizedMap() { return optimizedTiles; }
     
     std::vector<MapTile> GetPlayers() { return playerPositions; }
-
 };
 
 #endif
