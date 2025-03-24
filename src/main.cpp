@@ -15,6 +15,8 @@
 //Vector2 playerPosition = { screenWidth / 2, screenHeight / 2 };
 //Vector2 centerPosition = { playerPosition.x + (playerSize.x / 2) - (playerAim.crosshairSize.x / 2) ,playerPosition.y + (playerSize.y / 2) - (playerAim.crosshairSize.x / 2) };
 
+//comment
+
 void InitPhase();
 void UpdatingPhase();
 void PaintingPhase();
