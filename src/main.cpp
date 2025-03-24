@@ -33,9 +33,14 @@ int main()
     InitWindow(screenWidth, screenHeight, "Game");
 
     // Load Sounds
-    SoundEffects::loadsounds();
-    SoundEffects::playsound("Explosion");
+    float timePlayed = 0.0f;
 
+    InitAudioDevice();
+
+    Music music = LoadMusicStream("01 the wormsong.mp3");
+    PlayMusicStream(music);
+
+    
 
 
     // MAPA
@@ -72,9 +77,19 @@ int main()
     InitPhase();
     while (!WindowShouldClose())
     {
+        UpdateMusicStream(music);
+
         UpdatingPhase();
         PaintingPhase();
+
+        timePlayed = GetMusicTimePlayed(music) / GetMusicTimeLength(music);
+
+        if (timePlayed > 1.0f) timePlayed = 1.0f;   // Make sure time played is no longer than music
     }
+
+    UnloadMusicStream(music);   // Unload music stream buffers from RAM
+
+    CloseAudioDevice();         // Close audio device (music streaming is automatically stopped)
 
     CloseWindow();
     return 0;

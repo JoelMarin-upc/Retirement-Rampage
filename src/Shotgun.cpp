@@ -17,6 +17,7 @@ void Shotgun::Update() {
 
 
 void Shotgun::Shoot() {
+    
     position.x += actualVelocity.x;
     position.y += actualVelocity.y;
     std::cout << actualVelocity.x;

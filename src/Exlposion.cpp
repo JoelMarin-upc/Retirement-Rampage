@@ -6,6 +6,8 @@ Explosion::Explosion(Vector2 position, int radius, int milisecondsToEnd) : GameO
 	this->radius = radius;
 	this->milisecondsToEnd = milisecondsToEnd;
 	lastTime = GetFrameTime() * 1000;
+	SoundEffects playsfx;
+	playsfx.playsfx(1);
 }
 	
 void Explosion::Update() {

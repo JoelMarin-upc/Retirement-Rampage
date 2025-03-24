@@ -33,6 +33,9 @@ void  Player::BulletEquipped() {
     if (isTurn) {
         if (IsKeyDown(KEY_SPACE)) {
             if (!charging) {
+                SoundEffects playsfx;
+                playsfx.playsfx(3);
+
                 aiming = true;
                 charging = true;
                 playerLauncher = playerLauncherEmpty;
@@ -57,6 +60,9 @@ void  Player::ShotgunEquipped() {
     if (isTurn) {
         if (IsKeyPressed(KEY_SPACE)) {
             if (!charging) {
+                SoundEffects playsfx;
+                playsfx.playsfx(2);
+
                 playerShotgun = playerShotgunEmpty;
                 aiming = false;
                 charging = true;
