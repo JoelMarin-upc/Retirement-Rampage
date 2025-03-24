@@ -28,10 +28,8 @@ void Aim::Update() {
 }
 
 void Aim::Draw() {
-    if (isTurn) {
-        if (facingRight)
-            DrawRectangle(aimingPoint.x, aimingPoint.y, 10, 10, BLACK);
-        else
-            DrawRectangle(aimingPoint.x, aimingPoint.y, crosshairSize.x, crosshairSize.y, BLACK);
-    }
+    if (facingRight)
+        DrawRectangle(aimingPoint.x, aimingPoint.y, 10, 10, BLACK);
+    else
+        DrawRectangle(aimingPoint.x, aimingPoint.y, crosshairSize.x, crosshairSize.y, BLACK);
 }

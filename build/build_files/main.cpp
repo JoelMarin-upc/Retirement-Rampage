@@ -46,8 +46,7 @@ int main()
         if (tile.tileChar == '1') pos = tile.position;
         if (pos.x != defPos.x || pos.y != defPos.y) pos.y -= size.y;
     }
-    std::unique_ptr<GameObject> player = std::make_unique<Player>(pos, size, "scarfy.png");
-    Game::gameObjects.push_back(std::move(player));
+
 
     if (mapObj) {
         std::vector<std::vector<MapTile>> mapMatrix = mapObj->GetMap();
@@ -61,7 +60,7 @@ int main()
         }
     }
     std::unique_ptr<GameObject> player = std::make_unique<Player>(pos, size);
-    gameObjects.push_back(std::move(player));
+    Game::gameObjects.push_back(std::move(player));
 
     InitPhase();
     while (!WindowShouldClose())

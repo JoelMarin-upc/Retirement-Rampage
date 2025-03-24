@@ -17,9 +17,9 @@ public:
 	bool aiming = true;
 	bool charging = false;
 
-	Player(Vector2 playerPosition, Vector2 playerSize, char* sprite) : GameObject(playerPosition, playerSize) {
+	Player(Vector2 playerPosition, Vector2 playerSize) : GameObject(playerPosition, playerSize) {
 		Vector2 centerPosition = { playerPosition.x + playerSize.x / 2, playerPosition.y + playerSize.y / 2 };
-		animation = AnimationController(position, size, sprite, true, false, 36, 12);
+		animation = AnimationController(position, size, "scarfy.png", true, false, 36, 12);
 		playerAim = Aim(centerPosition);
 		playerLauncher = Bullet(centerPosition);
 		playerLauncherEmpty = Bullet(centerPosition);

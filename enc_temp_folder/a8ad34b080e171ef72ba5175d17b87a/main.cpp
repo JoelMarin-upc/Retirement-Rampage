@@ -30,7 +30,7 @@ int main()
     InitWindow(0, 0, "Game");
 
     // MAPA
-    std::string mapName = "map1.txt";
+    std::string mapName = "map2.txt";
     std::string path = GetDirectoryPath(mapName.c_str()) + mapName;
     std::unique_ptr<GameObject> map = std::make_unique<MapReader>(path);
     MapReader* mapObj = dynamic_cast<MapReader*>(map.get());

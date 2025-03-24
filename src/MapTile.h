@@ -10,6 +10,8 @@ public:
     bool hasTerrain;
     char tileChar;
 
+    MapTile() : GameObject() {}
+
     MapTile(Color c, bool hasTerrain, char tileChar, Vector2 position, Vector2 size);
 
     void Update() override;

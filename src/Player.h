@@ -5,49 +5,30 @@
 #include "raylib.h"  
 #include "Aim.h"
 #include "Bullet.h"
-#include "Shotgun.h"
-#include <string> 
-#include <map>
-#include <iostream>
-
-
+#include "AnimationController.h"
 
 class Player : public GameObject {
 public:
+	AnimationController animation;
 	Aim playerAim;
 	Bullet playerLauncherEmpty;
 	Bullet playerLauncher;
-	Shotgun playerShotgunEmpty;
-	Shotgun playerShotgun;
 	float speed = 0;
 	bool aiming = true;
 	bool charging = false;
-	//falta añadir una variable que detecte cuando hay un disparo en el aire y no es turno de nadie
-
-	int healthPoints = 100;
-	std::string healthString = "100";
-	bool isTurn = false;
-
-	std::string currentWeapon = "bullet";
-
-
-	Player() : GameObject(){}
 
 	Player(Vector2 playerPosition, Vector2 playerSize) : GameObject(playerPosition, playerSize) {
 		Vector2 centerPosition = { playerPosition.x + playerSize.x / 2, playerPosition.y + playerSize.y / 2 };
+		animation = AnimationController(position, size, "scarfy.png", true, false, 36, 12);
 		playerAim = Aim(centerPosition);
 		playerLauncher = Bullet(centerPosition);
 		playerLauncherEmpty = Bullet(centerPosition);
-		playerShotgunEmpty = Shotgun(centerPosition);
-		playerShotgun = Shotgun(centerPosition);
 	}
 
 	void Update() override;
 	void Draw() override;
 	void MoveY(int ammount, bool add);
 	void Fall();
-	void BulletEquipped();
-	void ShotgunEquipped();
 	Rectangle GetFloorCollider();
 };
 
