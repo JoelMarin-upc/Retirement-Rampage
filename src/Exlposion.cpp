@@ -14,6 +14,7 @@ void Explosion::Update() {
 	lastTime = GetFrameTime() * 1000;
 	if (milisecondsToEnd > 0) { milisecondsToEnd -= lastTime; }
 	if (milisecondsToEnd <= 0) animation.active = false;
+
 }
 
 void Explosion::Draw() {
