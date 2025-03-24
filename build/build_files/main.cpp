@@ -22,6 +22,7 @@ void PaintingPhase();
 int main()
 {
     Game::gameObjects = std::vector<std::unique_ptr<GameObject>>();
+
     SearchAndSetResourceDir("resources");
 
     SetTargetFPS(60);
@@ -40,12 +41,27 @@ int main()
     Vector2 size = { 30, 30 };
     Vector2 defPos = { 1, 1 };
     Vector2 pos = defPos;
+
     for (const MapTile& tile : mapObj->GetPlayers()) {
         if (tile.tileChar == '1') pos = tile.position;
         if (pos.x != defPos.x || pos.y != defPos.y) pos.y -= size.y;
     }
     std::unique_ptr<GameObject> player = std::make_unique<Player>(pos, size);
     Game::gameObjects.push_back(std::move(player));
+
+    if (mapObj) {
+        std::vector<std::vector<MapTile>> mapMatrix = mapObj->GetMap();
+        for (int i = 0; i < mapMatrix.size() && pos.x == defPos.x && pos.y == defPos.y; i++)
+            for (int j = 0; j < mapMatrix[i].size() && pos.x == defPos.x && pos.y == defPos.y; j++)
+                if (mapMatrix[i][j].tileChar == '1')
+                    pos = mapMatrix[i][j].position;
+        if (pos.x != defPos.x || pos.y != defPos.y) {
+            //pos.x -= size.x;
+            pos.y -= size.y;
+        }
+    }
+    std::unique_ptr<GameObject> player = std::make_unique<Player>(pos, size);
+    gameObjects.push_back(std::move(player));
 
     InitPhase();
     while (!WindowShouldClose())
