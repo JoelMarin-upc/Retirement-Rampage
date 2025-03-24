@@ -33,7 +33,7 @@ bool Bullet::HasCollision() {
     bool collision = false;
     MapReader* mapObj = dynamic_cast<MapReader*>(Game::gameObjects[0].get());
     std::vector<MapTile> map = mapObj->GetOptimizedMap();
-    std::vector<MapTile> players = mapObj->GetPlayers();
+    std::vector<MapTile> players = std::vector<MapTile>(0);//mapObj->GetPlayers();
     map.insert(map.end(), players.begin(), players.end());
     for (int i = 0; i < map.size(); i++) {
         if (CheckCollisionCircleRec(position, bulletRadius, map[i].GetRectangle())) {

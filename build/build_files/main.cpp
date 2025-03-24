@@ -46,7 +46,7 @@ int main()
         if (tile.tileChar == '1') pos = tile.position;
         if (pos.x != defPos.x || pos.y != defPos.y) pos.y -= size.y;
     }
-    std::unique_ptr<GameObject> player = std::make_unique<Player>(pos, size);
+    std::unique_ptr<GameObject> player = std::make_unique<Player>(pos, size, "scarfy.png");
     Game::gameObjects.push_back(std::move(player));
 
     if (mapObj) {
