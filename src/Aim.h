@@ -14,9 +14,10 @@ public:
     bool facingRight = true;
     float angle = 0;
     float range = 100;
+    bool isTurn = false;
 
     Aim() : GameObject(), aimingPoint({ 0,0 }) {}
-    Aim(Vector2 center) : GameObject(center, Vector2()), aimingPoint({0,0}) {}
+    Aim(Vector2 center) : GameObject(center, Vector2()), aimingPoint({ 0,0 }) {}
     void Update() override;
     void Draw() override;
 };
