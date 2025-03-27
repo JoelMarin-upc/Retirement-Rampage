@@ -37,6 +37,15 @@ int main()
 
     InitWindow(screenWidth, screenHeight, "Game");
 
+    //SFX
+    float timePlayed = 0.0f;
+
+    InitAudioDevice();
+
+    Music music = LoadMusicStream("01 the wormsong.mp3");
+    PlayMusicStream(music);
+
+
     // MAPA
     std::string mapName = "map2.txt";
     std::string path = GetDirectoryPath(mapName.c_str()) + mapName;
@@ -69,10 +78,16 @@ int main()
     InitPhase();
     while (!WindowShouldClose())
     {
+        UpdateMusicStream(music); //music
+        timePlayed = GetMusicTimePlayed(music) / GetMusicTimeLength(music);
+
+        if (timePlayed > 1.0f) timePlayed = 1.0f;
         UpdatingPhase();
         PaintingPhase();
     }
-
+    
+    UnloadMusicStream(music);
+    CloseAudioDevice();
     CloseWindow();
     return 0;
 }

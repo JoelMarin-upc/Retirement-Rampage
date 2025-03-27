@@ -44,6 +44,8 @@ void  Player::BulletEquipped() {
             if (!playerLauncher.Charging()) charging = false;
         }
         if (IsKeyReleased(KEY_SPACE) || (IsKeyDown(KEY_SPACE) && !charging)) {
+            SoundEffects i;
+            i.playsfx(3);
             aiming = false;
             charging = false;
             isTurn = false;
@@ -61,6 +63,8 @@ void  Player::ShotgunEquipped() {
     if (isTurn) {
         if (IsKeyPressed(KEY_SPACE)) {
             if (!charging) {
+                SoundEffects i;
+                i.playsfx(2);
                 playerShotgun = playerShotgunEmpty;
                 aiming = false;
                 charging = true;
