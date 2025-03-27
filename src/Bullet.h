@@ -16,8 +16,10 @@ public:
     float bulletRadius = 10.0f;
     float explosionRadius = 50.0f;
     int explosionMiliseconds = 600;
-    float gravity = 0.1f;
+    float gravity = 0.25f;
     bool destroyed = false;
+    bool isPorjectileOnAir = false;
+
     Explosion explosion = Explosion();
 
     int barMax = 40;

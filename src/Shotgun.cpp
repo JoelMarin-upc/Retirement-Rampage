@@ -10,22 +10,29 @@ void Shotgun::Update() {
         explosion.Update();
         return;
     }
-    if (HasCollision()) Explode();
-    else Shoot();
+    else if (HasCollision()) Explode();
+    // uses screen size
+    else if (position.x > 800 || position.x < 0 || position.y < 0 || position.y >450) destroyed = true;
+    else {
+        Shoot();
+    }
 }
 
 
 void Shotgun::Shoot() {
     position.x += actualVelocity.x;
     position.y += actualVelocity.y;
-    std::cout << actualVelocity.x;
+
 }
 
 void Shotgun::InitialVelocity(Vector2 direction) { actualVelocity = { direction.x * velocityModule, direction.y * velocityModule}; }
 
 void Shotgun::Draw() {
     if (destroyed) explosion.Draw();
-    else DrawCircle(position.x, position.y, bulletRadius, RED);
+    else if (isPorjectileOnAir == true)
+    {
+        DrawCircle(position.x, position.y, bulletRadius, RED);
+    }
 }
 
 bool Shotgun::HasCollision() {
@@ -46,6 +53,7 @@ bool Shotgun::HasCollision() {
 void Shotgun::Explode() {
     explosion = Explosion(position, explosionRadius, explosionMiliseconds);
     destroyed = true;
+    std::cout << "destroy";
     //MapReader* mapObj = dynamic_cast<MapReader*>(Game::gameObjects[0].get());
    // mapObj->DestroyTiles(explosion);
 }

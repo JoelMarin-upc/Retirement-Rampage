@@ -5,12 +5,14 @@
 #include "MapReader.h"
 #include "Game.h"
 
-void Bullet::Update() {
+void  Bullet::Update() {
     if (destroyed) {
         explosion.Update();
         return;
     }
-    if (HasCollision()) Explode();
+    else if (HasCollision()) Explode();
+    //uses screen size
+    else if (position.x > 800 || position.x < 0 || position.y < 0|| position.y >450) destroyed = true;
     else Shoot();
 }
 
@@ -35,8 +37,11 @@ void Bullet::InitialVelocity(Vector2 direction) { actualVelocity = { direction.x
 
 void Bullet::Draw() {
     if (destroyed) explosion.Draw();
-    else {
+    else if (isPorjectileOnAir == true)
+    {
         DrawCircle(position.x, position.y, bulletRadius, RED);
+    }
+    else {
         for (int i = 0; i < barCounter; i++) {
             DrawRectangle(i * barSize.x + barPosition.x, barPosition.y, barSize.x, barSize.y, ORANGE);
         }

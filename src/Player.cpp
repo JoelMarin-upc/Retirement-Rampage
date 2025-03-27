@@ -29,7 +29,8 @@ void Player::Update() {
     animation.position = position;
     animation.Update();
     if (!charging) playerAim.Update();
-    if (!aiming) playerLauncher.Update();
+    //if (!aiming) playerLauncher.Update();
+
 }
 
 
@@ -44,6 +45,7 @@ void  Player::BulletEquipped() {
             if (!playerLauncher.Charging()) charging = false;
         }
         if (IsKeyReleased(KEY_SPACE) || (IsKeyDown(KEY_SPACE) && !charging)) {
+            playerLauncher.isPorjectileOnAir = true;
             aiming = false;
             charging = false;
             isTurn = false;
@@ -62,6 +64,7 @@ void  Player::ShotgunEquipped() {
         if (IsKeyPressed(KEY_SPACE)) {
             if (!charging) {
                 playerShotgun = playerShotgunEmpty;
+                playerShotgun.isPorjectileOnAir = true;
                 aiming = false;
                 charging = true;
                 isTurn = false;
@@ -72,7 +75,10 @@ void  Player::ShotgunEquipped() {
         }
         if (!charging) playerAim.Update();
     }
-    if (!aiming) playerShotgun.Update();
+    if (!aiming) {
+        playerShotgun.Update();
+        if (playerLauncher.destroyed == false) charging = false;
+    }
 }
 
 
@@ -100,7 +106,8 @@ void Player::Draw() {
     animation.Draw();
     playerAim.Draw();
     playerLauncher.Draw();
-    if (currentWeapon == "bullet") playerLauncher.Draw();
+    //if (currentWeapon == "bullet" && playerLauncher.isPorjectileOnAir) playerLauncher.Draw();
+    //shotgun is not in the object list
     if (currentWeapon == "shotgun")playerShotgun.Draw();
     const char* cstr = healthString.c_str();
     DrawText(cstr, position.x, position.y - 30, 20, WHITE);
