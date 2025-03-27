@@ -4,6 +4,7 @@
 #include "Explosion.h"
 #include "MapReader.h"
 #include "Game.h"
+#include "SoundEffects.h"
 
 void Bullet::Update() {
     if (destroyed) {
