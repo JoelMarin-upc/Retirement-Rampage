@@ -82,8 +82,7 @@
               "RelativeToolTip": "src\\Bullet.cpp*",
               "ViewState": "AgIAAAQAAAAAAAAAAAAjwBwAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-27T12:38:40.01Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-27T12:38:40.01Z"
             },
             {
               "$type": "Document",
@@ -95,8 +94,7 @@
               "RelativeToolTip": "src\\SoundEffects.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-27T12:33:52.079Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-27T12:33:52.079Z"
             },
             {
               "$type": "Document",
@@ -108,8 +106,7 @@
               "RelativeToolTip": "src\\Bullet.h",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAACEAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-20T13:01:08.171Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-20T13:01:08.171Z"
             },
             {
               "$type": "Document",
@@ -133,8 +130,7 @@
               "RelativeToolTip": "src\\Shotgun.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAjwBIAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-20T12:54:55.795Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-20T12:54:55.795Z"
             },
             {
               "$type": "Document",
@@ -146,8 +142,7 @@
               "RelativeToolTip": "src\\Shotgun.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-20T12:57:52.389Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-20T12:57:52.389Z"
             },
             {
               "$type": "Document",
@@ -159,8 +154,7 @@
               "RelativeToolTip": "src\\main.cpp",
               "ViewState": "AgIAABAAAAAAAAAAAAAAACwAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-20T13:03:03.518Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-20T13:03:03.518Z"
             },
             {
               "$type": "Document",
@@ -168,8 +162,8 @@
               "Title": "Player.cpp",
               "DocumentMoniker": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Player.cpp",
               "RelativeDocumentMoniker": "src\\Player.cpp",
-              "ToolTip": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Player.cpp*",
-              "RelativeToolTip": "src\\Player.cpp*",
+              "ToolTip": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Player.cpp",
+              "RelativeToolTip": "src\\Player.cpp",
               "ViewState": "AgIAABsAAAAAAAAAAAAAAC8AAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-03-24T10:57:39.044Z",
@@ -185,8 +179,7 @@
               "RelativeToolTip": "src\\Exlposion.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-24T10:59:35.969Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-24T10:59:35.969Z"
             },
             {
               "$type": "Document",
@@ -198,8 +191,7 @@
               "RelativeToolTip": "src\\GameObject.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-20T13:00:54.601Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-20T13:00:54.601Z"
             },
             {
               "$type": "Document",
@@ -211,8 +203,7 @@
               "RelativeToolTip": "src\\MapReader.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-20T13:00:49.047Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-20T13:00:49.047Z"
             },
             {
               "$type": "Document",
@@ -248,8 +239,7 @@
               "RelativeToolTip": "src\\Explosion.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-20T13:01:04.774Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-20T13:01:04.774Z"
             },
             {
               "$type": "Document",
