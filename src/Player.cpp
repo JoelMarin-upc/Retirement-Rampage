@@ -117,7 +117,7 @@ Rectangle Player::GetFloorCollider() {
 }
 
 void Player::Fall() {
-    MapReader* mapObj = dynamic_cast<MapReader*>(Game::gameObjects[0].get());
+    MapReader* mapObj = Game::GetMap();
     std::vector<MapTile> map = mapObj->GetOptimizedMap();
 
     bool hitObstacle = false;
@@ -141,4 +141,6 @@ void Player::Fall() {
         MoveY(fallSpeed, true);  
         speed += G;  
     }
+
+    if (position.y >= Game::bottomY) Game::EndGame(playerNum);
 }

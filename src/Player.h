@@ -20,6 +20,7 @@ public:
 	Shotgun playerShotgunEmpty;
 	Shotgun playerShotgun;
 	float speed = 0;
+	int playerNum;
 	bool aiming = true;
 	bool charging = false;
 
@@ -31,7 +32,7 @@ public:
 
 	Player() : GameObject() {}
 
-	Player(Vector2 playerPosition, Vector2 playerSize) : GameObject(playerPosition, playerSize) {
+	Player(int playerNum, Vector2 playerPosition, Vector2 playerSize) : GameObject(playerPosition, playerSize), playerNum(playerNum) {
 		Vector2 centerPosition = { playerPosition.x + playerSize.x / 2, playerPosition.y + playerSize.y / 2 };
 		animation = AnimationController(position, size, "scarfy.png", true, false, 36, 12);
 		playerAim = Aim(centerPosition);

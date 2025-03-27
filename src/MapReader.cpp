@@ -9,10 +9,6 @@
 
 using namespace std;
 
-MapReader::MapReader(const std::string& filePath) : GameObject() {
-    this->filePath = filePath;
-}
-
 void MapReader::Init() {
     if (!mapLoaded) LoadMap(true);
 }
@@ -141,7 +137,7 @@ void MapReader::Update() {
 }
 
 void MapReader::Draw() {
-    
+    if (!shouldDraw) return;
     //DRAW UNOPTIMIZED TILES
     /*for (int x = 0; x < map.size(); x++) {
         for (int y = 0; y < map[x].size(); y++) {
