@@ -3,6 +3,7 @@
 
 #include "GameObject.h"
 #include "raylib.h"
+#include "AnimationController.h"
 
 class Explosion : public GameObject {
 private:
@@ -10,11 +11,12 @@ private:
     int lastTime;
 
 public:
-    int radius;
+    float radius;
+    AnimationController animation;
 
     Explosion();
 
-    Explosion(Vector2 position, int radius, int milisecondsToEnd);
+    Explosion(Vector2 position, float radius, int milisecondsToEnd);
 
     void Update() override;
 

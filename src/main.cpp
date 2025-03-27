@@ -17,12 +17,10 @@ std::vector<Player*>playerList(playerNum);
 int currentPlayer = 0;
 
 
-
 //Vector2 playerSize = { 30,30 };
 //Vector2 playerPosition = { screenWidth / 2, screenHeight / 2 };
 //Vector2 centerPosition = { playerPosition.x + (playerSize.x / 2) - (playerAim.crosshairSize.x / 2) ,playerPosition.y + (playerSize.y / 2) - (playerAim.crosshairSize.x / 2) };
 
-//comment
 
 void InitPhase();
 void UpdatingPhase();
@@ -32,6 +30,7 @@ void CheckTurn();
 int main()
 {
     Game::gameObjects = std::vector<std::unique_ptr<GameObject>>();
+
     SearchAndSetResourceDir("resources");
 
     SetTargetFPS(60);
@@ -46,8 +45,7 @@ int main()
     mapObj->LoadMap(true);
     Game::gameObjects.push_back(std::move(map)); // Tiene que ser el 1r game object en la lista
 
-    // PLAYER 1
-        
+    // PLAYERS
 
         Vector2 size = { 30, 30 };
         Vector2 defPos = { 1, 1 };
@@ -67,7 +65,6 @@ int main()
         playerList[currentPlayer]->playerAim.isTurn = true;
             
         
-       
 
     InitPhase();
     while (!WindowShouldClose())

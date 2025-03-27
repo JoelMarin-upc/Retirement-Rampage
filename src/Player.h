@@ -9,11 +9,11 @@
 #include <string> 
 #include <map>
 #include <iostream>
-
-
+#include "AnimationController.h"
 
 class Player : public GameObject {
 public:
+	AnimationController animation;
 	Aim playerAim;
 	Bullet playerLauncherEmpty;
 	Bullet playerLauncher;
@@ -22,7 +22,6 @@ public:
 	float speed = 0;
 	bool aiming = true;
 	bool charging = false;
-	//falta añadir una variable que detecte cuando hay un disparo en el aire y no es turno de nadie
 
 	int healthPoints = 100;
 	std::string healthString = "100";
@@ -30,11 +29,11 @@ public:
 
 	std::string currentWeapon = "bullet";
 
-
-	Player() : GameObject(){}
+	Player() : GameObject() {}
 
 	Player(Vector2 playerPosition, Vector2 playerSize) : GameObject(playerPosition, playerSize) {
 		Vector2 centerPosition = { playerPosition.x + playerSize.x / 2, playerPosition.y + playerSize.y / 2 };
+		animation = AnimationController(position, size, "scarfy.png", true, false, 36, 12);
 		playerAim = Aim(centerPosition);
 		playerLauncher = Bullet(centerPosition);
 		playerLauncherEmpty = Bullet(centerPosition);

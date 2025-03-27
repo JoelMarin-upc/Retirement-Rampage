@@ -4,7 +4,6 @@
 
 #define G 0.1
 
-
 void Player::Update() {
     //if (IsKeyDown(KEY_ENTER)) {
       //  isTurn = true;
@@ -22,12 +21,17 @@ void Player::Update() {
     }
     if (currentWeapon == "bullet") BulletEquipped();
     else if (currentWeapon == "shotgun") ShotgunEquipped();
+
     Fall();
 
-    //tendría que actualizarse solo cuando recibe daño
     healthString = std::to_string(healthPoints);
 
+    animation.position = position;
+    animation.Update();
+    if (!charging) playerAim.Update();
+    if (!aiming) playerLauncher.Update();
 }
+
 
 void  Player::BulletEquipped() {
     if (isTurn) {
@@ -93,21 +97,23 @@ void Player::MoveY(int ammount, bool add) {
 }
 
 void Player::Draw() {
-    DrawRectangle(position.x, position.y, size.x, size.y, BLUE);
+    animation.Draw();
     playerAim.Draw();
-    if(currentWeapon == "bullet") playerLauncher.Draw();
+    playerLauncher.Draw();
+    if (currentWeapon == "bullet") playerLauncher.Draw();
     if (currentWeapon == "shotgun")playerShotgun.Draw();
     const char* cstr = healthString.c_str();
-    DrawText(cstr, position.x, position.y-30, 20, WHITE);
+    DrawText(cstr, position.x, position.y - 30, 20, WHITE);
     const char* cstr2 = currentWeapon.c_str();
     DrawText(cstr2, 100, 400, 20, WHITE);
     // DIBUJAR COLLIDER
     //Rectangle r = GetFloorCollider();
     //DrawRectangle(r.x, r.y, r.width, r.height, YELLOW);
+    //DrawRectangle(position.x, position.y, size.x, size.y, BLUE);
 }
 
 Rectangle Player::GetFloorCollider() {
-    return {position.x+(size.x/3), position.y + (size.y/2), size.x/3, size.y / 2};
+    return { position.x+(size.x/3), position.y + (size.y/2), size.x/3, size.y / 2 };
 }
 
 void Player::Fall() {
