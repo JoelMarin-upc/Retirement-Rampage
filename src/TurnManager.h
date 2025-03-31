@@ -8,8 +8,11 @@ class TurnManager : public GameObject {
 private:
 	int playerNum;
 	bool ended = false;
+	double secondsPerTurn = 20;
+	double currentTurnSeconds = 30;
 
 public:
+	int turns = 1;
 	int currentPlayer = 0;
 	std::vector<Player*> playerList;
 	TurnManager(int playerNum) : GameObject(), playerNum(playerNum) { playerList = std::vector<Player*>(playerNum); }
@@ -17,6 +20,7 @@ public:
 	void Start();
 	void End();
 	void CheckTurn();
+	bool TurnTimePassed();
 	void Update() override;
 	void Draw() override;
 };

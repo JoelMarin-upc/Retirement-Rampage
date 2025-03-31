@@ -17,6 +17,9 @@ static const int screenHeight = 450;
 //static const int screenHeight = GetScreenHeight();
 
 int playerNum = 2;
+double startTime = 0;
+double playTime = 0;
+bool playEnded = false;
 
 //Vector2 playerSize = { 30,30 };
 //Vector2 playerPosition = { screenWidth / 2, screenHeight / 2 };
@@ -26,6 +29,8 @@ int playerNum = 2;
 void InitPhase();
 void UpdatingPhase();
 void PaintingPhase();
+void PaintEndScreen();
+void DrawCenteredText(const char* text, int x, int y, int fontSize, Color color);
 
 int main()
 {
@@ -67,11 +72,22 @@ int main()
     turnManagerObj->Start();
     Game::gameObjects.push_back(std::move(turnManager)); // Tiene que ser el ultimo game object en la lista
 
+    startTime = GetTime();
+
     InitPhase();
     while (!WindowShouldClose())
     {
         UpdatingPhase();
-        PaintingPhase();
+        Game::CheckEndGame();
+        if (Game::ended)
+        {
+            if (!playEnded) {
+                playEnded = true;
+                playTime = GetTime() - startTime;
+            }
+            PaintEndScreen();
+        }
+        else PaintingPhase();
     }
 
     CloseWindow();
@@ -97,4 +113,35 @@ void PaintingPhase() {
         gameObject->Draw();
     }
     EndDrawing();
+}
+
+void PaintEndScreen() {
+    BeginDrawing();
+
+    ClearBackground(SKYBLUE);
+
+    Player* winner = Game::winner;
+
+    TurnManager* turnManager = Game::GetTurnManager();
+
+    int turns = turnManager->turns;
+    
+    int minutes = static_cast<int>(playTime) / 60;
+    int seconds = static_cast<int>(playTime) % 60;
+    char timeText[20];
+    snprintf(timeText, sizeof(timeText), "Time: %dm %ds", minutes, seconds);
+
+    DrawCenteredText("Winner", screenWidth / 2, screenHeight / 2 - 45, 60, GREEN);
+
+    DrawCenteredText(TextFormat("Player %02i", winner->playerNum), screenWidth / 2, screenHeight / 2, 40, GREEN);
+    DrawCenteredText(timeText, screenWidth / 2, screenHeight / 2 + 60, 25, BLACK);
+    DrawCenteredText(TextFormat("Turns: %01i", turns), screenWidth / 2, screenHeight / 2 + 80, 25, BLACK);
+    
+    EndDrawing();
+}
+
+void DrawCenteredText(const char* text, int x, int y, int fontSize, Color color) {
+    int textWidth = MeasureText(text, fontSize);
+    int textHeight = fontSize;
+    DrawText(text, x - textWidth / 2, y - textHeight / 2, fontSize, color);
 }
