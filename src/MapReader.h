@@ -13,12 +13,12 @@ private:
     std::vector<std::vector<MapTile>> map;
     std::vector<MapTile> optimizedTiles;
     std::vector<MapTile> playerPositions;
-    bool shouldDraw;
     bool mapLoaded = false;
 
 public:
+    bool shouldDraw = true;
 
-    MapReader(const std::string& filePath);
+    MapReader(const std::string& filePath) : GameObject(), filePath(filePath) { }
 
     void Init() override;
 
