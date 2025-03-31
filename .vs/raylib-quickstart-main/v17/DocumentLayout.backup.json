@@ -1,0 +1,309 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\AnimationController.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|solutionrelative:build\\build_files\\AnimationController.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|solutionrelative:build\\build_files\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|solutionrelative:build\\build_files\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|solutionrelative:build\\build_files\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\AnimationController.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|solutionrelative:build\\build_files\\AnimationController.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\Exlposion.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|solutionrelative:build\\build_files\\Exlposion.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\Explosion.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|solutionrelative:build\\build_files\\Explosion.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\GameObject.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|solutionrelative:build\\build_files\\GameObject.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\Bullet.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|solutionrelative:build\\build_files\\Bullet.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\Bullet.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|solutionrelative:build\\build_files\\Bullet.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|solutionrelative:build\\build_files\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\MapTile.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|solutionrelative:build\\build_files\\MapTile.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\GameObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|solutionrelative:build\\build_files\\GameObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\MapTile.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|solutionrelative:build\\build_files\\MapTile.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\MapReader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|solutionrelative:build\\build_files\\MapReader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\MapReader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|solutionrelative:build\\build_files\\MapReader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7223710C-5E1D-9A5E-478A-306F332300CB}|build\\build_files\\raylib-quickstart-main.vcxproj|solutionrelative:build\\build_files\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\include\\memory||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 11,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "MapTile.cpp",
+              "DocumentMoniker": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\MapTile.cpp",
+              "RelativeDocumentMoniker": "build\\build_files\\MapTile.cpp",
+              "ToolTip": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\MapTile.cpp",
+              "RelativeToolTip": "build\\build_files\\MapTile.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-13T13:38:32.008Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Game.cpp",
+              "DocumentMoniker": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\Game.cpp",
+              "RelativeDocumentMoniker": "build\\build_files\\Game.cpp",
+              "ToolTip": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\Game.cpp",
+              "RelativeToolTip": "build\\build_files\\Game.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-13T13:08:43.157Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Player.h",
+              "DocumentMoniker": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\Player.h",
+              "RelativeDocumentMoniker": "build\\build_files\\Player.h",
+              "ToolTip": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\Player.h",
+              "RelativeToolTip": "build\\build_files\\Player.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-13T12:51:10.115Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Player.cpp",
+              "DocumentMoniker": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\Player.cpp",
+              "RelativeDocumentMoniker": "build\\build_files\\Player.cpp",
+              "ToolTip": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\Player.cpp",
+              "RelativeToolTip": "build\\build_files\\Player.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-13T13:11:56.407Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Bullet.h",
+              "DocumentMoniker": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\Bullet.h",
+              "RelativeDocumentMoniker": "build\\build_files\\Bullet.h",
+              "ToolTip": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\Bullet.h",
+              "RelativeToolTip": "build\\build_files\\Bullet.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-10T11:28:31.761Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Bullet.cpp",
+              "DocumentMoniker": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\Bullet.cpp",
+              "RelativeDocumentMoniker": "build\\build_files\\Bullet.cpp",
+              "ToolTip": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\Bullet.cpp",
+              "RelativeToolTip": "build\\build_files\\Bullet.cpp",
+              "ViewState": "AgIAABsAAAAAAAAAAAAiwC8AAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-10T11:28:12.8Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Explosion.h",
+              "DocumentMoniker": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\Explosion.h",
+              "RelativeDocumentMoniker": "build\\build_files\\Explosion.h",
+              "ToolTip": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\Explosion.h",
+              "RelativeToolTip": "build\\build_files\\Explosion.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-10T11:24:19.289Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Exlposion.cpp",
+              "DocumentMoniker": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\Exlposion.cpp",
+              "RelativeDocumentMoniker": "build\\build_files\\Exlposion.cpp",
+              "ToolTip": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\Exlposion.cpp",
+              "RelativeToolTip": "build\\build_files\\Exlposion.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-10T11:24:43.376Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AnimationController.h",
+              "DocumentMoniker": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\AnimationController.h",
+              "RelativeDocumentMoniker": "build\\build_files\\AnimationController.h",
+              "ToolTip": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\AnimationController.h",
+              "RelativeToolTip": "build\\build_files\\AnimationController.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-17T11:01:06.419Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "GameObject.cpp",
+              "DocumentMoniker": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\GameObject.cpp",
+              "RelativeDocumentMoniker": "build\\build_files\\GameObject.cpp",
+              "ToolTip": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\GameObject.cpp",
+              "RelativeToolTip": "build\\build_files\\GameObject.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-17T10:06:20.506Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\main.cpp",
+              "RelativeDocumentMoniker": "build\\build_files\\main.cpp",
+              "ToolTip": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\main.cpp",
+              "RelativeToolTip": "build\\build_files\\main.cpp",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAADoAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-06T13:00:18.118Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AnimationController.cpp",
+              "DocumentMoniker": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\AnimationController.cpp",
+              "RelativeDocumentMoniker": "build\\build_files\\AnimationController.cpp",
+              "ToolTip": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\AnimationController.cpp",
+              "RelativeToolTip": "build\\build_files\\AnimationController.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-17T11:01:42.777Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GameObject.h",
+              "DocumentMoniker": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\GameObject.h",
+              "RelativeDocumentMoniker": "build\\build_files\\GameObject.h",
+              "ToolTip": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\GameObject.h",
+              "RelativeToolTip": "build\\build_files\\GameObject.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-13T12:50:01.703Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "memory",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\include\\memory",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\include\\memory",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\include\\memory",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\include\\memory",
+              "ViewState": "AgIAAPgNAAAAAAAAAAASwAwOAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-03-24T10:11:23.905Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "MapTile.h",
+              "DocumentMoniker": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\MapTile.h",
+              "RelativeDocumentMoniker": "build\\build_files\\MapTile.h",
+              "ToolTip": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\MapTile.h",
+              "RelativeToolTip": "build\\build_files\\MapTile.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-13T13:38:03.53Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "MapReader.h",
+              "DocumentMoniker": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\MapReader.h",
+              "RelativeDocumentMoniker": "build\\build_files\\MapReader.h",
+              "ToolTip": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\MapReader.h",
+              "RelativeToolTip": "build\\build_files\\MapReader.h",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-10T11:22:46.599Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "MapReader.cpp",
+              "DocumentMoniker": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\MapReader.cpp",
+              "RelativeDocumentMoniker": "build\\build_files\\MapReader.cpp",
+              "ToolTip": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\MapReader.cpp",
+              "RelativeToolTip": "build\\build_files\\MapReader.cpp",
+              "ViewState": "AgIAAIsAAAAAAAAAAAAqwKMAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-10T11:21:30.849Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Game.h",
+              "DocumentMoniker": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\Game.h",
+              "RelativeDocumentMoniker": "build\\build_files\\Game.h",
+              "ToolTip": "C:\\Users\\joelml\\Documents\\GitHub\\Projecte-I\\build\\build_files\\Game.h",
+              "RelativeToolTip": "build\\build_files\\Game.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-10T11:37:56.16Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

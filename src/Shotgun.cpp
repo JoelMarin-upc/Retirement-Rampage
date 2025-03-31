@@ -37,7 +37,7 @@ void Shotgun::Draw() {
 
 bool Shotgun::HasCollision() {
     bool collision = false;
-    MapReader* mapObj = dynamic_cast<MapReader*>(Game::gameObjects[0].get());
+    MapReader* mapObj = Game::GetMap();
     std::vector<MapTile> map = mapObj->GetOptimizedMap();
     std::vector<MapTile> players = mapObj->GetPlayers();
     map.insert(map.end(), players.begin(), players.end());

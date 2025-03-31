@@ -17,8 +17,9 @@ private:
     bool mapLoaded = false;
 
 public:
+    bool shouldDraw = true;
 
-    MapReader(const std::string& filePath);
+    MapReader(const std::string& filePath) : GameObject(), filePath(filePath) { }
 
     void Init() override;
 

@@ -5,12 +5,12 @@
 #include "MapReader.h"
 #include "Game.h"
 
-void  Bullet::Update() {
+void Bullet::Update() {
     if (destroyed) {
         explosion.Update();
         return;
     }
-    else if (HasCollision()) Explode();
+    if (HasCollision()) Explode();
     //uses screen size
     else if (position.x > 800 || position.x < 0 || position.y < 0|| position.y >450) destroyed = true;
     else Shoot();
@@ -50,13 +50,13 @@ void Bullet::Draw() {
 
 bool Bullet::HasCollision() {
     bool collision = false;
-    MapReader* mapObj = dynamic_cast<MapReader*>(Game::gameObjects[0].get());
+    MapReader* mapObj = Game::GetMap();
     std::vector<MapTile> map = mapObj->GetOptimizedMap();
     //buscar posiciones players
     //std::vector<MapTile> players = mapObj->GetPlayers();
     //map.insert(map.end(), players.begin(), players.end());
     for (int i = 0; i < map.size(); i++) {
-        if (CheckCollisionCircleRec(position, bulletRadius, map[i].GetRectangle())) {
+        if (CheckCollisionCircleRec(position, bulletRadius * 0.8f, map[i].GetRectangle())) {
             collision = true;
             break;
         }
@@ -67,6 +67,6 @@ bool Bullet::HasCollision() {
 void Bullet::Explode() {
     explosion = Explosion(position, explosionRadius, explosionMiliseconds);
     destroyed = true;
-    MapReader* mapObj = dynamic_cast<MapReader*>(Game::gameObjects[0].get());
+    MapReader* mapObj = Game::GetMap();
     mapObj->DestroyTiles(explosion);
 }
