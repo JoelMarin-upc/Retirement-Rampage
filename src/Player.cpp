@@ -29,7 +29,7 @@ void Player::Update() {
     animation.position = position;
     animation.Update();
     if (!charging) playerAim.Update();
-    if (!aiming) playerLauncher.Update();
+    //if (!aiming) playerLauncher.Update();
 }
 
 
@@ -46,6 +46,7 @@ void  Player::BulletEquipped() {
         if (IsKeyReleased(KEY_SPACE) || (IsKeyDown(KEY_SPACE) && !charging)) {
             SoundEffects i;
             i.playsfx(3);
+            playerLauncher.isPorjectileOnAir = true;
             aiming = false;
             charging = false;
             isTurn = false;
@@ -66,6 +67,7 @@ void  Player::ShotgunEquipped() {
                 SoundEffects i;
                 i.playsfx(2);
                 playerShotgun = playerShotgunEmpty;
+                playerShotgun.isPorjectileOnAir = true;
                 aiming = false;
                 charging = true;
                 isTurn = false;
@@ -76,7 +78,10 @@ void  Player::ShotgunEquipped() {
         }
         if (!charging) playerAim.Update();
     }
-    if (!aiming) playerShotgun.Update();
+    if (!aiming) {
+        playerShotgun.Update();
+        if (playerLauncher.destroyed == false) charging = false;
+    }
 }
 
 
@@ -104,7 +109,8 @@ void Player::Draw() {
     animation.Draw();
     playerAim.Draw();
     playerLauncher.Draw();
-    if (currentWeapon == "bullet") playerLauncher.Draw();
+    //if (currentWeapon == "bullet" && playerLauncher.isPorjectileOnAir) playerLauncher.Draw();
+    //shotgun is not in the object list
     if (currentWeapon == "shotgun")playerShotgun.Draw();
     const char* cstr = healthString.c_str();
     DrawText(cstr, position.x, position.y - 30, 20, WHITE);
@@ -121,7 +127,7 @@ Rectangle Player::GetFloorCollider() {
 }
 
 void Player::Fall() {
-    MapReader* mapObj = dynamic_cast<MapReader*>(Game::gameObjects[0].get());
+    MapReader* mapObj = Game::GetMap();
     std::vector<MapTile> map = mapObj->GetOptimizedMap();
 
     bool hitObstacle = false;
@@ -145,4 +151,6 @@ void Player::Fall() {
         MoveY(fallSpeed, true);  
         speed += G;  
     }
+
+    if (position.y >= Game::bottomY) Game::EndGame(playerNum);
 }
