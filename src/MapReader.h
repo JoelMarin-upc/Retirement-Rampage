@@ -13,7 +13,6 @@ private:
     std::vector<std::vector<MapTile>> map;
     std::vector<MapTile> optimizedTiles;
     std::vector<MapTile> playerPositions;
-    bool shouldDraw;
     bool mapLoaded = false;
 
 public:

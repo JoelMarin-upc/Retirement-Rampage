@@ -51,7 +51,7 @@ bool Shotgun::HasCollision() {
 }
 
 void Shotgun::Explode() {
-    explosion = Explosion(position, explosionRadius, explosionMiliseconds);
+    //explosion = Explosion(position, explosionRadius, explosionMiliseconds);
     destroyed = true;
     std::cout << "destroy";
     //MapReader* mapObj = dynamic_cast<MapReader*>(Game::gameObjects[0].get());
