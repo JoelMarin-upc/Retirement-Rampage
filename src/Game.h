@@ -7,8 +7,11 @@
 class Game {
 public:
 	static int bottomY;
+	static bool ended;
+	static Player* winner;
 	static std::vector<std::unique_ptr<GameObject>> gameObjects;
-	static void EndGame(int winner);
+	static void CheckEndGame();
+	static void EndGame(Player* winner);
 	static MapReader* GetMap();
 	static TurnManager* GetTurnManager();
 };

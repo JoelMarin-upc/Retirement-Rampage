@@ -23,6 +23,7 @@ public:
 	int playerNum;
 	bool aiming = true;
 	bool charging = false;
+	bool dead = false;
 
 	int healthPoints = 100;
 	std::string healthString = "100";

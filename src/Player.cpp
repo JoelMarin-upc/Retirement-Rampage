@@ -152,5 +152,5 @@ void Player::Fall() {
         speed += G;  
     }
 
-    if (position.y >= Game::bottomY) Game::EndGame(playerNum);
+    if (position.y >= Game::bottomY) dead = true;
 }
