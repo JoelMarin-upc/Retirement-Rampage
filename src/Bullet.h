@@ -4,11 +4,13 @@
 #include "GameObject.h"
 #include "Explosion.h"
 #include "raylib.h"  
+#include "AnimationController.h"
 #include <vector>
 #include <iostream>
 
 class Bullet : public GameObject {
 public:
+    AnimationController animation;
     Vector2 missileSize = { 10, 10 };
     Vector2 actualVelocity = { 0, 0 };
     float velocityModule = 0.0f;
@@ -29,7 +31,9 @@ public:
     Vector2 barPosition = { 400,400 };
 
     Bullet() : GameObject() {}
-    Bullet(Vector2 center) : GameObject(center, Vector2()) {}
+    Bullet(Vector2 center) : GameObject(center, Vector2()) {
+        animation = AnimationController(position, size, "grenade.png", true, false, 32, 30);
+    }
 
     void Update() override;
     bool Charging();

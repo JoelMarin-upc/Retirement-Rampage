@@ -17,13 +17,14 @@ void Shotgun::Update() {
     else {
         Shoot();
     }
+    animation.Update();
 }
 
 
 void Shotgun::Shoot() {
     position.x += actualVelocity.x;
     position.y += actualVelocity.y;
-
+    animation.position = position;
 }
 
 void Shotgun::InitialVelocity(Vector2 direction) { actualVelocity = { direction.x * velocityModule, direction.y * velocityModule}; }
@@ -32,7 +33,7 @@ void Shotgun::Draw() {
     if (destroyed) explosion.Draw();
     else if (isPorjectileOnAir == true)
     {
-        DrawCircle(position.x, position.y, bulletRadius, RED);
+        animation.Draw();
     }
 }
 

@@ -47,15 +47,6 @@ int main()
     PlayMusicStream(music);
 
 
-    //SFX
-    float timePlayed = 0.0f;
-
-    InitAudioDevice();
-
-    Music music = LoadMusicStream("01 the wormsong.mp3");
-    PlayMusicStream(music);
-
-
     // MAPA
     std::string mapName = "map2.txt";
     std::string path = GetDirectoryPath(mapName.c_str()) + mapName;
