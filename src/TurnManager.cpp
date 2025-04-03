@@ -23,7 +23,11 @@ void TurnManager::End() {
 
 void TurnManager::CheckTurn() {
     if (ended) return;
-    if (TurnTimePassed()) playerList[currentPlayer]->isTurn = false;
+    if (TurnTimePassed())
+    {
+        playerList[currentPlayer]->isTurn = false;
+        playerList[currentPlayer]->playerAim.isTurn = true;
+    }
     if (playerList[currentPlayer]->isTurn == false) {
         if (currentPlayer < (playerNum - 1)) ++currentPlayer;
         else {

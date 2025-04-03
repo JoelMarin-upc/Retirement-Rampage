@@ -115,7 +115,7 @@ void Player::Draw() {
     const char* cstr = healthString.c_str();
     DrawText(cstr, position.x, position.y - 30, 20, WHITE);
     const char* cstr2 = currentWeapon.c_str();
-    DrawText(cstr2, 100, 400, 20, WHITE);
+    DrawText(cstr2, 50, (float)(Game::screenHeight)-100, 20, WHITE);
     // DIBUJAR COLLIDER
     //Rectangle r = GetFloorCollider();
     //DrawRectangle(r.x, r.y, r.width, r.height, YELLOW);

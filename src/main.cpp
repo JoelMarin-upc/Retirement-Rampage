@@ -15,6 +15,8 @@ double startTime = 0;
 double playTime = 0;
 bool playEnded = false;
 bool playStarted = false;
+float timePlayed;
+Music music;
 
 //Vector2 playerSize = { 30,30 };
 //Vector2 playerPosition = { screenWidth / 2, screenHeight / 2 };
@@ -157,9 +159,9 @@ void LoadGame() {
     Game::bottomY = Game::screenHeight;
 
     //SFX
-    float timePlayed = 0.0f;
+    timePlayed = 0.0f;
     InitAudioDevice();
-    Music music = LoadMusicStream("01 the wormsong.mp3");
+    music = LoadMusicStream("01 the wormsong.mp3");
     PlayMusicStream(music);
 
     // MAPA

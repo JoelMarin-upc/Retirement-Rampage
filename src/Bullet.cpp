@@ -46,7 +46,8 @@ void Bullet::Draw() {
         animation.Draw();
     }
     else {
-        for (int i = 0; i < barCounter; i++) {
+        for (int i = 0; i < barCounter; i++) {            
+            barPosition = { 40, (float)(Game::screenHeight)-100 };
             DrawRectangle(i * barSize.x + barPosition.x, barPosition.y, barSize.x, barSize.y, ORANGE);
         }
     }
