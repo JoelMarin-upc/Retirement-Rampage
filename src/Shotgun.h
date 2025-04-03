@@ -4,11 +4,13 @@
 #include "GameObject.h"
 #include "Explosion.h"
 #include "raylib.h"  
+#include "SoundEffects.h"
 #include <vector>
 #include <iostream>
 
 class Shotgun : public GameObject {
 public:
+    AnimationController animation;
     //Vector2 missileSize = { 10, 10 };
     Vector2 actualVelocity = { 0, 0 };
     float velocityModule = 15;
@@ -21,7 +23,9 @@ public:
     Explosion explosion = Explosion();
     
     Shotgun() : GameObject() {}
-    Shotgun(Vector2 center) : GameObject(center, Vector2()) {}
+    Shotgun(Vector2 center) : GameObject(center, Vector2()) {
+        animation = AnimationController(position, size, "bullet.png", true, false, 32, 120);
+    }
     
     void Shotgun::Update() override;
     void Shoot();

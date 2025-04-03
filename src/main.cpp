@@ -51,7 +51,14 @@ int main()
             startTime = GetTime();
             continue;
         }
+        
         UpdatingPhase();
+        
+        //music
+        UpdateMusicStream(music); 
+        timePlayed = GetMusicTimePlayed(music) / GetMusicTimeLength(music);
+        if (timePlayed > 1.0f) timePlayed = 1.0f;
+
         Game::CheckEndGame();
         if (Game::ended)
         {
@@ -65,7 +72,9 @@ int main()
         }
         else PaintingPhase();
     }
-
+    
+    UnloadMusicStream(music);
+    CloseAudioDevice();
     CloseWindow();
     return 0;
 }
@@ -146,6 +155,12 @@ void LoadGame() {
     playEnded = false;
     Game::ended = false;
     Game::bottomY = Game::screenHeight;
+
+    //SFX
+    float timePlayed = 0.0f;
+    InitAudioDevice();
+    Music music = LoadMusicStream("01 the wormsong.mp3");
+    PlayMusicStream(music);
 
     // MAPA
     std::string mapName = "map2.txt";

@@ -4,6 +4,7 @@
 #include "Explosion.h"
 #include "MapReader.h"
 #include "Game.h"
+#include "SoundEffects.h"
 
 void Bullet::Update() {
     if (destroyed) {
@@ -14,6 +15,7 @@ void Bullet::Update() {
     //uses screen size
     else if (position.x > Game::screenWidth || position.x < 0 || position.y < 0|| position.y > Game::screenHeight) destroyed = true;
     else Shoot();
+    animation.Update();
 }
 
 bool Bullet::Charging() {
@@ -31,6 +33,7 @@ void Bullet::Shoot() {
     actualVelocity.y += gravity;
     position.x += actualVelocity.x;
     position.y += actualVelocity.y;
+    animation.position = position;
 }
 
 void Bullet::InitialVelocity(Vector2 direction) { actualVelocity = { direction.x * velocityModule, direction.y * velocityModule }; }
@@ -39,7 +42,8 @@ void Bullet::Draw() {
     if (destroyed) explosion.Draw();
     else if (isPorjectileOnAir == true)
     {
-        DrawCircle(position.x, position.y, bulletRadius, RED);
+        /*DrawCircle(position.x, position.y, bulletRadius, RED);*/
+        animation.Draw();
     }
     else {
         for (int i = 0; i < barCounter; i++) {
