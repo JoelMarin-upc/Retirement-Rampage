@@ -29,7 +29,7 @@ void Shotgun::InitialVelocity(Vector2 direction) { actualVelocity = { direction.
 
 void Shotgun::Draw() {
     if (destroyed) explosion.Draw();
-    else if (isPorjectileOnAir == true)
+    else if (isProjectileOnAir == true)
     {
         DrawCircle(position.x, position.y, bulletRadius, RED);
     }

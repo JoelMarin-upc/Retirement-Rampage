@@ -21,15 +21,18 @@ public:
 	Shotgun playerShotgun;
 	float speed = 0;
 	int playerNum;
-	bool aiming = true;
+	bool aiming = false;
 	bool charging = false;
 	bool dead = false;
+	bool isActive = false;
+	bool teleportActive = true;
+
 
 	int healthPoints = 100;
 	std::string healthString = "100";
 	bool isTurn = false;
 
-	std::string currentWeapon = "bullet";
+	std::string currentWeapon = "none";
 
 	Player() : GameObject() {}
 
@@ -49,6 +52,7 @@ public:
 	void Fall();
 	void BulletEquipped();
 	void ShotgunEquipped();
+	void TeleportEquipped();
 	Rectangle GetFloorCollider();
 };
 

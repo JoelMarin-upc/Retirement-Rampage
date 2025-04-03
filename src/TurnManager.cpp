@@ -23,8 +23,12 @@ void TurnManager::End() {
 
 void TurnManager::CheckTurn() {
     if (ended) return;
-    if (TurnTimePassed()) playerList[currentPlayer]->isTurn = false;
-    if (playerList[currentPlayer]->isTurn == false) {
+    if (TurnTimePassed()) {
+        playerList[currentPlayer]->isTurn = false;
+        playerList[currentPlayer]->playerAim.isTurn = false;
+    }
+    std::cout << playerList[currentPlayer]->isActive;
+    if (playerList[currentPlayer]->isTurn == false && playerList[currentPlayer]->isActive == false) {
         if (currentPlayer < (playerNum - 1)) ++currentPlayer;
         else {
             currentPlayer = 0;
@@ -32,6 +36,8 @@ void TurnManager::CheckTurn() {
         }
         playerList[currentPlayer]->isTurn = true;
         playerList[currentPlayer]->playerAim.isTurn = true;
+        playerList[currentPlayer]->isActive = true;
+        playerList[currentPlayer]->teleportActive = true;
         currentTurnSeconds = secondsPerTurn;
         std::cout << currentPlayer;
     }

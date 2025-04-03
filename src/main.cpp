@@ -81,7 +81,7 @@ int main()
     {
         if (!playStarted) {
             PaintStartScreen();
-            if (IsKeyReleased(KEY_SPACE)) playStarted = true;
+            if (IsKeyReleased(KEY_ENTER)) playStarted = true;
             startTime = GetTime();
             continue;
         }
@@ -130,7 +130,7 @@ void PaintStartScreen() {
 
     DrawCenteredText("WORMS", screenWidth / 2, screenHeight / 3, 60, RED);
 
-    DrawCenteredText("Press [SPACE] to start", screenWidth / 2, screenHeight / 2, 25, BLACK);
+    DrawCenteredText("Press [ENTER] to start", screenWidth / 2, screenHeight / 2, 25, BLACK);
 
     DrawCenteredText("by Trufa Productions", screenWidth - 20, screenHeight - 45, 25, BLACK);
 

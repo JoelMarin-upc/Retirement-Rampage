@@ -37,7 +37,7 @@ void Bullet::InitialVelocity(Vector2 direction) { actualVelocity = { direction.x
 
 void Bullet::Draw() {
     if (destroyed) explosion.Draw();
-    else if (isPorjectileOnAir == true)
+    else if (isProjectileOnAir == true)
     {
         DrawCircle(position.x, position.y, bulletRadius, RED);
     }

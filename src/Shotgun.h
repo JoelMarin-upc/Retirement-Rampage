@@ -16,7 +16,7 @@ public:
     float explosionRadius = 10.0f;
     int explosionMiliseconds = 400;;
     bool destroyed = false;
-    bool isPorjectileOnAir = false;
+    bool isProjectileOnAir = false;
 
     Explosion explosion = Explosion();
     
