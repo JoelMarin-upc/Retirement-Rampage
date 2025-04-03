@@ -20,6 +20,7 @@ int playerNum = 2;
 double startTime = 0;
 double playTime = 0;
 bool playEnded = false;
+bool playStarted;
 
 //Vector2 playerSize = { 30,30 };
 //Vector2 playerPosition = { screenWidth / 2, screenHeight / 2 };
@@ -30,6 +31,7 @@ void InitPhase();
 void UpdatingPhase();
 void PaintingPhase();
 void PaintEndScreen();
+void PaintStartScreen();
 void DrawCenteredText(const char* text, int x, int y, int fontSize, Color color);
 
 int main()
@@ -72,11 +74,17 @@ int main()
     turnManagerObj->Start();
     Game::gameObjects.push_back(std::move(turnManager)); // Tiene que ser el ultimo game object en la lista
 
-    startTime = GetTime();
+    
 
     InitPhase();
     while (!WindowShouldClose())
     {
+        if (!playStarted) {
+            PaintStartScreen();
+            if (IsKeyReleased(KEY_SPACE)) playStarted = true;
+            startTime = GetTime();
+            continue;
+        }
         UpdatingPhase();
         Game::CheckEndGame();
         if (Game::ended)
@@ -112,6 +120,20 @@ void PaintingPhase() {
     for (const auto& gameObject : Game::gameObjects) {
         gameObject->Draw();
     }
+    EndDrawing();
+}
+
+void PaintStartScreen() {
+    BeginDrawing();
+
+    ClearBackground(SKYBLUE);
+
+    DrawCenteredText("WORMS", screenWidth / 2, screenHeight / 3, 60, RED);
+
+    DrawCenteredText("Press [SPACE] to start", screenWidth / 2, screenHeight / 2, 25, BLACK);
+
+    DrawCenteredText("by Trufa Productions", screenWidth - 20, screenHeight - 45, 25, BLACK);
+
     EndDrawing();
 }
 
