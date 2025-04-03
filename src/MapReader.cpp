@@ -13,7 +13,7 @@ void MapReader::Init() {
     if (!mapLoaded) LoadMap(true);
 }
 
-Color GetRandomColor() {
+Color GetRandColor() {
     return {
             (unsigned char)GetRandomValue(0, 255),
             (unsigned char)GetRandomValue(0, 255),
@@ -61,7 +61,7 @@ void MapReader::LoadMap(bool optimize) {
                 hasTerrain = false;
                 break;
             }
-            //color = GetRandomColor(); // TESTING
+            //color = GetRandColor(); // TESTING
             int xPos = column * size;
             int yPos = screenY - size - row * size;
             Vector2 pos = { xPos, yPos };

@@ -12,10 +12,8 @@ void Shotgun::Update() {
     }
     else if (HasCollision()) Explode();
     // uses screen size
-    else if (position.x > 800 || position.x < 0 || position.y < 0 || position.y >450) destroyed = true;
-    else {
-        Shoot();
-    }
+    else if (position.x > Game::screenWidth || position.x < 0 || position.y < 0 || position.y > Game::screenHeight) destroyed = true;
+    else Shoot();
 }
 
 
