@@ -40,7 +40,7 @@ void Bullet::InitialVelocity(Vector2 direction) { actualVelocity = { direction.x
 
 void Bullet::Draw() {
     if (destroyed) explosion.Draw();
-    else if (isPorjectileOnAir == true)
+    else if (isProjectileOnAir == true)
     {
         /*DrawCircle(position.x, position.y, bulletRadius, RED);*/
         animation.Draw();
@@ -73,5 +73,8 @@ void Bullet::Explode() {
     explosion = Explosion(position, explosionRadius, explosionMiliseconds);
     destroyed = true;
     MapReader* mapObj = Game::GetMap();
+    TurnManager* turnObj = Game::GetTurnManager();
     mapObj->DestroyTiles(explosion);
+    turnObj->CheckPlayerHit(explosion);
+
 }

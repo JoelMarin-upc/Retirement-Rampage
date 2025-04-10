@@ -9,18 +9,37 @@ void Player::Update() {
       //  isTurn = true;
       //  playerAim.isTurn = true;
    // }
-    if (IsKeyDown(KEY_ONE)) {
-        currentWeapon = "bullet";
-        aiming = true;
-        charging = false;
+    if (isTurn){
+        if (IsKeyDown(KEY_ONE)) {
+            currentWeapon = "bullet";
+            aiming = true;
+            charging = false;
+            playerAim.isTurn = true;
+
+        }
+        if (IsKeyDown(KEY_TWO)) {
+            currentWeapon = "shotgun";
+            aiming = true;
+            charging = false;
+            playerAim.isTurn = true;
+        }
+        if (IsKeyDown(KEY_THREE) && teleportActive) {
+            currentWeapon = "teleport";
+            aiming = false;
+            charging = false;
+            playerAim.isTurn = false;
+        }
     }
-    if (IsKeyDown(KEY_TWO)) {
-        currentWeapon = "shotgun";
-        aiming = true;
-        charging = false;
-    }
+
     if (currentWeapon == "bullet") BulletEquipped();
     else if (currentWeapon == "shotgun") ShotgunEquipped();
+    else if (currentWeapon == "teleport") TeleportEquipped();
+    else if (currentWeapon == "none") {
+        aiming = false;
+        charging = false;
+        playerAim.isTurn = false;
+
+    }
 
     Fall();
 
@@ -30,6 +49,9 @@ void Player::Update() {
     animation.Update();
     if (!charging) playerAim.Update();
     //if (!aiming) playerLauncher.Update();
+
+    //std::cout << playerLauncher.isProjectileOnAir;;
+
 }
 
 
@@ -44,9 +66,9 @@ void  Player::BulletEquipped() {
             if (!playerLauncher.Charging()) charging = false;
         }
         if (IsKeyReleased(KEY_SPACE) || (IsKeyDown(KEY_SPACE) && !charging)) {
+            playerLauncher.isProjectileOnAir = true;
             SoundEffects i;
             i.playsfx(3);
-            playerLauncher.isPorjectileOnAir = true;
             aiming = false;
             charging = false;
             isTurn = false;
@@ -57,17 +79,18 @@ void  Player::BulletEquipped() {
         if (!charging) playerAim.Update();
     }
     if (!aiming) playerLauncher.Update();
+    if (!isTurn && playerLauncher.destroyed) isActive = false;
 }
 
 
 void  Player::ShotgunEquipped() {
     if (isTurn) {
-        if (IsKeyPressed(KEY_SPACE)) {
+        if (IsKeyReleased(KEY_SPACE)) {
             if (!charging) {
                 SoundEffects i;
                 i.playsfx(2);
                 playerShotgun = playerShotgunEmpty;
-                playerShotgun.isPorjectileOnAir = true;
+                playerShotgun.isProjectileOnAir = true;
                 aiming = false;
                 charging = true;
                 isTurn = false;
@@ -80,7 +103,31 @@ void  Player::ShotgunEquipped() {
     }
     if (!aiming) {
         playerShotgun.Update();
-        if (playerLauncher.destroyed == false) charging = false;
+        if (playerShotgun.destroyed == false) charging = false;
+    }
+    if (!isTurn && playerShotgun.destroyed) isActive = false;
+
+}
+
+
+void  Player::TeleportEquipped() {
+    DrawRectangle(GetMouseX()-15, GetMouseY()-15, 30, 30, BLACK);
+    if (IsKeyReleased(KEY_SPACE)) {
+        position.x = GetMouseX() - 15;
+        position.y = GetMouseY() - 15;
+        playerAim.position.x = GetMouseX() - 15;
+        playerAim.position.y = GetMouseY() - 15;
+        teleportActive = false;
+
+        currentWeapon = "bullet";
+        aiming = true;
+        charging = false;
+        playerAim.isTurn = true;
+
+        playerLauncherEmpty.position.x = position.x+size.x/2;
+        playerLauncherEmpty.position.y = position.y + size.y / 2;
+        playerShotgunEmpty.position.x = position.x + size.x / 2;
+        playerShotgunEmpty.position.y = position.y + size.y / 2;
     }
 }
 
@@ -131,13 +178,15 @@ void Player::Draw() {
     animation.Draw();
     playerAim.Draw();
     playerLauncher.Draw();
-    //if (currentWeapon == "bullet" && playerLauncher.isPorjectileOnAir) playerLauncher.Draw();
+    //if (currentWeapon == "bullet" && playerLauncher.isisProjectileOnAir) playerLauncher.Draw();
     //shotgun is not in the object list
     if (currentWeapon == "shotgun")playerShotgun.Draw();
-    const char* cstr = healthString.c_str();
-    DrawText(cstr, position.x, position.y - 30, 20, WHITE);
-    const char* cstr2 = currentWeapon.c_str();
-    DrawText(cstr2, 50, (float)(Game::screenHeight)-100, 20, WHITE);
+        const char* cstr = healthString.c_str();
+        DrawText(cstr, position.x, position.y - 30, 20, WHITE);
+        if (isTurn) {
+            const char* cstr2 = currentWeapon.c_str();
+            DrawText(cstr2, 100, 400, 20, WHITE);
+        }
     // DIBUJAR COLLIDER
     //Rectangle r = GetFloorCollider();
     //DrawRectangle(r.x, r.y, r.width, r.height, YELLOW);
@@ -160,6 +209,7 @@ void Player::Fall() {
 
         if (CheckCollisionRecs(floorRect, this->GetFloorCollider())) {
             hitObstacle = true;
+            speed = 0;
 
             if (position.y + size.y / 2 > floorRect.y) {
                 MoveY(floorRect.y - size.y, false);
@@ -175,4 +225,13 @@ void Player::Fall() {
     }
 
     if (position.y >= Game::bottomY) dead = true;
+}
+
+void Player::GetDamaged(Vector2 pos) {
+    int damage = 100-(abs(pos.x - (position.x+size.x/2)) + abs(pos.y - (position.y+size.y / 2)));
+    std::cout<<(abs(pos.x - (position.x + size.x / 2)) + abs(pos.y - (position.y + size.y /2)));
+    damage *= 0.5;
+    healthPoints = healthPoints - damage;
+    if (healthPoints<=0) dead = true;
+
 }

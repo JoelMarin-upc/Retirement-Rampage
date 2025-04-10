@@ -23,12 +23,13 @@ void TurnManager::End() {
 
 void TurnManager::CheckTurn() {
     if (ended) return;
-    if (TurnTimePassed())
-    {
+    if (TurnTimePassed()) {
         playerList[currentPlayer]->isTurn = false;
-        playerList[currentPlayer]->playerAim.isTurn = true;
+        playerList[currentPlayer]->playerAim.isTurn = false;
     }
-    if (playerList[currentPlayer]->isTurn == false) {
+    if (playerList[currentPlayer]->isTurn == false && playerList[currentPlayer]->isActive == false) {
+
+
         if (currentPlayer < (playerNum - 1)) ++currentPlayer;
         else {
             currentPlayer = 0;
@@ -36,8 +37,9 @@ void TurnManager::CheckTurn() {
         }
         playerList[currentPlayer]->isTurn = true;
         playerList[currentPlayer]->playerAim.isTurn = true;
+        playerList[currentPlayer]->isActive = true;
+        playerList[currentPlayer]->teleportActive = true;
         currentTurnSeconds = secondsPerTurn;
-        std::cout << currentPlayer;
     }
 }
 
@@ -58,3 +60,9 @@ void TurnManager::Draw() {
     DrawText(TextFormat("Time left: %.1f seconds", currentTurnSeconds), 20, 40, 20, BLACK);
 }
 
+void TurnManager::CheckPlayerHit(Explosion exp) {
+    for (int i=0;i < playerList.size();++i) {
+        if (CheckCollisionCircleRec(exp.position, exp.radius, playerList[i]->GetRectangle())) playerList[i]->GetDamaged(exp.position);
+    }
+
+}

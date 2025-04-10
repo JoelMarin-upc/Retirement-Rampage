@@ -25,13 +25,18 @@ void Aim::Update() {
     else
         aimingPoint = { position.x - (vectorDirector.x * range), position.y + (vectorDirector.y * range) };
 
+    animation.Update();
+    animation.position = { aimingPoint.x, aimingPoint.y };
+
 }
 
 void Aim::Draw() {
     if (isTurn) {
-        if (facingRight)
-            DrawRectangle(aimingPoint.x, aimingPoint.y, 10, 10, BLACK);
-        else
-            DrawRectangle(aimingPoint.x, aimingPoint.y, crosshairSize.x, crosshairSize.y, BLACK);
+        if (facingRight) {
+            animation.Draw();
+        }
+        else {
+            animation.Draw();
+        }
     }
 }
