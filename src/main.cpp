@@ -17,6 +17,9 @@ bool playEnded = false;
 bool playStarted = false;
 float timePlayed;
 Music music;
+vector<string> maps;
+MapReader* mapReader;
+int currentMap = 0;
 
 //Vector2 playerSize = { 30,30 };
 //Vector2 playerPosition = { screenWidth / 2, screenHeight / 2 };
@@ -28,8 +31,12 @@ void UpdatingPhase();
 void PaintingPhase();
 void PaintEndScreen();
 void PaintStartScreen();
+void LoadMaps();
+void PrevMap();
+void NextMap();
 void LoadGame();
 void DrawCenteredText(const char* text, int x, int y, int fontSize, Color color);
+void UpdatePlayerPositions();
 Color GetRandomColor();
 
 int main()
@@ -38,9 +45,11 @@ int main()
 
     SetTargetFPS(60);
 
-    InitWindow(0, 0, "Game");
-    if (!IsWindowFullscreen()) ToggleFullscreen();
-    
+    InitWindow(0, 0, "Worms");
+    //if (!IsWindowFullscreen()) ToggleFullscreen(); // Para debuggear comentar
+    InitAudioDevice();
+
+    LoadMaps();
     LoadGame();
 
     InitPhase();
@@ -48,6 +57,9 @@ int main()
     {
         if (!playStarted) {
             PaintStartScreen();
+            if (IsKeyReleased(KEY_RIGHT)) NextMap();
+            if (IsKeyReleased(KEY_LEFT)) PrevMap();
+            Game::GetMap()->Draw();
             if (IsKeyReleased(KEY_ENTER)) playStarted = true;
             if (IsKeyReleased(KEY_ESCAPE)) break;
             startTime = GetTime();
@@ -110,6 +122,7 @@ void PaintStartScreen() {
     DrawCenteredText("WORMS", Game::screenWidth / 2, Game::screenHeight / 3, 60, RED);
 
     DrawCenteredText("Press [ENTER] to start", Game::screenWidth / 2, Game::screenHeight / 2, 25, BLACK);
+    DrawCenteredText("Press [<-] and [->] to change map", Game::screenWidth / 2, Game::screenHeight / 2 - 100, 25, BLACK);
 
     DrawText("Press [ESC] to exit", 30, Game::screenHeight - 50, 25, BLACK);
 
@@ -146,12 +159,41 @@ void PaintEndScreen() {
     EndDrawing();
 }
 
+void LoadMaps() {
+    maps = vector<string>();
+    const char* path = "Maps/2players";
+    FilePathList files = LoadDirectoryFiles(path);
+
+    for (int i = 0; i < files.count; ++i) {
+        const char* filePath = files.paths[i];
+        std::string fileStr(filePath);
+        if (fileStr.substr(fileStr.size() - 4) == ".txt") maps.push_back(filePath);
+    }
+
+    UnloadDirectoryFiles(files);
+}
+
+void PrevMap() {
+    currentMap--;
+    if (currentMap < 0) currentMap = maps.size() - 1;
+    Game::GetMap()->ChangeMap(maps[currentMap], true);
+    UpdatePlayerPositions();
+}
+
+void NextMap() {
+    currentMap++;
+    if (currentMap >= maps.size()) currentMap = 0;
+    Game::GetMap()->ChangeMap(maps[currentMap], true);
+    UpdatePlayerPositions();
+}
+
 void LoadGame() {
     Game::screenWidth = GetScreenWidth();
     Game::screenHeight = GetScreenHeight();
 
     for (int i = 0; i < Game::gameObjects.size(); i++) Game::gameObjects[i].reset();
     Game::gameObjects = std::vector<std::unique_ptr<GameObject>>();
+    Game::playerIndexes.clear();
 
     playStarted = false;
     playEnded = false;
@@ -160,16 +202,13 @@ void LoadGame() {
 
     //SFX
     timePlayed = 0.0f;
-    InitAudioDevice();
     music = LoadMusicStream("01 the wormsong.mp3");
     PlayMusicStream(music);
 
     // MAPA
-    std::string mapName = "map2.txt";
-    std::string path = GetDirectoryPath(mapName.c_str()) + mapName;
-    std::unique_ptr<GameObject> map = std::make_unique<MapReader>(path);
+    std::unique_ptr<GameObject> map = std::make_unique<MapReader>();
     MapReader* mapObj = dynamic_cast<MapReader*>(map.get());
-    mapObj->LoadMap(true);
+    mapObj->ChangeMap(maps[currentMap], true);
     Game::gameObjects.push_back(std::move(map)); // Tiene que ser el 1r game object en la lista
 
     // PLAYERS
@@ -184,13 +223,23 @@ void LoadGame() {
             if (pos.x != defPos.x || pos.y != defPos.y) pos.y -= size.y;
             std::unique_ptr<GameObject> player = std::make_unique<Player>(turnManagerObj->currentPlayer + 1, pos, size);
             turnManagerObj->AddPlayer(static_cast<Player*>(player.get()));
-            Game::gameObjects.push_back(std::move(player));
+            Game::AddPlayer(std::move(player));
         }
     }
 
     // TURN MANAGER 
     turnManagerObj->Start();
     Game::gameObjects.push_back(std::move(turnManager)); // Tiene que ser el ultimo game object en la lista
+}
+
+void UpdatePlayerPositions() {
+    vector<MapTile> playerTiles = Game::GetMap()->GetPlayers();
+    for (int i = 0; i < playerTiles.size(); i++) {
+        if (playerTiles[i].tileChar == '1') {
+            Vector2 pos = playerTiles[i].position;
+            static_cast<Player*>(Game::gameObjects[Game::playerIndexes[i + 1]].get())->Move(pos, false);
+        }
+    }
 }
 
 void DrawCenteredText(const char* text, int x, int y, int fontSize, Color color) {

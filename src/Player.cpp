@@ -84,7 +84,29 @@ void  Player::ShotgunEquipped() {
     }
 }
 
+void Player::Move(Vector2 ammount, bool add) {
+    MoveX(ammount.x, add);
+    MoveY(ammount.y, add);
+}
 
+void Player::MoveX(int ammount, bool add) {
+    if (add) {
+        position.x += ammount;
+        playerAim.position.x += ammount;
+        playerLauncher.position.x += ammount;
+        playerLauncherEmpty.position.x += ammount;
+        playerShotgun.position.x += ammount;
+        playerShotgunEmpty.position.x += ammount;
+    }
+    else {
+        position.x = ammount;
+        playerAim.position.x = ammount;
+        playerLauncher.position.x = ammount;
+        playerLauncherEmpty.position.x = ammount;
+        playerShotgun.position.x = ammount;
+        playerShotgunEmpty.position.x = ammount;
+    }
+}
 
 void Player::MoveY(int ammount, bool add) {
     if (add) {

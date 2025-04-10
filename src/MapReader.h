@@ -9,7 +9,7 @@
 
 class MapReader : public GameObject {
 private:
-    std::string filePath;
+    std::string filePath = "";
     std::vector<std::vector<MapTile>> map;
     std::vector<MapTile> optimizedTiles;
     std::vector<MapTile> playerPositions;
@@ -18,7 +18,7 @@ private:
 public:
     bool shouldDraw = true;
 
-    MapReader(const std::string& filePath) : GameObject(), filePath(filePath) { }
+    MapReader() : GameObject() { }
 
     void Init() override;
 
@@ -26,7 +26,7 @@ public:
 
     void OptimizeTiles();
 
-    void ChangeMap(std::string& path);
+    void ChangeMap(std::string path, bool optimize);
 
     void Update() override;
    

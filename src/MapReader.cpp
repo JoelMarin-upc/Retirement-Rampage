@@ -25,6 +25,7 @@ Color GetRandColor() {
 void MapReader::LoadMap(bool optimize) {
     std::ifstream file(filePath);
     map = std::vector<std::vector<MapTile>>();
+    playerPositions.clear();
 
     int screenX = GetScreenWidth();
     int screenY = GetScreenHeight();
@@ -128,8 +129,9 @@ void MapReader::OptimizeTiles() {
     this->optimizedTiles = optimizedTiles;
 }
 
-void MapReader::ChangeMap(std::string& path) {
+void MapReader::ChangeMap(std::string path, bool optimize) {
     filePath = path;
+    LoadMap(optimize);
 }
 
 void MapReader::Update() {
