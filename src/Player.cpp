@@ -197,3 +197,12 @@ void Player::Fall() {
 
     if (position.y >= Game::bottomY) dead = true;
 }
+
+void Player::GetDamaged(Vector2 pos) {
+    int damage = 100-(abs(pos.x - (position.x+size.x/2)) + abs(pos.y - (position.y+size.y / 2)));
+    std::cout<<(abs(pos.x - (position.x + size.x / 2)) + abs(pos.y - (position.y + size.y / 2)));
+    damage *= 0.5;
+    healthPoints = healthPoints - damage;
+    if (healthPoints<=0) dead = true;
+
+}

@@ -6,11 +6,12 @@
 #include "Game.h"
 
 void Shotgun::Update() {
+    --distanceMiliseconds;
     if (destroyed) {
         explosion.Update();
         return;
     }
-    else if (HasCollision()) Explode();
+    else if (HasCollision() || distanceMiliseconds < 0) Explode();
     // uses screen size
     else if (position.x > 800 || position.x < 0 || position.y < 0 || position.y >450) destroyed = true;
     else {
@@ -52,8 +53,8 @@ bool Shotgun::HasCollision() {
 
 void Shotgun::Explode() {
     //explosion = Explosion(position, explosionRadius, explosionMiliseconds);
+    DrawCircle(position.x, position.y, explosionRadius , WHITE);
     destroyed = true;
-    std::cout << "destroy";
     //MapReader* mapObj = dynamic_cast<MapReader*>(Game::gameObjects[0].get());
    // mapObj->DestroyTiles(explosion);
 }

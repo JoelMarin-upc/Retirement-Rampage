@@ -68,5 +68,8 @@ void Bullet::Explode() {
     explosion = Explosion(position, explosionRadius, explosionMiliseconds);
     destroyed = true;
     MapReader* mapObj = Game::GetMap();
+    TurnManager* turnObj = Game::GetTurnManager();
     mapObj->DestroyTiles(explosion);
+    turnObj->CheckPlayerHit(explosion);
+
 }

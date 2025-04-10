@@ -2,10 +2,14 @@
 #define GAMEOBJECT_H
 
 #include <raylib.h>
+#include <iostream>
+
 
 class GameObject {
 public:
     Vector2 position, size;
+
+    std::string type;
 
     GameObject();
 

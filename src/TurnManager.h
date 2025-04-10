@@ -23,5 +23,6 @@ public:
 	bool TurnTimePassed();
 	void Update() override;
 	void Draw() override;
+	void CheckPlayerHit(Explosion exp);
 };
 #endif

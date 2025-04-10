@@ -9,6 +9,7 @@
 #include <string> 
 #include <map>
 #include <iostream>
+#include <cmath>
 #include "AnimationController.h"
 
 class Player : public GameObject {
@@ -37,6 +38,7 @@ public:
 	Player() : GameObject() {}
 
 	Player(int playerNum, Vector2 playerPosition, Vector2 playerSize) : GameObject(playerPosition, playerSize), playerNum(playerNum) {
+		type = "player";
 		Vector2 centerPosition = { playerPosition.x + playerSize.x / 2, playerPosition.y + playerSize.y / 2 };
 		animation = AnimationController(position, size, "scarfy.png", true, false, 36, 12);
 		playerAim = Aim(centerPosition);
@@ -54,6 +56,7 @@ public:
 	void ShotgunEquipped();
 	void TeleportEquipped();
 	Rectangle GetFloorCollider();
+	void GetDamaged(Vector2 pos);
 };
 
 #endif
