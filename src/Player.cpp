@@ -138,6 +138,7 @@ void Player::Fall() {
 
         if (CheckCollisionRecs(floorRect, this->GetFloorCollider())) {
             hitObstacle = true;
+            speed = 0;
 
             if (position.y + size.y / 2 > floorRect.y) {
                 MoveY(floorRect.y - size.y, false);
