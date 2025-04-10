@@ -25,6 +25,7 @@ void TurnManager::CheckTurn() {
     if (ended) return;
     if (TurnTimePassed()) {
         playerList[currentPlayer]->isTurn = false;
+        playerList[currentPlayer]->isActive == false;
         playerList[currentPlayer]->playerAim.isTurn = false;
     }
     if (playerList[currentPlayer]->isTurn == false && playerList[currentPlayer]->isActive == false) {
