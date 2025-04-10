@@ -23,29 +23,40 @@ void TurnManager::End() {
 
 void TurnManager::CheckTurn() {
     if (ended) return;
-    if (TurnTimePassed()) {
+    if (!betweenTurns && TurnTimePassed()) {
         playerList[currentPlayer]->isTurn = false;
         playerList[currentPlayer]->playerAim.isTurn = false;
     }
-    if (playerList[currentPlayer]->isTurn == false && playerList[currentPlayer]->isActive == false) {
-
-
+    if (!betweenTurns && playerList[currentPlayer]->isTurn == false && playerList[currentPlayer]->isActive == false) {
         if (currentPlayer < (playerNum - 1)) ++currentPlayer;
         else {
             currentPlayer = 0;
             turns++;
         }
-        playerList[currentPlayer]->isTurn = true;
-        playerList[currentPlayer]->playerAim.isTurn = true;
-        playerList[currentPlayer]->isActive = true;
-        playerList[currentPlayer]->teleportActive = true;
-        currentTurnSeconds = secondsPerTurn;
+        betweenTurns = true;
+    }
+    if (betweenTurns) {
+        currentTurnSeconds = 0;
+        if (BetweenTurnTimePassed()) {
+            betweenTurns = false;
+            playerList[currentPlayer]->isTurn = true;
+            playerList[currentPlayer]->playerAim.isTurn = true;
+            playerList[currentPlayer]->isActive = true;
+            playerList[currentPlayer]->teleportActive = true;
+            currentTurnSeconds = secondsPerTurn;
+            currentBetweenTurnsSeconds = secondsBetweenTurns;
+        }
     }
 }
 
 bool TurnManager::TurnTimePassed() {
     currentTurnSeconds -= GetFrameTime();
     return currentTurnSeconds <= 0;
+}
+
+bool TurnManager::BetweenTurnTimePassed() {
+    currentBetweenTurnsSeconds -= GetFrameTime();
+    return currentBetweenTurnsSeconds <= 0;
 }
 
 void TurnManager::Update() { CheckTurn(); }

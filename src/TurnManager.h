@@ -10,6 +10,9 @@ private:
 	bool ended = false;
 	double secondsPerTurn = 20;
 	double currentTurnSeconds = 20;
+	double secondsBetweenTurns = 2;
+	double currentBetweenTurnsSeconds = 2;
+	bool betweenTurns = false;
 
 public:
 	int turns = 1;
@@ -21,6 +24,7 @@ public:
 	void End();
 	void CheckTurn();
 	bool TurnTimePassed();
+	bool BetweenTurnTimePassed();
 	void Update() override;
 	void Draw() override;
 	void CheckPlayerHit(Explosion exp);
