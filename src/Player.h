@@ -42,10 +42,8 @@ public:
 		Vector2 centerPosition = { playerPosition.x + playerSize.x / 2, playerPosition.y + playerSize.y / 2 };
 		animation = AnimationController(position, size, "scarfy.png", true, false, 36, 12);
 		playerAim = Aim(centerPosition);
-		playerLauncher = Bullet(centerPosition);
 		playerLauncherEmpty = Bullet(centerPosition);
 		playerShotgunEmpty = Shotgun(centerPosition);
-		playerShotgun = Shotgun(centerPosition);
 	}
 
 	void Update() override;

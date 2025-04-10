@@ -40,8 +40,8 @@ bool Shotgun::HasCollision() {
     bool collision = false;
     MapReader* mapObj = Game::GetMap();
     std::vector<MapTile> map = mapObj->GetOptimizedMap();
-    std::vector<MapTile> players = mapObj->GetPlayers();
-    map.insert(map.end(), players.begin(), players.end());
+    //std::vector<MapTile> players = mapObj->GetPlayers();
+    //map.insert(map.end(), players.begin(), players.end());
     TurnManager* turnObj = Game::GetTurnManager();
     if (distanceMiliseconds <= playerOutMiliseconds) {
         for (int i = 0;i < turnObj->playerList.size();++i) {
