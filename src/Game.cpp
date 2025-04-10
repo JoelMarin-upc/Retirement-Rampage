@@ -1,5 +1,7 @@
 #include "Game.h"
 
+int Game::screenWidth;
+int Game::screenHeight;
 int Game::bottomY;
 
 std::vector<std::unique_ptr<GameObject>> Game::gameObjects;

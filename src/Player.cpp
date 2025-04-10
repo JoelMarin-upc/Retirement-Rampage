@@ -67,6 +67,8 @@ void  Player::BulletEquipped() {
         }
         if (IsKeyReleased(KEY_SPACE) || (IsKeyDown(KEY_SPACE) && !charging)) {
             playerLauncher.isProjectileOnAir = true;
+            SoundEffects i;
+            i.playsfx(3);
             aiming = false;
             charging = false;
             isTurn = false;
@@ -85,6 +87,8 @@ void  Player::ShotgunEquipped() {
     if (isTurn) {
         if (IsKeyReleased(KEY_SPACE)) {
             if (!charging) {
+                SoundEffects i;
+                i.playsfx(2);
                 playerShotgun = playerShotgunEmpty;
                 playerShotgun.isProjectileOnAir = true;
                 aiming = false;
@@ -181,6 +185,7 @@ void Player::Fall() {
 
         if (CheckCollisionRecs(floorRect, this->GetFloorCollider())) {
             hitObstacle = true;
+            speed = 0;
 
             if (position.y + size.y / 2 > floorRect.y) {
                 MoveY(floorRect.y - size.y, false);

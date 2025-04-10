@@ -4,6 +4,7 @@
 #include "Explosion.h"
 #include "MapReader.h"
 #include "Game.h"
+#include "SoundEffects.h"
 
 void Shotgun::Update() {
     --distanceMiliseconds;
@@ -13,17 +14,16 @@ void Shotgun::Update() {
     }
     else if (HasCollision() || distanceMiliseconds < 0) Explode();
     // uses screen size
-    else if (position.x > 800 || position.x < 0 || position.y < 0 || position.y >450) destroyed = true;
-    else {
-        Shoot();
-    }
+    else if (position.x > Game::screenWidth || position.x < 0 || position.y < 0 || position.y > Game::screenHeight) destroyed = true;
+    else Shoot();
+    animation.Update();
 }
 
 
 void Shotgun::Shoot() {
     position.x += actualVelocity.x;
     position.y += actualVelocity.y;
-
+    animation.position = position;
 }
 
 void Shotgun::InitialVelocity(Vector2 direction) { actualVelocity = { direction.x * velocityModule, direction.y * velocityModule}; }
@@ -32,7 +32,7 @@ void Shotgun::Draw() {
     if (destroyed) explosion.Draw();
     else if (isProjectileOnAir == true)
     {
-        DrawCircle(position.x, position.y, bulletRadius, RED);
+        animation.Draw();
     }
 }
 

@@ -9,7 +9,7 @@ private:
 	int playerNum;
 	bool ended = false;
 	double secondsPerTurn = 20;
-	double currentTurnSeconds = 30;
+	double currentTurnSeconds = 20;
 
 public:
 	int turns = 1;

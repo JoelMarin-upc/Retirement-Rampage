@@ -6,6 +6,8 @@
 
 class Game {
 public:
+	static int screenWidth;
+	static int screenHeight;
 	static int bottomY;
 	static bool ended;
 	static Player* winner;

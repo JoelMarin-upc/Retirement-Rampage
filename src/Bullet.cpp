@@ -4,6 +4,7 @@
 #include "Explosion.h"
 #include "MapReader.h"
 #include "Game.h"
+#include "SoundEffects.h"
 
 void Bullet::Update() {
     if (destroyed) {
@@ -12,8 +13,9 @@ void Bullet::Update() {
     }
     if (HasCollision()) Explode();
     //uses screen size
-    else if (position.x > 800 || position.x < 0 || position.y < 0|| position.y >450) destroyed = true;
+    else if (position.x > Game::screenWidth || position.x < 0 || position.y < 0|| position.y > Game::screenHeight) destroyed = true;
     else Shoot();
+    animation.Update();
 }
 
 bool Bullet::Charging() {
@@ -31,6 +33,7 @@ void Bullet::Shoot() {
     actualVelocity.y += gravity;
     position.x += actualVelocity.x;
     position.y += actualVelocity.y;
+    animation.position = position;
 }
 
 void Bullet::InitialVelocity(Vector2 direction) { actualVelocity = { direction.x * velocityModule, direction.y * velocityModule }; }
@@ -39,10 +42,12 @@ void Bullet::Draw() {
     if (destroyed) explosion.Draw();
     else if (isProjectileOnAir == true)
     {
-        DrawCircle(position.x, position.y, bulletRadius, RED);
+        /*DrawCircle(position.x, position.y, bulletRadius, RED);*/
+        animation.Draw();
     }
     else {
-        for (int i = 0; i < barCounter; i++) {
+        for (int i = 0; i < barCounter; i++) {            
+            barPosition = { 40, (float)(Game::screenHeight)-100 };
             DrawRectangle(i * barSize.x + barPosition.x, barPosition.y, barSize.x, barSize.y, ORANGE);
         }
     }

@@ -28,6 +28,8 @@ void TurnManager::CheckTurn() {
         playerList[currentPlayer]->playerAim.isTurn = false;
     }
     if (playerList[currentPlayer]->isTurn == false && playerList[currentPlayer]->isActive == false) {
+
+
         if (currentPlayer < (playerNum - 1)) ++currentPlayer;
         else {
             currentPlayer = 0;
