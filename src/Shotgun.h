@@ -15,6 +15,7 @@ public:
     float bulletRadius = 3.0f;
     float explosionRadius = 10.0f;
     int explosionMiliseconds = 400;
+    int playerOutMiliseconds = 7;
     int distanceMiliseconds = 10;
     bool destroyed = false;
     bool isProjectileOnAir = false;

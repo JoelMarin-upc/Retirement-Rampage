@@ -119,10 +119,10 @@ void  Player::TeleportEquipped() {
         charging = false;
         playerAim.isTurn = true;
 
-        playerLauncherEmpty.position = position;
-        playerLauncher.position = position;
-        playerShotgunEmpty.position = position;
-        playerShotgun.position = position;
+        playerLauncherEmpty.position.x = position.x+size.x/2;
+        playerLauncherEmpty.position.y = position.y + size.y / 2;
+        playerShotgunEmpty.position.x = position.x + size.x / 2;
+        playerShotgunEmpty.position.y = position.y + size.y / 2;
     }
 }
 
@@ -200,7 +200,7 @@ void Player::Fall() {
 
 void Player::GetDamaged(Vector2 pos) {
     int damage = 100-(abs(pos.x - (position.x+size.x/2)) + abs(pos.y - (position.y+size.y / 2)));
-    std::cout<<(abs(pos.x - (position.x + size.x / 2)) + abs(pos.y - (position.y + size.y / 2)));
+    std::cout<<(abs(pos.x - (position.x + size.x / 2)) + abs(pos.y - (position.y + size.y /2)));
     damage *= 0.5;
     healthPoints = healthPoints - damage;
     if (healthPoints<=0) dead = true;

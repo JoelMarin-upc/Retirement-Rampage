@@ -42,6 +42,16 @@ bool Shotgun::HasCollision() {
     std::vector<MapTile> map = mapObj->GetOptimizedMap();
     std::vector<MapTile> players = mapObj->GetPlayers();
     map.insert(map.end(), players.begin(), players.end());
+    TurnManager* turnObj = Game::GetTurnManager();
+    if (distanceMiliseconds <= playerOutMiliseconds) {
+        for (int i = 0;i < turnObj->playerList.size();++i) {
+            if (CheckCollisionCircleRec(position, bulletRadius, turnObj->playerList[i]->GetRectangle())) {
+                collision = true;
+                turnObj->playerList[i]->GetDamaged(position);
+                break;
+            }
+        }
+    }
     for (int i = 0; i < map.size(); i++) {
         if (CheckCollisionCircleRec(position, bulletRadius, map[i].GetRectangle())) {
             collision = true;
@@ -55,6 +65,8 @@ void Shotgun::Explode() {
     //explosion = Explosion(position, explosionRadius, explosionMiliseconds);
     DrawCircle(position.x, position.y, explosionRadius , WHITE);
     destroyed = true;
+  //  TurnManager* turnObj = Game::GetTurnManager();
+    //turnObj->CheckPlayerHit(explosion);
     //MapReader* mapObj = dynamic_cast<MapReader*>(Game::gameObjects[0].get());
    // mapObj->DestroyTiles(explosion);
 }
