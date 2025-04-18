@@ -181,12 +181,12 @@ void Player::Draw() {
     //if (currentWeapon == "bullet" && playerLauncher.isisProjectileOnAir) playerLauncher.Draw();
     //shotgun is not in the object list
     if (currentWeapon == "shotgun")playerShotgun.Draw();
-        const char* cstr = healthString.c_str();
-        DrawText(cstr, position.x, position.y - 30, 20, WHITE);
-        if (isTurn) {
-            const char* cstr2 = currentWeapon.c_str();
-            DrawText(cstr2, 100, 400, 20, WHITE);
-        }
+    const char* cstr = healthString.c_str();
+    DrawText(cstr, position.x, position.y - 30, 20, WHITE);
+    if (isTurn) {
+        const char* cstr2 = currentWeapon.c_str();
+        DrawText(cstr2, 45, (float)(Game::screenHeight)-100, 20, WHITE);
+    }
     // DIBUJAR COLLIDER
     //Rectangle r = GetFloorCollider();
     //DrawRectangle(r.x, r.y, r.width, r.height, YELLOW);
