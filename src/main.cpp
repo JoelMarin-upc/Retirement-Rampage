@@ -46,7 +46,7 @@ int main()
     SetTargetFPS(60);
 
     InitWindow(0, 0, "Worms");
-    //if (!IsWindowFullscreen()) ToggleFullscreen(); // Para debuggear comentar
+    if (!IsWindowFullscreen()) ToggleFullscreen(); // Para debuggear comentar
     InitAudioDevice();
 
     LoadMaps();
