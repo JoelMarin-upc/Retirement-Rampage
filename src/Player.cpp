@@ -186,6 +186,7 @@ void Player::Draw() {
     if (isTurn) {
         const char* cstr2 = currentWeapon.c_str();
         DrawText(cstr2, 45, (float)(Game::screenHeight)-100, 20, WHITE);
+        DrawTriangle({ position.x,position.y - size.y*2}, {position.x + (size.x / 2),position.y - size.y}, {position.x + size.x,position.y - size.y * 2 }, YELLOW);
     }
     // DIBUJAR COLLIDER
     //Rectangle r = GetFloorCollider();
