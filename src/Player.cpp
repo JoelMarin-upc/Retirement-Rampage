@@ -182,10 +182,11 @@ void Player::Draw() {
     //shotgun is not in the object list
     if (currentWeapon == "shotgun")playerShotgun.Draw();
         const char* cstr = healthString.c_str();
-        DrawText(cstr, position.x, position.y - 30, 20, WHITE);
+        DrawText(cstr, position.x, position.y - 30, 20, WHITE); //needs to use global position
         if (isTurn) {
             const char* cstr2 = currentWeapon.c_str();
-            DrawText(cstr2, 100, 400, 20, WHITE);
+            DrawText(cstr2, 400, 20, 20, WHITE);
+            DrawTriangle({ position.x,position.y - size.y*2}, {position.x + (size.x / 2),position.y - size.y}, {position.x + size.x,position.y - size.y * 2 }, YELLOW);
         }
     // DIBUJAR COLLIDER
     //Rectangle r = GetFloorCollider();
