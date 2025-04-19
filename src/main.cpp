@@ -121,8 +121,8 @@ void PaintStartScreen() {
 
     DrawCenteredText("WORMS", Game::screenWidth / 2, Game::screenHeight / 3, 60, RED);
 
-    DrawCenteredText("Press [ENTER] to start", Game::screenWidth / 2, Game::screenHeight / 2, 25, BLACK);
-    DrawCenteredText("Press [<-] and [->] to change map", Game::screenWidth / 2, Game::screenHeight / 2 - 100, 25, BLACK);
+    DrawCenteredText("Press [<-] and [->] to change map", Game::screenWidth / 2, Game::screenHeight / 2 + 50, 25, BLACK);
+    DrawCenteredText("Press [ENTER] to start", Game::screenWidth / 2, Game::screenHeight / 2 + 100, 25, BLACK);
 
     DrawText("Press [ESC] to exit", 30, Game::screenHeight - 50, 25, BLACK);
 
