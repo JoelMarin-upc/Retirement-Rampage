@@ -178,6 +178,7 @@ void Player::Draw() {
     animation.Draw();
     playerAim.Draw();
     playerLauncher.Draw();
+    PlayerHud.DrawSprite();
     //if (currentWeapon == "bullet" && playerLauncher.isisProjectileOnAir) playerLauncher.Draw();
     //shotgun is not in the object list
     if (currentWeapon == "shotgun")playerShotgun.Draw();

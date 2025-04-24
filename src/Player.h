@@ -11,6 +11,7 @@
 #include <iostream>
 #include <cmath>
 #include "AnimationController.h"
+#include "WeaponsHUD.h"
 
 class Player : public GameObject {
 public:
@@ -20,6 +21,7 @@ public:
 	Bullet playerLauncher;
 	Shotgun playerShotgunEmpty;
 	Shotgun playerShotgun;
+	WeaponsHUD PlayerHud;
 	float speed = 0;
 	int playerNum;
 	bool aiming = false;
