@@ -2,7 +2,7 @@
 #include "resource_dir.h"
 #include "MapReader.h"
 #include "GameObject.h"
-#include "Player.h"
+#include "PlayerSelector.h"
 #include "TurnManager.h"
 #include "Game.h"
 
@@ -218,12 +218,14 @@ void LoadGame() {
     Vector2 defPos = { 1, 1 };
     Vector2 pos = defPos;
     for (MapTile& tile : mapObj->GetPlayers()) {
-        if (tile.tileChar == '1') {
+        if ((tile.tileChar == '1') && (tile.tileChar == '2') && (tile.tileChar == '3') && (tile.tileChar == '4')) {
+            int playerNum = chartoint(tile.tileChar);
             pos = tile.position;
             if (pos.x != defPos.x || pos.y != defPos.y) pos.y -= size.y;
-            std::unique_ptr<GameObject> player = std::make_unique<Player>(turnManagerObj->currentPlayer + 1, pos, size);
+            std::unique_ptr<GameObject> worm = std::make_unique<PlayerSelector>(turnManagerObj->currentPlayer + 1, pos, size);
             turnManagerObj->AddPlayer(static_cast<Player*>(player.get()));
             Game::AddPlayer(std::move(player));
+
         }
     }
 

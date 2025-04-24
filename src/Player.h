@@ -26,12 +26,11 @@ public:
 	bool charging = false;
 	bool dead = false;
 	bool isActive = false;
+	bool isTurn = false;
 	bool teleportActive = true;
-
 
 	int healthPoints = 100;
 	std::string healthString = "100";
-	bool isTurn = false;
 
 	std::string currentWeapon = "none";
 
