@@ -1,6 +1,6 @@
 #include "TurnManager.h"
 
-void TurnManager::AddPlayer(Player* player) {
+void TurnManager::AddPlayer(Player* player, int playerNum) {
     playerList[currentPlayer] = player;
     currentPlayer++;
 }
