@@ -29,6 +29,32 @@ void Player::Update() {
             charging = false;
             playerAim.isTurn = false;
         }
+        if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
+            HUDactive = true;
+        }
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+            if (HUDactive == true) {
+                if (PlayerHud.CheckBox() == 1) {
+                    currentWeapon = "bullet";
+                    aiming = true;
+                    charging = false;
+                    playerAim.isTurn = true;
+                }
+                if (PlayerHud.CheckBox() == 2) {
+                    currentWeapon = "shotgun";
+                    aiming = true;
+                    charging = false;
+                    playerAim.isTurn = true;
+                }
+                if (PlayerHud.CheckBox() == 3) {
+                    currentWeapon = "teleport";
+                    aiming = false;
+                    charging = false;
+                    playerAim.isTurn = false;
+                }
+            }
+        }
+
     }
 
     if (currentWeapon == "bullet") BulletEquipped();
@@ -178,7 +204,6 @@ void Player::Draw() {
     animation.Draw();
     playerAim.Draw();
     playerLauncher.Draw();
-    PlayerHud.DrawSprite();
     //if (currentWeapon == "bullet" && playerLauncher.isisProjectileOnAir) playerLauncher.Draw();
     //shotgun is not in the object list
     if (currentWeapon == "shotgun")playerShotgun.Draw();
@@ -193,6 +218,17 @@ void Player::Draw() {
     //Rectangle r = GetFloorCollider();
     //DrawRectangle(r.x, r.y, r.width, r.height, YELLOW);
     //DrawRectangle(position.x, position.y, size.x, size.y, BLUE);
+
+    //Weapon HUD trigger
+    if (HUDactive == true) {
+        PlayerHud.DrawSprite();
+        PlayerHud.HUDmove();
+    }
+
+    if (HUDactive == false) {
+        PlayerHud.DrawSprite();
+        PlayerHud.HUDretract();
+    }
 }
 
 Rectangle Player::GetFloorCollider() {

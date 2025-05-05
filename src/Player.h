@@ -29,6 +29,7 @@ public:
 	bool dead = false;
 	bool isActive = false;
 	bool teleportActive = true;
+	bool HUDactive = false;
 
 
 	int healthPoints = 100;
