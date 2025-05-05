@@ -52,9 +52,14 @@ void Player::Update() {
                     charging = false;
                     playerAim.isTurn = false;
                 }
+                HUDactive = false;
             }
         }
 
+    }
+
+    if (!isTurn) {
+        HUDactive = false;
     }
 
     if (currentWeapon == "bullet") BulletEquipped();
@@ -77,7 +82,6 @@ void Player::Update() {
     //if (!aiming) playerLauncher.Update();
 
     //std::cout << playerLauncher.isProjectileOnAir;;
-
 }
 
 

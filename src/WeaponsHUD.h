@@ -18,20 +18,10 @@ private:
 
 	int SpriteY = -RectSizeY;
 
-public:
-	int CheckBox() {
-		if (GetMousePosition().x > middleOfScreen && GetMousePosition().x < middleOfScreen + RectSizeX * 1 && GetMousePosition().y > -middleOfScreen && GetMousePosition().y > -middleOfScreen + RectSizeY) {
-			return 1;
-		}
-		if (GetMousePosition().x > middleOfScreen && GetMousePosition().x < middleOfScreen + RectSizeX * 2 && GetMousePosition().y > -middleOfScreen && GetMousePosition().y > -middleOfScreen + RectSizeY) {
-			return 2;
-		}
-		if (GetMousePosition().x > middleOfScreen && GetMousePosition().x < middleOfScreen+RectSizeX * 3 && GetMousePosition().y > -middleOfScreen && GetMousePosition().y > -middleOfScreen + RectSizeY) {
-			return 3;
-		}
-	}
 
-	WeaponsHUD() {
+public:
+
+	void ReloadImgs() {
 		Image GranadeImg = LoadImage("Granade_Icon.png");
 		Image ShotgunImg = LoadImage("Shotgun_Icon.png");
 		Image TeleporterImg = LoadImage("Teleporter_Icon.png");
@@ -41,7 +31,10 @@ public:
 		UnloadImage(GranadeImg);
 		UnloadImage(ShotgunImg);
 		UnloadImage(TeleporterImg);
+	}
 
+	WeaponsHUD() {
+		ReloadImgs();
 	}
 
 	void DrawSprite() {
@@ -72,6 +65,27 @@ public:
 		}
 	}
 
+	int CheckBox() {
+		ReloadImgs();
+		if (GetMousePosition().x > middleOfScreen && GetMousePosition().x < middleOfScreen + RectSizeX * 1 && GetMousePosition().y > -middleOfScreen && GetMousePosition().y > -middleOfScreen + RectSizeY) {
+			Image GranadeImg = LoadImage("Granade_Icon_SELSECTED.png");
+			Granade = LoadTextureFromImage(GranadeImg);
+			UnloadImage(GranadeImg);
+			return 1;
+		}
+		if (GetMousePosition().x > middleOfScreen && GetMousePosition().x < middleOfScreen + RectSizeX * 2 && GetMousePosition().y > -middleOfScreen && GetMousePosition().y > -middleOfScreen + RectSizeY) {
+			Image ShotgunImg = LoadImage("Shotgun_Icon_SELECTED.png");
+			Shotgun = LoadTextureFromImage(ShotgunImg);
+			UnloadImage(ShotgunImg);
+			return 2;
+		}
+		if (GetMousePosition().x > middleOfScreen && GetMousePosition().x < middleOfScreen + RectSizeX * 3 && GetMousePosition().y > -middleOfScreen && GetMousePosition().y > -middleOfScreen + RectSizeY) {
+			Image TeleporterImg = LoadImage("Teleporter_Icon_SELECTED.png");
+			Teleporter = LoadTextureFromImage(TeleporterImg);
+			UnloadImage(TeleporterImg);
+			return 3;
+		}
+	}
 };
 
 #endif
