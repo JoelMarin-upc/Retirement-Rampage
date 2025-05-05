@@ -167,7 +167,7 @@ void LoadMaps() {
     for (int i = 0; i < files.count; ++i) {
         const char* filePath = files.paths[i];
         std::string fileStr(filePath);
-        if (fileStr.substr(fileStr.size() - 4) == ".txt") maps.push_back(filePath);
+        if (fileStr.substr(fileStr.size() - 4) == ".png") maps.push_back(filePath);
     }
 
     UnloadDirectoryFiles(files);

@@ -9,6 +9,7 @@ public:
 	static int screenWidth;
 	static int screenHeight;
 	static int bottomY;
+	static int tileSize;
 	static bool ended;
 	static Player* winner;
 	static std::vector<std::unique_ptr<GameObject>> gameObjects;
