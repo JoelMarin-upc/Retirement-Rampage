@@ -12,6 +12,7 @@
 #include <cmath>
 #include "AnimationController.h"
 #include "WeaponsHUD.h"
+#include "SoundEffects.h"
 
 class Player : public GameObject {
 public:
@@ -22,6 +23,7 @@ public:
 	Shotgun playerShotgunEmpty;
 	Shotgun playerShotgun;
 	WeaponsHUD PlayerHud;
+	SoundEffects PlayerSounds;
 	float speed = 0;
 	int playerNum;
 	bool aiming = false;

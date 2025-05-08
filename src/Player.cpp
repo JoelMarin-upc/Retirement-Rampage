@@ -9,6 +9,7 @@ void Player::Update() {
       //  isTurn = true;
       //  playerAim.isTurn = true;
    // }
+
     if (isTurn){
         if (IsKeyDown(KEY_ONE)) {
             currentWeapon = "bullet";
@@ -40,13 +41,13 @@ void Player::Update() {
                     charging = false;
                     playerAim.isTurn = true;
                 }
-                if (PlayerHud.CheckBox() == 2) {
+                else if (PlayerHud.CheckBox() == 2) {
                     currentWeapon = "shotgun";
                     aiming = true;
                     charging = false;
                     playerAim.isTurn = true;
                 }
-                if (PlayerHud.CheckBox() == 3) {
+                else if (PlayerHud.CheckBox() == 3) {
                     currentWeapon = "teleport";
                     aiming = false;
                     charging = false;
@@ -86,6 +87,8 @@ void Player::Update() {
 
 
 void  Player::BulletEquipped() {
+    PlayerHud.changeImg(1);
+
     if (isTurn) {
         if (IsKeyDown(KEY_SPACE)) {
             if (!charging) {
@@ -97,8 +100,7 @@ void  Player::BulletEquipped() {
         }
         if (IsKeyReleased(KEY_SPACE) || (IsKeyDown(KEY_SPACE) && !charging)) {
             playerLauncher.isProjectileOnAir = true;
-            SoundEffects i;
-            i.playsfx(3);
+            PlayerSounds.playsfx(1);
             aiming = false;
             charging = false;
             isTurn = false;
@@ -114,11 +116,12 @@ void  Player::BulletEquipped() {
 
 
 void  Player::ShotgunEquipped() {
+    PlayerHud.changeImg(2);
+
     if (isTurn) {
         if (IsKeyReleased(KEY_SPACE)) {
             if (!charging) {
-                SoundEffects i;
-                i.playsfx(2);
+                PlayerSounds.playsfx(2);
                 playerShotgun = playerShotgunEmpty;
                 playerShotgun.isProjectileOnAir = true;
                 aiming = false;
@@ -141,8 +144,11 @@ void  Player::ShotgunEquipped() {
 
 
 void  Player::TeleportEquipped() {
+    PlayerHud.changeImg(3);
+
     DrawRectangle(GetMouseX()-15, GetMouseY()-15, 30, 30, BLACK);
     if (IsKeyReleased(KEY_SPACE)) {
+        PlayerSounds.playsfx(4); //plays teleport sfx
         position.x = GetMouseX() - 15;
         position.y = GetMouseY() - 15;
         playerAim.position.x = GetMouseX() - 15;
