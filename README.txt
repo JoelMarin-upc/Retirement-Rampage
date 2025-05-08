@@ -15,6 +15,7 @@ Enter: Begin/End turn.
 Space: Keep it pressed to charge your shot, release to shoot.
 1: Change weapon to rocket, shoots in a parabola.
 2: Change weapon to gun, shoots in a straight line.
+3: Change weapon to teleport, select a location with the mouse and teleport to it with the space bar.
 up/down arrow: aim the shot.
 left/right arrow: change aim direction.
 
