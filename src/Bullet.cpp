@@ -21,7 +21,7 @@ void Bullet::Update() {
 bool Bullet::Charging() {
     velocityModule += velocityIncrease;
     barCounter = velocityModule / barVelocity;
-    if (barCounter == 60) {
+    if (barCounter >= maxVelocity) {
         barCounter = 0;
         return false;
     }
@@ -31,8 +31,8 @@ bool Bullet::Charging() {
 
 void Bullet::Shoot() {
     actualVelocity.y += gravity;
-    position.x += actualVelocity.x;
-    position.y += actualVelocity.y;
+    position.x += actualVelocity.x * GetFrameTime();
+    position.y += actualVelocity.y * GetFrameTime();
     animation.position = position;
 }
 
@@ -46,10 +46,12 @@ void Bullet::Draw() {
         animation.Draw();
     }
     else {
-        for (int i = 0; i < barCounter; i++) {            
-            barPosition = { 40, (float)(Game::screenHeight)-100 };
+        float lenght = barCounter / 60;
+        barPosition = { 40, (float)(Game::screenHeight)-100 };
+        for (int i = 0; i < lenght; i++) {
             DrawRectangle(i * barSize.x + barPosition.x, barPosition.y, barSize.x, barSize.y, ORANGE);
         }
+        if (lenght > 0) DrawRectangle(maxVelocity / 60 * barSize.x + barPosition.x, barPosition.y, barSize.x * 3, barSize.y, RED);
     }
 }
 
