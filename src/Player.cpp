@@ -2,13 +2,14 @@
 #include "MapReader.h"
 #include "Game.h"
 
-#define G 0.1
+#define G 9.81
 
 void Player::Update() {
     //if (IsKeyDown(KEY_ENTER)) {
       //  isTurn = true;
       //  playerAim.isTurn = true;
    // }
+
     if (isTurn){
         if (IsKeyDown(KEY_ONE)) {
             currentWeapon = "bullet";
@@ -29,6 +30,37 @@ void Player::Update() {
             charging = false;
             playerAim.isTurn = false;
         }
+        if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
+            HUDactive = true;
+        }
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+            if (HUDactive == true) {
+                if (PlayerHud.CheckBox() == 1) {
+                    currentWeapon = "bullet";
+                    aiming = true;
+                    charging = false;
+                    playerAim.isTurn = true;
+                }
+                else if (PlayerHud.CheckBox() == 2) {
+                    currentWeapon = "shotgun";
+                    aiming = true;
+                    charging = false;
+                    playerAim.isTurn = true;
+                }
+                else if (PlayerHud.CheckBox() == 3) {
+                    currentWeapon = "teleport";
+                    aiming = false;
+                    charging = false;
+                    playerAim.isTurn = false;
+                }
+                HUDactive = false;
+            }
+        }
+
+    }
+
+    if (!isTurn) {
+        HUDactive = false;
     }
 
     if (currentWeapon == "bullet") BulletEquipped();
@@ -51,11 +83,12 @@ void Player::Update() {
     //if (!aiming) playerLauncher.Update();
 
     //std::cout << playerLauncher.isProjectileOnAir;;
-
 }
 
 
 void  Player::BulletEquipped() {
+    PlayerHud.changeImg(1);
+
     if (isTurn) {
         if (IsKeyDown(KEY_SPACE)) {
             if (!charging) {
@@ -67,8 +100,7 @@ void  Player::BulletEquipped() {
         }
         if (IsKeyReleased(KEY_SPACE) || (IsKeyDown(KEY_SPACE) && !charging)) {
             playerLauncher.isProjectileOnAir = true;
-            SoundEffects i;
-            i.playsfx(3);
+            PlayerSounds.playsfx(1);
             aiming = false;
             charging = false;
             isTurn = false;
@@ -84,11 +116,12 @@ void  Player::BulletEquipped() {
 
 
 void  Player::ShotgunEquipped() {
+    PlayerHud.changeImg(2);
+
     if (isTurn) {
         if (IsKeyReleased(KEY_SPACE)) {
             if (!charging) {
-                SoundEffects i;
-                i.playsfx(2);
+                PlayerSounds.playsfx(2);
                 playerShotgun = playerShotgunEmpty;
                 playerShotgun.isProjectileOnAir = true;
                 aiming = false;
@@ -111,8 +144,11 @@ void  Player::ShotgunEquipped() {
 
 
 void  Player::TeleportEquipped() {
+    PlayerHud.changeImg(3);
+
     DrawRectangle(GetMouseX()-15, GetMouseY()-15, 30, 30, BLACK);
     if (IsKeyReleased(KEY_SPACE)) {
+        PlayerSounds.playsfx(4); //plays teleport sfx
         position.x = GetMouseX() - 15;
         position.y = GetMouseY() - 15;
         playerAim.position.x = GetMouseX() - 15;
@@ -137,6 +173,8 @@ void Player::Move(Vector2 ammount, bool add) {
 }
 
 void Player::MoveX(int ammount, bool add) {
+    ammount *= GetFrameTime();
+
     if (add) {
         position.x += ammount;
         playerAim.position.x += ammount;
@@ -156,6 +194,8 @@ void Player::MoveX(int ammount, bool add) {
 }
 
 void Player::MoveY(int ammount, bool add) {
+    ammount *= GetFrameTime();
+
     if (add) {
         position.y += ammount;
         playerAim.position.y += ammount;
@@ -192,6 +232,17 @@ void Player::Draw() {
     //Rectangle r = GetFloorCollider();
     //DrawRectangle(r.x, r.y, r.width, r.height, YELLOW);
     //DrawRectangle(position.x, position.y, size.x, size.y, BLUE);
+
+    //Weapon HUD trigger
+    if (HUDactive == true) {
+        PlayerHud.DrawSprite();
+        PlayerHud.HUDmove();
+    }
+
+    if (HUDactive == false) {
+        PlayerHud.DrawSprite();
+        PlayerHud.HUDretract();
+    }
 }
 
 Rectangle Player::GetFloorCollider() {

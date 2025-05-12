@@ -3,6 +3,7 @@
 int Game::screenWidth;
 int Game::screenHeight;
 int Game::bottomY;
+int Game::tileSize = 7;
 
 std::vector<std::unique_ptr<GameObject>> Game::gameObjects;
 std::map<int, int> Game::playerIndexes;

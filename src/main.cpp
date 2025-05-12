@@ -15,22 +15,19 @@ double startTime = 0;
 double playTime = 0;
 bool playEnded = false;
 bool playStarted = false;
+bool playPaused = false;
 float timePlayed;
 Music music;
 vector<string> maps;
 MapReader* mapReader;
 int currentMap = 0;
 
-//Vector2 playerSize = { 30,30 };
-//Vector2 playerPosition = { screenWidth / 2, screenHeight / 2 };
-//Vector2 centerPosition = { playerPosition.x + (playerSize.x / 2) - (playerAim.crosshairSize.x / 2) ,playerPosition.y + (playerSize.y / 2) - (playerAim.crosshairSize.x / 2) };
-
-
 void InitPhase();
 void UpdatingPhase();
 void PaintingPhase();
 void PaintEndScreen();
 void PaintStartScreen();
+void PaintPauseScreen();
 void LoadMaps();
 void PrevMap();
 void NextMap();
@@ -46,7 +43,7 @@ int main()
     SetTargetFPS(60);
 
     InitWindow(0, 0, "Worms");
-    if (!IsWindowFullscreen()) ToggleFullscreen(); // Para debuggear comentar
+    //if (!IsWindowFullscreen()) ToggleFullscreen(); // Para debuggear comentar
     InitAudioDevice();
 
     LoadMaps();
@@ -66,7 +63,16 @@ int main()
             continue;
         }
         
-        UpdatingPhase();
+        if (playPaused)
+        {
+            if (IsKeyReleased(KEY_P)) playPaused = false;
+            if (IsKeyReleased(KEY_TAB)) LoadGame();
+            if (IsKeyReleased(KEY_ESCAPE))  break;
+        }
+        else {
+            if (IsKeyReleased(KEY_P)) playPaused = true;
+            UpdatingPhase();
+        }
         
         //music
         UpdateMusicStream(music); 
@@ -111,6 +117,7 @@ void PaintingPhase() {
     for (const auto& gameObject : Game::gameObjects) {
         gameObject->Draw();
     }
+    if (playPaused) PaintPauseScreen();
     EndDrawing();
 }
 
@@ -119,14 +126,14 @@ void PaintStartScreen() {
 
     ClearBackground(SKYBLUE);
 
-    DrawCenteredText("WORMS", Game::screenWidth / 2, Game::screenHeight / 3, 60, RED);
+    DrawCenteredText("WORMS", Game::screenWidth / 2, Game::screenHeight / 3, 100, RED);
 
-    DrawCenteredText("Press [<-] and [->] to change map", Game::screenWidth / 2, Game::screenHeight / 2 + 50, 25, BLACK);
-    DrawCenteredText("Press [ENTER] to start", Game::screenWidth / 2, Game::screenHeight / 2 + 100, 25, BLACK);
+    DrawCenteredText("Press [<-] and [->] to change map", Game::screenWidth / 2, Game::screenHeight / 2 + 50, 25, WHITE);
+    DrawCenteredText("Press [ENTER] to start", Game::screenWidth / 2, Game::screenHeight / 2 + 100, 25, WHITE);
 
-    DrawText("Press [ESC] to exit", 30, Game::screenHeight - 50, 25, BLACK);
+    DrawText("Press [ESC] to exit", 30, Game::screenHeight - 50, 25, WHITE);
 
-    DrawCenteredText("By Trufa Productions", Game::screenWidth - 180, Game::screenHeight - 40, 25, BLACK);
+    DrawCenteredText("By Trufa Productions", Game::screenWidth - 180, Game::screenHeight - 40, 25, WHITE);
 
     EndDrawing();
 }
@@ -150,13 +157,20 @@ void PaintEndScreen() {
     DrawCenteredText("Winner", Game::screenWidth / 2, Game::screenHeight / 2 - 45, 60, GREEN);
 
     DrawCenteredText(TextFormat("Player %02i", winner->playerNum), Game::screenWidth / 2, Game::screenHeight / 2, 40, GREEN);
-    DrawCenteredText(timeText, Game::screenWidth / 2, Game::screenHeight / 2 + 60, 25, BLACK);
-    DrawCenteredText(TextFormat("Turns: %01i", turns), Game::screenWidth / 2, Game::screenHeight / 2 + 80, 25, BLACK);
+    DrawCenteredText(timeText, Game::screenWidth / 2, Game::screenHeight / 2 + 60, 25, WHITE);
+    DrawCenteredText(TextFormat("Turns: %01i", turns), Game::screenWidth / 2, Game::screenHeight / 2 + 80, 25, WHITE);
     
-    DrawText("Press [ESC] to exit", 30, Game::screenHeight - 50, 25, BLACK);
-    DrawCenteredText("Press [ENTER] to restart", Game::screenWidth - 200, Game::screenHeight - 40, 25, BLACK);
+    DrawText("Press [ESC] to exit", 30, Game::screenHeight - 50, 25, WHITE);
+    DrawCenteredText("Press [ENTER] to restart", Game::screenWidth - 200, Game::screenHeight - 40, 25, WHITE);
 
     EndDrawing();
+}
+
+void PaintPauseScreen() {
+    DrawCenteredText("PAUSED", Game::screenWidth / 2, Game::screenHeight / 2 - 200, 60, WHITE);
+    DrawCenteredText("Press [P] to resume", Game::screenWidth / 2, Game::screenHeight / 2, 25, WHITE);
+    DrawCenteredText("Press [TAB] to return to menu", Game::screenWidth / 2, Game::screenHeight / 2 + 40, 25, WHITE);
+    DrawCenteredText("Press [ESC] to exit game", Game::screenWidth / 2, Game::screenHeight / 2 + 80, 25, WHITE);
 }
 
 void LoadMaps() {
@@ -167,7 +181,7 @@ void LoadMaps() {
     for (int i = 0; i < files.count; ++i) {
         const char* filePath = files.paths[i];
         std::string fileStr(filePath);
-        if (fileStr.substr(fileStr.size() - 4) == ".txt") maps.push_back(filePath);
+        if (fileStr.substr(fileStr.size() - 4) == ".png") maps.push_back(filePath);
     }
 
     UnloadDirectoryFiles(files);
@@ -195,6 +209,7 @@ void LoadGame() {
     Game::gameObjects = std::vector<std::unique_ptr<GameObject>>();
     Game::playerIndexes.clear();
 
+    playPaused = false;
     playStarted = false;
     playEnded = false;
     Game::ended = false;

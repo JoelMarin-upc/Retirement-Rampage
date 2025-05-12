@@ -1,70 +1,74 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\",
+  "WorkspaceRootPath": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\TurnManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\TurnManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\WeaponsHUD.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\WeaponsHUD.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\WeaponsHUD.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\WeaponsHUD.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Shotgun.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\Shotgun.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Bullet.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\Bullet.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Exlposion.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\Exlposion.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Shotgun.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\Shotgun.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\SoundEffects.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\SoundEffects.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Bullet.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\Bullet.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\MapReader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\MapReader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Explosion.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\Explosion.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\GameObject.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\GameObject.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\GameObject.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\MapTile.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\MapTile.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\SoundEffects.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\SoundEffects.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Aim.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Shotgun.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\Shotgun.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Shotgun.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\Shotgun.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Exlposion.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\Exlposion.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Aim.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\Aim.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Bullet.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\Bullet.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Bullet.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\Bullet.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\MapReader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\MapReader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Explosion.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\Explosion.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\MapTile.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\MapTile.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{97D2679B-838A-A9E8-EC91-8244D86844D9}|build\\build_files\\Projecte-I.vcxproj|solutionrelative:src\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -74,52 +78,79 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TurnManager.cpp",
-              "DocumentMoniker": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\TurnManager.cpp",
-              "RelativeDocumentMoniker": "src\\TurnManager.cpp",
-              "ToolTip": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\TurnManager.cpp",
-              "RelativeToolTip": "src\\TurnManager.cpp",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAABsAAAAjAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "WeaponsHUD.cpp",
+              "DocumentMoniker": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\WeaponsHUD.cpp",
+              "RelativeDocumentMoniker": "src\\WeaponsHUD.cpp",
+              "ToolTip": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\WeaponsHUD.cpp",
+              "RelativeToolTip": "src\\WeaponsHUD.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-10T12:58:51.27Z",
+              "WhenOpened": "2025-04-24T12:30:20.252Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
+              "Title": "WeaponsHUD.h",
+              "DocumentMoniker": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\WeaponsHUD.h",
+              "RelativeDocumentMoniker": "src\\WeaponsHUD.h",
+              "ToolTip": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\WeaponsHUD.h*",
+              "RelativeToolTip": "src\\WeaponsHUD.h*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-04-24T12:19:48.94Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Player.h",
+              "DocumentMoniker": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Player.h",
+              "RelativeDocumentMoniker": "src\\Player.h",
+              "ToolTip": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Player.h",
+              "RelativeToolTip": "src\\Player.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADMAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-04-24T12:18:47.609Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "Bullet.cpp",
-              "DocumentMoniker": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Bullet.cpp",
+              "DocumentMoniker": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Bullet.cpp",
               "RelativeDocumentMoniker": "src\\Bullet.cpp",
-              "ToolTip": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Bullet.cpp*",
-              "RelativeToolTip": "..\\..\\..\\..\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Bullet.cpp*",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAjwBwAAAAWAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Bullet.cpp",
+              "RelativeToolTip": "src\\Bullet.cpp",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAjwBwAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-03-27T12:38:40.01Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
               "Title": "SoundEffects.h",
-              "DocumentMoniker": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\SoundEffects.h",
+              "DocumentMoniker": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\SoundEffects.h",
               "RelativeDocumentMoniker": "src\\SoundEffects.h",
-              "ToolTip": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\SoundEffects.h",
+              "ToolTip": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\SoundEffects.h",
               "RelativeToolTip": "src\\SoundEffects.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-27T12:33:52.079Z"
+              "WhenOpened": "2025-03-27T12:33:52.079Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "Bullet.h",
-              "DocumentMoniker": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Bullet.h",
+              "DocumentMoniker": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Bullet.h",
               "RelativeDocumentMoniker": "src\\Bullet.h",
-              "ToolTip": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Bullet.h",
+              "ToolTip": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Bullet.h",
               "RelativeToolTip": "src\\Bullet.h",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAACEAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -127,11 +158,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "Game.h",
-              "DocumentMoniker": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Game.h",
+              "DocumentMoniker": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Game.h",
               "RelativeDocumentMoniker": "src\\Game.h",
-              "ToolTip": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Game.h",
+              "ToolTip": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Game.h",
               "RelativeToolTip": "src\\Game.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -139,11 +170,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "Shotgun.cpp",
-              "DocumentMoniker": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Shotgun.cpp",
+              "DocumentMoniker": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Shotgun.cpp",
               "RelativeDocumentMoniker": "src\\Shotgun.cpp",
-              "ToolTip": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Shotgun.cpp",
+              "ToolTip": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Shotgun.cpp",
               "RelativeToolTip": "src\\Shotgun.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -154,47 +185,47 @@
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "Shotgun.h",
-              "DocumentMoniker": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Shotgun.h",
+              "DocumentMoniker": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Shotgun.h",
               "RelativeDocumentMoniker": "src\\Shotgun.h",
-              "ToolTip": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Shotgun.h",
+              "ToolTip": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Shotgun.h",
               "RelativeToolTip": "src\\Shotgun.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB8AAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-20T12:57:52.389Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "main.cpp",
-              "DocumentMoniker": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\main.cpp",
-              "RelativeDocumentMoniker": "src\\main.cpp",
-              "ToolTip": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\main.cpp",
-              "RelativeToolTip": "src\\main.cpp",
-              "ViewState": "AgIAABkAAAAAAAAAAAAAACwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-20T13:03:03.518Z",
+              "WhenOpened": "2025-03-20T12:57:52.389Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 11,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\main.cpp",
+              "RelativeDocumentMoniker": "src\\main.cpp",
+              "ToolTip": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\main.cpp",
+              "RelativeToolTip": "src\\main.cpp",
+              "ViewState": "AgIAABkAAAAAAAAAAAAAACwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-20T13:03:03.518Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Player.cpp",
-              "DocumentMoniker": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Player.cpp",
+              "DocumentMoniker": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Player.cpp",
               "RelativeDocumentMoniker": "src\\Player.cpp",
-              "ToolTip": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Player.cpp",
+              "ToolTip": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Player.cpp",
               "RelativeToolTip": "src\\Player.cpp",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAGsAAAA0AAAAAAAAAA==",
+              "ViewState": "AgIAAKIAAAAAAAAAAAAAALQAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-03-24T10:57:39.044Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "Exlposion.cpp",
-              "DocumentMoniker": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Exlposion.cpp",
+              "DocumentMoniker": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Exlposion.cpp",
               "RelativeDocumentMoniker": "src\\Exlposion.cpp",
-              "ToolTip": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Exlposion.cpp",
+              "ToolTip": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Exlposion.cpp",
               "RelativeToolTip": "src\\Exlposion.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -202,23 +233,36 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 4,
               "Title": "GameObject.h",
-              "DocumentMoniker": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\GameObject.h",
+              "DocumentMoniker": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\GameObject.h",
               "RelativeDocumentMoniker": "src\\GameObject.h",
-              "ToolTip": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\GameObject.h",
+              "ToolTip": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\GameObject.h",
               "RelativeToolTip": "src\\GameObject.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-20T13:00:54.601Z"
+              "WhenOpened": "2025-03-20T13:00:54.601Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
+              "Title": "Aim.h",
+              "DocumentMoniker": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Aim.h",
+              "RelativeDocumentMoniker": "src\\Aim.h",
+              "ToolTip": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Aim.h",
+              "RelativeToolTip": "src\\Aim.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-20T13:01:11.646Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "MapReader.h",
-              "DocumentMoniker": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\MapReader.h",
+              "DocumentMoniker": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\MapReader.h",
               "RelativeDocumentMoniker": "src\\MapReader.h",
-              "ToolTip": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\MapReader.h",
+              "ToolTip": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\MapReader.h",
               "RelativeToolTip": "src\\MapReader.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -226,11 +270,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "MapTile.h",
-              "DocumentMoniker": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\MapTile.h",
+              "DocumentMoniker": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\MapTile.h",
               "RelativeDocumentMoniker": "src\\MapTile.h",
-              "ToolTip": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\MapTile.h",
+              "ToolTip": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\MapTile.h",
               "RelativeToolTip": "src\\MapTile.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -238,39 +282,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Player.h",
-              "DocumentMoniker": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Player.h",
-              "RelativeDocumentMoniker": "src\\Player.h",
-              "ToolTip": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Player.h",
-              "RelativeToolTip": "src\\Player.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-20T13:00:32.038Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "Explosion.h",
-              "DocumentMoniker": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Explosion.h",
+              "DocumentMoniker": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Explosion.h",
               "RelativeDocumentMoniker": "src\\Explosion.h",
-              "ToolTip": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Explosion.h",
+              "ToolTip": "C:\\Users\\luyingbc\\Documents\\GitHub\\Projecte-I\\src\\Explosion.h",
               "RelativeToolTip": "src\\Explosion.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-03-20T13:01:04.774Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Aim.h",
-              "DocumentMoniker": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Aim.h",
-              "RelativeDocumentMoniker": "src\\Aim.h",
-              "ToolTip": "C:\\Users\\oscarjb\\Documents\\GitHub\\Projecte-I\\src\\Aim.h",
-              "RelativeToolTip": "src\\Aim.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-20T13:01:11.646Z"
             }
           ]
         }

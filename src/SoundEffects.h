@@ -8,20 +8,35 @@
 using namespace std;
 
 class SoundEffects {
+private:
+	Sound Explosion;
+	Sound Shotgun;
+	Sound Bazooka;
+	Sound Teleport;
+
 public:
 
+	//loads sfx
+	SoundEffects() {
+		Explosion = LoadSound("Explosion.wav");
+		Shotgun = LoadSound("Shotgun.wav");
+		Bazooka = LoadSound("Bazooka.wav");
+		Teleport = LoadSound("Teleport.wav");
+	}
+
+	//plays sfx
 	void playsfx(int name) {
 		if (name == 1) {
-			Sound Explosion = LoadSound("Explosion.wav");
 			PlaySound(Explosion);
 		}
 		else if (name == 2) {
-			Sound Shotgun = LoadSound("Shotgun.wav");
 			PlaySound(Shotgun);
 		}
 		else if (name == 3) {
-			Sound Bazooka = LoadSound("Bazooka.wav");
 			PlaySound(Bazooka);
+		}
+		else if (name == 4){
+			PlaySound(Teleport);
 		}
 	}
 

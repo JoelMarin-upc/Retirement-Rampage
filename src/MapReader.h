@@ -14,6 +14,12 @@ private:
     std::vector<MapTile> optimizedTiles;
     std::vector<MapTile> playerPositions;
     bool mapLoaded = false;
+    const char DIRT = 'D';
+    const char GRASS = 'G';
+    const char PLAYER = '1';
+    const char EMPTY = '0';
+    const Color DIRT_COLOR = { 140, 70, 0, 255 };
+    const Color GRASS_COLOR = { 0, 140, 0, 255 };
 
 public:
     bool shouldDraw = true;
@@ -22,9 +28,13 @@ public:
 
     void Init() override;
 
+    std::vector<std::vector<char>> ReadImage(const char* img);
+
     void LoadMap(bool optimize);
 
     void OptimizeTiles();
+
+    void AddGrass();
 
     void ChangeMap(std::string path, bool optimize);
 

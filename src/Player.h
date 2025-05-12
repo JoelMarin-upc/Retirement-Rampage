@@ -11,6 +11,8 @@
 #include <iostream>
 #include <cmath>
 #include "AnimationController.h"
+#include "WeaponsHUD.h"
+#include "SoundEffects.h"
 
 class Player : public GameObject {
 public:
@@ -20,6 +22,8 @@ public:
 	Bullet playerLauncher;
 	Shotgun playerShotgunEmpty;
 	Shotgun playerShotgun;
+	WeaponsHUD PlayerHud;
+	SoundEffects PlayerSounds;
 	float speed = 0;
 	int playerNum;
 	bool aiming = false;
@@ -27,6 +31,7 @@ public:
 	bool dead = false;
 	bool isActive = false;
 	bool teleportActive = true;
+	bool HUDactive = false;
 
 
 	int healthPoints = 100;
