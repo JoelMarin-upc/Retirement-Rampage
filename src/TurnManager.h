@@ -17,9 +17,9 @@ private:
 public:
 	int turns = 1;
 	int currentPlayer = 0;
-	std::map<int,std::vector<Player*>> playerList;
-	TurnManager(int playerNum) : GameObject(), playerNum(playerNum) { playerList = std::map<int, std::vector<Player*>>(playerNum); }
-	void AddPlayer(Player* player, int playerNum);
+	std::vector<Player*> playerList;
+	TurnManager(int playerNum) : GameObject(), playerNum(playerNum) { playerList = std::vector<Player*>(playerNum); }
+	void AddPlayer(Player* player);
 	void Start();
 	void End();
 	void CheckTurn();
