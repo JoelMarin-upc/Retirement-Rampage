@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "TurnManager.h"
 #include "Game.h"
+#include "Theme.h"
 
 #include <memory>
 #include <vector>
@@ -19,8 +20,10 @@ bool playPaused = false;
 float timePlayed;
 Music music;
 vector<string> maps;
+vector<Theme> themes;
 MapReader* mapReader;
 int currentMap = 0;
+int currentTheme = 0;
 
 void InitPhase();
 void UpdatingPhase();
@@ -29,8 +32,11 @@ void PaintEndScreen();
 void PaintStartScreen();
 void PaintPauseScreen();
 void LoadMaps();
+void LoadThemes();
 void PrevMap();
 void NextMap();
+void PrevTheme();
+void NextTheme();
 void LoadGame();
 void DrawCenteredText(const char* text, int x, int y, int fontSize, Color color);
 void UpdatePlayerPositions();
@@ -43,10 +49,14 @@ int main()
     SetTargetFPS(60);
 
     InitWindow(0, 0, "Worms");
-    //if (!IsWindowFullscreen()) ToggleFullscreen(); // Para debuggear comentar
+    if (!IsWindowFullscreen()) ToggleFullscreen(); // Para debuggear comentar
+    Game::screenWidth = GetScreenWidth();
+    Game::screenHeight = GetScreenHeight();
+
     InitAudioDevice();
 
     LoadMaps();
+    LoadThemes();
     LoadGame();
 
     InitPhase();
@@ -56,6 +66,8 @@ int main()
             PaintStartScreen();
             if (IsKeyReleased(KEY_RIGHT)) NextMap();
             if (IsKeyReleased(KEY_LEFT)) PrevMap();
+            if (IsKeyReleased(KEY_UP)) PrevTheme();
+            if (IsKeyReleased(KEY_DOWN)) NextTheme();
             Game::GetMap()->Draw();
             if (IsKeyReleased(KEY_ENTER)) playStarted = true;
             if (IsKeyReleased(KEY_ESCAPE)) break;
@@ -113,7 +125,7 @@ void UpdatingPhase() {
 
 void PaintingPhase() {
     BeginDrawing();
-    ClearBackground(SKYBLUE);
+    ClearBackground(BLACK);
     for (const auto& gameObject : Game::gameObjects) {
         gameObject->Draw();
     }
@@ -128,8 +140,9 @@ void PaintStartScreen() {
 
     DrawCenteredText("WORMS", Game::screenWidth / 2, Game::screenHeight / 3, 100, RED);
 
-    DrawCenteredText("Press [<-] and [->] to change map", Game::screenWidth / 2, Game::screenHeight / 2 + 50, 25, WHITE);
-    DrawCenteredText("Press [ENTER] to start", Game::screenWidth / 2, Game::screenHeight / 2 + 100, 25, WHITE);
+    DrawCenteredText("Press [LEFT] and [RIGHT] to change map", Game::screenWidth / 2, Game::screenHeight / 2 + 40, 25, WHITE);
+    DrawCenteredText("Press [UP] and [DOWN] to change theme", Game::screenWidth / 2, Game::screenHeight / 2 + 75, 25, WHITE);
+    DrawCenteredText("Press [ENTER] to start", Game::screenWidth / 2, Game::screenHeight / 2 + 110, 25, WHITE);
 
     DrawText("Press [ESC] to exit", 30, Game::screenHeight - 50, 25, WHITE);
 
@@ -187,6 +200,20 @@ void LoadMaps() {
     UnloadDirectoryFiles(files);
 }
 
+void LoadThemes() {
+    themes = vector<Theme>();
+    const char* path = "Themes";
+    FilePathList subdirs = LoadDirectoryFiles(path);
+
+    for (int i = 0; i < subdirs.count; ++i) {
+        const char* filePath = subdirs.paths[i];
+        std::string fileStr(filePath);
+        themes.push_back(Theme(fileStr));
+    }
+
+    UnloadDirectoryFiles(subdirs);
+}
+
 void PrevMap() {
     currentMap--;
     if (currentMap < 0) currentMap = maps.size() - 1;
@@ -201,10 +228,19 @@ void NextMap() {
     UpdatePlayerPositions();
 }
 
-void LoadGame() {
-    Game::screenWidth = GetScreenWidth();
-    Game::screenHeight = GetScreenHeight();
+void PrevTheme() {
+    currentTheme--;
+    if (currentTheme < 0) currentTheme = themes.size() - 1;
+    Game::GetMap()->ChangeTheme(themes[currentTheme]);
+}
 
+void NextTheme() {
+    currentTheme++;
+    if (currentTheme >= themes.size()) currentTheme = 0;
+    Game::GetMap()->ChangeTheme(themes[currentTheme]);
+}
+
+void LoadGame() {
     for (int i = 0; i < Game::gameObjects.size(); i++) Game::gameObjects[i].reset();
     Game::gameObjects = std::vector<std::unique_ptr<GameObject>>();
     Game::playerIndexes.clear();
@@ -224,6 +260,7 @@ void LoadGame() {
     std::unique_ptr<GameObject> map = std::make_unique<MapReader>();
     MapReader* mapObj = dynamic_cast<MapReader*>(map.get());
     mapObj->ChangeMap(maps[currentMap], true);
+    mapObj->ChangeTheme(themes[currentTheme]);
     Game::gameObjects.push_back(std::move(map)); // Tiene que ser el 1r game object en la lista
 
     // PLAYERS

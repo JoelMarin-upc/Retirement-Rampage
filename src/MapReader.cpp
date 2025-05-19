@@ -35,7 +35,7 @@ void MapReader::LoadMap(bool optimize) {
             bool hasTerrain = true;
 
             char c = pixels[row][column];
-            if (c == DIRT) color = DIRT_COLOR;
+            if (c == DIRT) color = theme.dirtTile;
             else hasTerrain = false;
             
             //color = GetRandColor(); // TESTING
@@ -152,7 +152,7 @@ void MapReader::AddGrass() {
                 (row > 2 && !map[row - 3][col].hasTerrain)))
             {
                 map[row][col].tileChar = GRASS;
-                map[row][col].color = GRASS_COLOR;
+                map[row][col].color = theme.grassTile;
             }
         }
     }
@@ -161,6 +161,11 @@ void MapReader::AddGrass() {
 void MapReader::ChangeMap(std::string path, bool optimize) {
     filePath = path;
     LoadMap(optimize);
+}
+
+void MapReader::ChangeTheme(Theme theme) {
+    MapReader::theme = theme;
+    LoadMap(true);
 }
 
 void MapReader::Update() {
@@ -175,7 +180,7 @@ void MapReader::Draw() {
             map[x][y].Draw();
         }
     }*/
-
+    theme.DrawBackground();
     for (MapTile tile : optimizedTiles) tile.Draw();
 }
 
