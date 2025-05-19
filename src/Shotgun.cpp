@@ -7,22 +7,21 @@
 #include "SoundEffects.h"
 
 void Shotgun::Update() {
-    --distanceMiliseconds;
+    --distanceFrames;
     if (destroyed) {
         explosion.Update();
         return;
     }
-    else if (HasCollision() || distanceMiliseconds < 0) Explode();
+    else if (HasCollision() || distanceFrames < 0) Explode();
     // uses screen size
     else if (position.x > Game::screenWidth || position.x < 0 || position.y < 0 || position.y > Game::screenHeight) destroyed = true;
     else Shoot();
     animation.Update();
 }
 
-
 void Shotgun::Shoot() {
-    position.x += actualVelocity.x;
-    position.y += actualVelocity.y;
+    position.x += actualVelocity.x * GetFrameTime();
+    position.y += actualVelocity.y * GetFrameTime();
     animation.position = position;
 }
 
@@ -43,7 +42,7 @@ bool Shotgun::HasCollision() {
     //std::vector<MapTile> players = mapObj->GetPlayers();
     //map.insert(map.end(), players.begin(), players.end());
     TurnManager* turnObj = Game::GetTurnManager();
-    if (distanceMiliseconds <= playerOutMiliseconds) {
+    if (distanceFrames <= playerOutFrames) {
         for (int i = 0;i < turnObj->playerList.size();++i) {
             if (CheckCollisionCircleRec(position, bulletRadius, turnObj->playerList[i]->GetRectangle())) {
                 collision = true;
