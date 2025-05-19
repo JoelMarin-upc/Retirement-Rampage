@@ -46,7 +46,6 @@ public:
 		DrawTexture(Granade, middleOfScreen, SpriteY, WHITE);
 		DrawTexture(Shotgun, middleOfScreen+ RectSizeX, SpriteY, WHITE);
 		DrawTexture(Teleporter, middleOfScreen + RectSizeX *2, SpriteY, WHITE);
-
 	}
 
 	// moves the HUD downwards until it's fully visible on the screen
