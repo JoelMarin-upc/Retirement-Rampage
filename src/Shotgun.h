@@ -13,12 +13,12 @@ public:
     AnimationController animation;
     //Vector2 missileSize = { 10, 10 };
     Vector2 actualVelocity = { 0, 0 };
-    float velocityModule = 15;
+    float velocityModule = 1500;
     float bulletRadius = 3.0f;
     float explosionRadius = 10.0f;
     int explosionMiliseconds = 400;
-    int playerOutMiliseconds = 12;
-    int distanceMiliseconds = 15;
+    int playerOutFrames = 12;
+    int distanceFrames = 15;
     bool destroyed = false;
     bool isProjectileOnAir = false;
 

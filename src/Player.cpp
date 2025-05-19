@@ -2,7 +2,7 @@
 #include "MapReader.h"
 #include "Game.h"
 
-#define G 0.1
+#define G 9.81
 
 void Player::Update() {
     //if (IsKeyDown(KEY_ENTER)) {
@@ -173,6 +173,8 @@ void Player::Move(Vector2 ammount, bool add) {
 }
 
 void Player::MoveX(int ammount, bool add) {
+    ammount *= GetFrameTime();
+
     if (add) {
         position.x += ammount;
         playerAim.position.x += ammount;
@@ -192,6 +194,8 @@ void Player::MoveX(int ammount, bool add) {
 }
 
 void Player::MoveY(int ammount, bool add) {
+    ammount *= GetFrameTime();
+
     if (add) {
         position.y += ammount;
         playerAim.position.y += ammount;
