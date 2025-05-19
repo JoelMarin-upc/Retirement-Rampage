@@ -16,6 +16,7 @@ Space: Keep it pressed to charge your shot, release to shoot.
 P key: pause game and bring pause menu.
 ESC: exit game.
 
+right click: pulls down the weapon selection menu, left click the weapon you want to equip.
 number key 1: Change weapon to rocket, shoots in a parabola.
 number key 2: Change weapon to gun, shoots in a straight line.
 number key 3: Change weapon to teleport, select a location with the mouse and teleport to it with the space bar.
