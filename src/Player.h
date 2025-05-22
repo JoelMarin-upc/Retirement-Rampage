@@ -5,11 +5,13 @@
 #include "raylib.h"  
 #include "Aim.h"
 #include "Bullet.h"
+#include "UnderBullet.h"
 #include "Shotgun.h"
 #include <string> 
 #include <map>
 #include <iostream>
 #include <cmath>
+#include <random>
 #include "AnimationController.h"
 #include "WeaponsHUD.h"
 #include "SoundEffects.h"
@@ -22,9 +24,12 @@ public:
 	Bullet playerLauncher;
 	Shotgun playerShotgunEmpty;
 	Shotgun playerShotgun;
+	UnderBullet playerUnderBulletEmpty;
+	UnderBullet playerUnderBullet;
 	WeaponsHUD PlayerHud;
 	SoundEffects PlayerSounds;
 	float speed = 0;
+	int wind;
 	int playerNum;
 	bool aiming = false;
 	bool charging = false;
@@ -32,7 +37,8 @@ public:
 	bool isActive = false;
 	bool teleportActive = true;
 	bool HUDactive = false;
-
+	bool teleporting = false;
+	bool generateWind = true;
 
 	int healthPoints = 100;
 	std::string healthString = "100";
@@ -49,6 +55,7 @@ public:
 		playerAim = Aim(centerPosition);
 		playerLauncherEmpty = Bullet(centerPosition);
 		playerShotgunEmpty = Shotgun(centerPosition);
+		playerUnderBulletEmpty = UnderBullet({centerPosition});
 	}
 
 	void Update() override;
@@ -57,6 +64,8 @@ public:
 	void MoveX(int ammount, bool add);
 	void MoveY(int ammount, bool add);
 	void Fall();
+	void ResetWeapons();
+	void underBulletEquipped();
 	void BulletEquipped();
 	void ShotgunEquipped();
 	void TeleportEquipped();

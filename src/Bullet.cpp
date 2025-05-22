@@ -31,6 +31,7 @@ bool Bullet::Charging() {
 
 void Bullet::Shoot() {
     actualVelocity.y += gravity;
+    actualVelocity.x += wind;
     position.x += actualVelocity.x * GetFrameTime();
     position.y += actualVelocity.y * GetFrameTime();
     animation.position = position;

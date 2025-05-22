@@ -44,6 +44,8 @@ void TurnManager::CheckTurn() {
             playerList[currentPlayer]->playerAim.isTurn = true;
             playerList[currentPlayer]->isActive = true;
             playerList[currentPlayer]->teleportActive = true;
+            playerList[currentPlayer]->teleporting = false;
+            playerList[currentPlayer]->generateWind = true;
             currentTurnSeconds = secondsPerTurn;
             currentBetweenTurnsSeconds = secondsBetweenTurns;
         }
@@ -66,10 +68,10 @@ void TurnManager::Draw() {
     if (ended) return;
     std::string s = std::to_string(currentPlayer + 1);
     const char* cstr = s.c_str();
-    DrawText("player", 300, 20, 20, BLACK);
-    DrawText(cstr, 370, 20, 20, BLACK);
-    DrawText(TextFormat("Turn: %01i", turns), 20, 20, 20, BLACK);
-    DrawText(TextFormat("Time left: %.1f seconds", currentTurnSeconds), 20, 40, 20, BLACK);
+    DrawText("player", 300, 20, 20, WHITE);
+    DrawText(cstr, 370, 20, 20, WHITE);
+    DrawText(TextFormat("Turn: %01i", turns), 20, 20, 20, WHITE);
+    DrawText(TextFormat("Time left: %.1f seconds", currentTurnSeconds), 20, 40, 20, WHITE);
 }
 
 void TurnManager::CheckPlayerHit(Explosion exp) {
