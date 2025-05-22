@@ -11,6 +11,18 @@ void Player::Update() {
    // }
 
     if (isTurn){
+        if (generateWind) {
+            wind = (rand() % (20 - 0 + 1) + 0) - 10;
+            generateWind = false;
+        }
+        cout << wind;
+        if (IsKeyDown(KEY_ZERO)) {
+            currentWeapon = "underBullet";
+            aiming = true;
+            charging = false;
+            playerAim.isTurn = true;
+
+        }
         if (IsKeyDown(KEY_ONE)) {
             currentWeapon = "bullet";
             aiming = true;
@@ -63,7 +75,8 @@ void Player::Update() {
         HUDactive = false;
     }
 
-    if (currentWeapon == "bullet") BulletEquipped();
+    if (currentWeapon == "underBullet") underBulletEquipped();
+    else if (currentWeapon == "bullet") BulletEquipped();
     else if (currentWeapon == "shotgun") ShotgunEquipped();
     else if (currentWeapon == "teleport") TeleportEquipped();
     else if (currentWeapon == "none") {
@@ -85,7 +98,6 @@ void Player::Update() {
     //std::cout << playerLauncher.isProjectileOnAir;;
 }
 
-
 void  Player::BulletEquipped() {
     PlayerHud.changeImg(1);
 
@@ -99,6 +111,7 @@ void  Player::BulletEquipped() {
             if (!playerLauncher.Charging()) charging = false;
         }
         if (IsKeyReleased(KEY_SPACE) || (IsKeyDown(KEY_SPACE) && !charging)) {
+            playerLauncher.wind = wind;
             playerLauncher.isProjectileOnAir = true;
             PlayerSounds.playsfx(1);
             aiming = false;
@@ -112,6 +125,36 @@ void  Player::BulletEquipped() {
     }
     if (!aiming) playerLauncher.Update();
     if (!isTurn && playerLauncher.destroyed) isActive = false;
+}
+
+
+void  Player::underBulletEquipped() {
+    PlayerHud.changeImg(1);
+
+    if (isTurn) {
+        if (IsKeyDown(KEY_SPACE)) {
+            if (!charging) {
+                aiming = true;
+                charging = true;
+                playerUnderBullet = playerUnderBulletEmpty;
+            }
+            if (!playerUnderBullet.Charging()) charging = false;
+        }
+        if (IsKeyReleased(KEY_SPACE) || (IsKeyDown(KEY_SPACE) && !charging)) {
+            playerUnderBullet.wind = wind;
+            playerUnderBullet.isProjectileOnAir = true;
+            PlayerSounds.playsfx(1);
+            aiming = false;
+            charging = false;
+            isTurn = false;
+            playerAim.isTurn = false;
+            if (playerAim.facingRight)playerUnderBullet.InitialVelocity(playerAim.vectorDirector);
+            else playerUnderBullet.InitialVelocity({ -playerAim.vectorDirector.x, playerAim.vectorDirector.y });
+        }
+        if (!charging) playerAim.Update();
+    }
+    if (!aiming) playerUnderBullet.Update();
+    if (!isTurn && playerUnderBullet.destroyed) isActive = false;
 }
 
 
@@ -160,9 +203,8 @@ void  Player::TeleportEquipped() {
         charging = false;
         playerAim.isTurn = true;
 
+        playerUnderBulletEmpty.position.x = position.x + size.x / 2;
         playerLauncherEmpty.position.x = position.x+size.x/2;
-        playerLauncherEmpty.position.y = position.y + size.y / 2;
-        playerShotgunEmpty.position.x = position.x + size.x / 2;
         playerShotgunEmpty.position.y = position.y + size.y / 2;
     }
 }
@@ -178,6 +220,8 @@ void Player::MoveX(int ammount, bool add) {
     if (add) {
         position.x += ammount;
         playerAim.position.x += ammount;
+        playerUnderBullet.position.x += ammount;
+        playerUnderBulletEmpty.position.x += ammount;
         playerLauncher.position.x += ammount;
         playerLauncherEmpty.position.x += ammount;
         playerShotgun.position.x += ammount;
@@ -186,6 +230,8 @@ void Player::MoveX(int ammount, bool add) {
     else {
         position.x = ammount;
         playerAim.position.x = ammount;
+        playerUnderBullet.position.x = ammount;
+        playerUnderBulletEmpty.position.x = ammount;
         playerLauncher.position.x = ammount;
         playerLauncherEmpty.position.x = ammount;
         playerShotgun.position.x = ammount;
@@ -199,6 +245,8 @@ void Player::MoveY(int ammount, bool add) {
     if (add) {
         position.y += ammount;
         playerAim.position.y += ammount;
+        playerUnderBullet.position.y += ammount;
+        playerUnderBulletEmpty.position.y += ammount;
         playerLauncher.position.y += ammount;
         playerLauncherEmpty.position.y += ammount;
         playerShotgun.position.y += ammount;
@@ -207,6 +255,8 @@ void Player::MoveY(int ammount, bool add) {
     else {
         position.y = ammount;
         playerAim.position.y = ammount;
+        playerUnderBullet.position.y = ammount;
+        playerUnderBulletEmpty.position.y = ammount;
         playerLauncher.position.y = ammount;
         playerLauncherEmpty.position.y = ammount;
         playerShotgun.position.y = ammount;
@@ -224,6 +274,10 @@ void Player::Draw() {
     const char* cstr = healthString.c_str();
     DrawText(cstr, position.x, position.y - 30, 20, WHITE);
     if (isTurn) {
+        DrawRectangle(1500 - 10, (float)(Game::screenHeight)-100, 20, 20, BLACK);
+        if (wind > 0) DrawRectangle(1500, (float)(Game::screenHeight)-100, wind * 20, 20, BLUE);     
+        else DrawRectangle(1500 + (wind * 20), (float)(Game::screenHeight)-100, -wind * 20, 20, BLUE);
+
         const char* cstr2 = currentWeapon.c_str();
         DrawText(cstr2, 45, (float)(Game::screenHeight)-100, 20, WHITE);
         DrawTriangle({ position.x,position.y - size.y*2}, {position.x + (size.x / 2),position.y - size.y}, {position.x + size.x,position.y - size.y * 2 }, YELLOW);
@@ -281,7 +335,7 @@ void Player::Fall() {
 
 void Player::GetDamaged(Vector2 pos) {
     int damage = 100-(abs(pos.x - (position.x+size.x/2)) + abs(pos.y - (position.y+size.y / 2)));
-    std::cout<<(abs(pos.x - (position.x + size.x / 2)) + abs(pos.y - (position.y + size.y /2)));
+    //std::cout<<(abs(pos.x - (position.x + size.x / 2)) + abs(pos.y - (position.y + size.y /2)));
     damage *= 0.5;
     healthPoints = healthPoints - damage;
     if (healthPoints<=0) dead = true;

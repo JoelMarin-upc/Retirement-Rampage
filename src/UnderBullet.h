@@ -1,5 +1,5 @@
-#ifndef BULLET_H
-#define BULLET_H
+#ifndef UNDERBULLET_H
+#define UNDERBULLET_H
 
 #include "GameObject.h"
 #include "Explosion.h"
@@ -8,7 +8,7 @@
 #include <vector>
 #include <iostream>
 
-class Bullet : public GameObject {
+class UnderBullet : public GameObject {
 public:
     AnimationController animation;
     Vector2 missileSize = { 10, 10 };
@@ -32,8 +32,8 @@ public:
     Vector2 barSize = { 4,20 };
     Vector2 barPosition = { 400,400 };
 
-    Bullet() : GameObject() {}
-    Bullet(Vector2 center) : GameObject(center, Vector2()) {
+    UnderBullet() : GameObject() {}
+    UnderBullet(Vector2 center) : GameObject(center, Vector2()) {
         animation = AnimationController(position, size, "grenade.png", true, false, 32, 40);
     }
 

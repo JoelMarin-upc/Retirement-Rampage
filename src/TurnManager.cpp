@@ -44,6 +44,7 @@ void TurnManager::CheckTurn() {
             playerList[currentPlayer]->playerAim.isTurn = true;
             playerList[currentPlayer]->isActive = true;
             playerList[currentPlayer]->teleportActive = true;
+            playerList[currentPlayer]->generateWind = true;
             currentTurnSeconds = secondsPerTurn;
             currentBetweenTurnsSeconds = secondsBetweenTurns;
         }

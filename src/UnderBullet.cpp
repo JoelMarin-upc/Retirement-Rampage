@@ -1,24 +1,31 @@
 #include <raylib.h>
 #include <vector>
-#include "Bullet.h"
+#include "UnderBullet.h"
 #include "Explosion.h"
 #include "MapReader.h"
 #include "Game.h"
 #include "SoundEffects.h"
 
-void Bullet::Update() {
+void UnderBullet::Update() {
     if (destroyed) {
         explosion.Update();
         return;
     }
-    if (HasCollision()) Explode();
+
+    if (position.x > Game::screenWidth || position.x < 0 || position.y < 0 || position.y > Game::screenHeight) destroyed = true;
+
+    if (HasCollision()) {
+        Shoot();
+        animation.Update();
+    }
+    else {
+
+    }
     //uses screen size
-    else if (position.x > Game::screenWidth || position.x < 0 || position.y < 0|| position.y > Game::screenHeight) destroyed = true;
-    else Shoot();
-    animation.Update();
+    
 }
 
-bool Bullet::Charging() {
+bool UnderBullet::Charging() {
     velocityModule += velocityIncrease;
     barCounter = velocityModule / barVelocity;
     if (barCounter >= maxVelocity) {
@@ -29,17 +36,17 @@ bool Bullet::Charging() {
     return true;
 }
 
-void Bullet::Shoot() {
-    actualVelocity.y += gravity;
+void UnderBullet::Shoot() {
+    actualVelocity.y -= gravity;
     actualVelocity.x += wind;
     position.x += actualVelocity.x * GetFrameTime();
     position.y += actualVelocity.y * GetFrameTime();
     animation.position = position;
 }
 
-void Bullet::InitialVelocity(Vector2 direction) { actualVelocity = { direction.x * velocityModule, direction.y * velocityModule }; }
+void UnderBullet::InitialVelocity(Vector2 direction) { actualVelocity = { direction.x * velocityModule, direction.y * velocityModule }; }
 
-void Bullet::Draw() {
+void UnderBullet::Draw() {
     if (destroyed) explosion.Draw();
     else if (isProjectileOnAir == true)
     {
@@ -56,7 +63,7 @@ void Bullet::Draw() {
     }
 }
 
-bool Bullet::HasCollision() {
+bool UnderBullet::HasCollision() {
     bool collision = false;
     MapReader* mapObj = Game::GetMap();
     std::vector<MapTile> map = mapObj->GetOptimizedMap();
@@ -72,7 +79,7 @@ bool Bullet::HasCollision() {
     return collision;
 }
 
-void Bullet::Explode() {
+void UnderBullet::Explode() {
     explosion = Explosion(position, explosionRadius, explosionMiliseconds);
     destroyed = true;
     MapReader* mapObj = Game::GetMap();
