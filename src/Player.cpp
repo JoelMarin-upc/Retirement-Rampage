@@ -15,7 +15,7 @@ void Player::Update() {
             wind = (rand() % (20 - 0 + 1) + 0) - 10;
             generateWind = false;
         }
-        if (IsKeyDown(KEY_ZERO)) {
+        if (IsKeyDown(KEY_FOUR)) {
             currentWeapon = "underBullet";
             aiming = true;
             charging = false;
@@ -24,6 +24,7 @@ void Player::Update() {
         }
         if (IsKeyDown(KEY_ONE)) {
             currentWeapon = "bullet";
+            teleporting = false;
             aiming = true;
             charging = false;
             playerAim.isTurn = true;
@@ -31,12 +32,14 @@ void Player::Update() {
         }
         if (IsKeyDown(KEY_TWO)) {
             currentWeapon = "shotgun";
+            teleporting = false;
             aiming = true;
             charging = false;
             playerAim.isTurn = true;
         }
         if (IsKeyDown(KEY_THREE) && teleportActive) {
             currentWeapon = "teleport";
+            teleporting = true;
             aiming = false;
             charging = false;
             playerAim.isTurn = false;
@@ -63,6 +66,12 @@ void Player::Update() {
                     aiming = false;
                     charging = false;
                     playerAim.isTurn = false;
+                }
+                else if (PlayerHud.CheckBox() == 4) {
+                    currentWeapon = "underBullet";
+                    aiming = true;
+                    charging = false;
+                    playerAim.isTurn = true;
                 }
                 HUDactive = false;
             }
@@ -128,7 +137,7 @@ void  Player::BulletEquipped() {
 
 
 void  Player::underBulletEquipped() {
-    PlayerHud.changeImg(1);
+    PlayerHud.changeImg(4);
 
     if (isTurn) {
         if (IsKeyDown(KEY_SPACE)) {
@@ -187,7 +196,6 @@ void  Player::ShotgunEquipped() {
 void  Player::TeleportEquipped() {
     PlayerHud.changeImg(3);
 
-    DrawRectangle(GetMouseX()-15, GetMouseY()-15, 30, 30, BLACK);
     if (IsKeyReleased(KEY_SPACE)) {
         PlayerSounds.playsfx(4); //plays teleport sfx
         position.x = GetMouseX() - 15;
@@ -195,6 +203,7 @@ void  Player::TeleportEquipped() {
         playerAim.position.x = GetMouseX() - 15;
         playerAim.position.y = GetMouseY() - 15;
         teleportActive = false;
+        teleporting = false;
 
         currentWeapon = "bullet";
         aiming = true;
@@ -213,7 +222,7 @@ void Player::Move(Vector2 ammount, bool add) {
 }
 
 void Player::MoveX(int ammount, bool add) {
-    ammount *= GetFrameTime();
+    if (add) ammount *= GetFrameTime();
 
     if (add) {
         position.x += ammount;
@@ -238,7 +247,7 @@ void Player::MoveX(int ammount, bool add) {
 }
 
 void Player::MoveY(int ammount, bool add) {
-    ammount *= GetFrameTime();
+    if (add) ammount *= GetFrameTime();
 
     if (add) {
         position.y += ammount;
@@ -296,6 +305,8 @@ void Player::Draw() {
         PlayerHud.DrawSprite();
         PlayerHud.HUDretract();
     }
+
+    if (teleporting) DrawRectangle(GetMouseX() - 15, GetMouseY() - 15, 30, 30, ORANGE);
 }
 
 Rectangle Player::GetFloorCollider() {

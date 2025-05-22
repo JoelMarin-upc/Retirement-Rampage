@@ -9,12 +9,13 @@ class WeaponsHUD {
 private:
 	int RectSizeX = 100;
 	int RectSizeY = 100;
-	int NumOfWeapons = 3;
+	int NumOfWeapons = 4;
 	float middleOfScreen = GetScreenWidth() / 2.0f - static_cast <float> (RectSizeX)*NumOfWeapons / 2.0f;
 
 	Texture2D Granade;
 	Texture2D Shotgun;
 	Texture2D Teleporter;
+	Texture2D Drill;
 
 	Rectangle boxA = { middleOfScreen, static_cast <float> (-RectSizeY) , static_cast <float> (RectSizeX)*NumOfWeapons, static_cast <float> (RectSizeY) }; //creates rectangle
 
@@ -25,15 +26,18 @@ public:
 
 	// loads all the images
 	void ReloadImgs() {
+		Image DrillImg = LoadImage("Drill_Icon.png");
 		Image GranadeImg = LoadImage("Granade_Icon.png");
 		Image ShotgunImg = LoadImage("Shotgun_Icon.png");
 		Image TeleporterImg = LoadImage("Teleporter_Icon.png");
+		Drill = LoadTextureFromImage(DrillImg);
 		Granade = LoadTextureFromImage(GranadeImg);
 		Shotgun = LoadTextureFromImage(ShotgunImg);
 		Teleporter = LoadTextureFromImage(TeleporterImg);
 		UnloadImage(GranadeImg);
 		UnloadImage(ShotgunImg);
 		UnloadImage(TeleporterImg);
+		UnloadImage(DrillImg);
 	}
 
 	WeaponsHUD() {
@@ -46,6 +50,7 @@ public:
 		DrawTexture(Granade, middleOfScreen, SpriteY, WHITE);
 		DrawTexture(Shotgun, middleOfScreen+ RectSizeX, SpriteY, WHITE);
 		DrawTexture(Teleporter, middleOfScreen + RectSizeX *2, SpriteY, WHITE);
+		DrawTexture(Drill, middleOfScreen + RectSizeX * 3, SpriteY, WHITE);
 	}
 
 	// moves the HUD downwards until it's fully visible on the screen
@@ -76,6 +81,7 @@ public:
 	1 = bullet
 	2 = shotgun
 	3 = teleport
+	4 = Underbullet
 	*/
 	void changeImg(int i) {
 
@@ -96,6 +102,11 @@ public:
 			Teleporter = LoadTextureFromImage(TeleporterImg);
 			UnloadImage(TeleporterImg);
 		}
+		if (i == 4) {
+			Image DrillImg = LoadImage("Drill_Icon_SELECTED.png");
+			Drill = LoadTextureFromImage(DrillImg);
+			UnloadImage(DrillImg);
+		}
 
 	}
 
@@ -110,6 +121,9 @@ public:
 		}
 		if (GetMousePosition().x > middleOfScreen && GetMousePosition().x < middleOfScreen + RectSizeX * 3 && GetMousePosition().y > -middleOfScreen && GetMousePosition().y > -middleOfScreen + RectSizeY) {
 			return 3;
+		}
+		if (GetMousePosition().x > middleOfScreen && GetMousePosition().x < middleOfScreen + RectSizeX * 4 && GetMousePosition().y > -middleOfScreen && GetMousePosition().y > -middleOfScreen + RectSizeY) {
+			return 4;
 		}
 	}
 };

@@ -37,9 +37,8 @@ public:
 	bool isActive = false;
 	bool teleportActive = true;
 	bool HUDactive = false;
+	bool teleporting = false;
 	bool generateWind = true;
-
-
 
 	int healthPoints = 100;
 	std::string healthString = "100";

@@ -3,6 +3,7 @@
 
 #include "GameObject.h"
 #include "MapTile.h"
+#include "Theme.h"
 #include "Explosion.h"
 #include <string>
 #include <vector>
@@ -10,6 +11,7 @@
 class MapReader : public GameObject {
 private:
     std::string filePath = "";
+    Theme theme;
     std::vector<std::vector<MapTile>> map;
     std::vector<MapTile> optimizedTiles;
     std::vector<MapTile> playerPositions;
@@ -18,8 +20,8 @@ private:
     const char GRASS = 'G';
     const char PLAYER = '1';
     const char EMPTY = '0';
-    const Color DIRT_COLOR = { 140, 70, 0, 255 };
-    const Color GRASS_COLOR = { 0, 140, 0, 255 };
+    //const Color DIRT_COLOR = { 140, 70, 0, 255 };
+    //const Color GRASS_COLOR = { 0, 140, 0, 255 };
 
 public:
     bool shouldDraw = true;
@@ -37,6 +39,8 @@ public:
     void AddGrass();
 
     void ChangeMap(std::string path, bool optimize);
+
+    void ChangeTheme(Theme theme);
 
     void Update() override;
    
