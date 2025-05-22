@@ -56,7 +56,7 @@ public:
 		playerAim = Aim(centerPosition);
 		playerLauncherEmpty = Bullet(centerPosition);
 		playerShotgunEmpty = Shotgun(centerPosition);
-		playerUnderBulletEmpty = UnderBullet({ centerPosition.x, centerPosition.y});
+		playerUnderBulletEmpty = UnderBullet({centerPosition});
 	}
 
 	void Update() override;
@@ -65,6 +65,7 @@ public:
 	void MoveX(int ammount, bool add);
 	void MoveY(int ammount, bool add);
 	void Fall();
+	void ResetWeapons();
 	void underBulletEquipped();
 	void BulletEquipped();
 	void ShotgunEquipped();

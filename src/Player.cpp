@@ -315,6 +315,8 @@ void Player::Fall() {
         if (CheckCollisionRecs(floorRect, this->GetFloorCollider())) {
             hitObstacle = true;
             speed = 0;
+            ResetWeapons();
+
 
             if (position.y + size.y / 2 > floorRect.y) {
                 MoveY(floorRect.y - size.y, false);
@@ -331,6 +333,15 @@ void Player::Fall() {
 
     if (position.y >= Game::bottomY) dead = true;
 }
+
+void Player::ResetWeapons() {
+    playerAim.position = position;
+    playerUnderBulletEmpty.position = position;
+    playerLauncherEmpty.position = position;
+    playerShotgunEmpty.position = position;
+}
+
+
 
 void Player::GetDamaged(Vector2 pos) {
     int damage = 100-(abs(pos.x - (position.x+size.x/2)) + abs(pos.y - (position.y+size.y / 2)));

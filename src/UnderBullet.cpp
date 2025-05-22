@@ -20,7 +20,7 @@ void UnderBullet::Update() {
         animation.Update();
     }
     else if (!enteredGround) {
-        position.y += gravity * 10;
+        position.y += gravity;
         animation.position = position;
     }
     else Explode();
