@@ -20,6 +20,7 @@ public:
     float explosionRadius = 50.0f;
     int explosionMiliseconds = 600;
     float gravity = 20;
+    int wind;
     bool destroyed = false;
     bool isProjectileOnAir = false;
 

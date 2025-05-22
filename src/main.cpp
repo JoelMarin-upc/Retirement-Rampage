@@ -18,10 +18,12 @@ bool playEnded = false;
 bool playStarted = false;
 bool playPaused = false;
 float timePlayed;
+Texture2D WORMS_logo;
 Music music;
 vector<string> maps;
 vector<Theme> themes;
 MapReader* mapReader;
+
 int currentMap = 0;
 int currentTheme = 0;
 
@@ -44,6 +46,7 @@ Color GetRandomColor();
 
 int main()
 {
+
     SearchAndSetResourceDir("resources");
 
     SetTargetFPS(60);
@@ -138,7 +141,10 @@ void PaintStartScreen() {
 
     ClearBackground(SKYBLUE);
 
-    DrawCenteredText("WORMS", Game::screenWidth / 2, Game::screenHeight / 3, 100, RED);
+    DrawCenteredText("Trufa Edition", Game::screenWidth / 2, Game::screenHeight / 4, 100, RED);
+    
+    WORMS_logo = LoadTexture("WORMS_logo.png");
+    DrawTexture(WORMS_logo, GetScreenWidth()/2-WORMS_logo.width/2,GetScreenHeight()/3/*750, 250,*/, WHITE);
 
     DrawCenteredText("Press [LEFT] and [RIGHT] to change map", Game::screenWidth / 2, Game::screenHeight / 2 + 40, 25, WHITE);
     DrawCenteredText("Press [UP] and [DOWN] to change theme", Game::screenWidth / 2, Game::screenHeight / 2 + 75, 25, WHITE);
@@ -155,6 +161,7 @@ void PaintEndScreen() {
     BeginDrawing();
 
     ClearBackground(SKYBLUE);
+    Texture2D EndTexture;
 
     Player* winner = Game::winner;
 
