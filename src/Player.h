@@ -56,7 +56,7 @@ public:
 		playerAim = Aim(centerPosition);
 		playerLauncherEmpty = Bullet(centerPosition);
 		playerShotgunEmpty = Shotgun(centerPosition);
-		playerUnderBulletEmpty = UnderBullet(centerPosition);
+		playerUnderBulletEmpty = UnderBullet({ centerPosition.x, centerPosition.y});
 	}
 
 	void Update() override;

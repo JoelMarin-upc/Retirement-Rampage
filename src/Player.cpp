@@ -15,7 +15,6 @@ void Player::Update() {
             wind = (rand() % (20 - 0 + 1) + 0) - 10;
             generateWind = false;
         }
-        cout << wind;
         if (IsKeyDown(KEY_ZERO)) {
             currentWeapon = "underBullet";
             aiming = true;
@@ -141,7 +140,6 @@ void  Player::underBulletEquipped() {
             if (!playerUnderBullet.Charging()) charging = false;
         }
         if (IsKeyReleased(KEY_SPACE) || (IsKeyDown(KEY_SPACE) && !charging)) {
-            playerUnderBullet.wind = wind;
             playerUnderBullet.isProjectileOnAir = true;
             PlayerSounds.playsfx(1);
             aiming = false;
@@ -271,6 +269,7 @@ void Player::Draw() {
     //if (currentWeapon == "bullet" && playerLauncher.isisProjectileOnAir) playerLauncher.Draw();
     //shotgun is not in the object list
     if (currentWeapon == "shotgun")playerShotgun.Draw();
+    if (currentWeapon == "underBullet")playerUnderBullet.Draw();
     const char* cstr = healthString.c_str();
     DrawText(cstr, position.x, position.y - 30, 20, WHITE);
     if (isTurn) {

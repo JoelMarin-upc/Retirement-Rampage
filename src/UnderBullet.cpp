@@ -15,12 +15,15 @@ void UnderBullet::Update() {
     if (position.x > Game::screenWidth || position.x < 0 || position.y < 0 || position.y > Game::screenHeight) destroyed = true;
 
     if (HasCollision()) {
+        enteredGround = true;
         Shoot();
         animation.Update();
     }
-    else {
-
+    else if (!enteredGround) {
+        position.y += gravity * 10;
+        animation.position = position;
     }
+    else Explode();
     //uses screen size
     
 }
@@ -38,7 +41,6 @@ bool UnderBullet::Charging() {
 
 void UnderBullet::Shoot() {
     actualVelocity.y -= gravity;
-    actualVelocity.x += wind;
     position.x += actualVelocity.x * GetFrameTime();
     position.y += actualVelocity.y * GetFrameTime();
     animation.position = position;
