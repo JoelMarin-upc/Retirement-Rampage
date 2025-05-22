@@ -10,6 +10,8 @@ void Player::Update() {
       //  playerAim.isTurn = true;
    // }
 
+    //Weapon selection and wind randomiser
+
     if (isTurn){
         if (generateWind) {
             wind = (rand() % (20 - 0 + 1) + 0) - 10;
