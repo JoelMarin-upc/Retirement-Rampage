@@ -15,7 +15,7 @@ void Player::Update() {
             wind = (rand() % (20 - 0 + 1) + 0) - 10;
             generateWind = false;
         }
-        if (IsKeyDown(KEY_ZERO)) {
+        if (IsKeyDown(KEY_FOUR)) {
             currentWeapon = "underBullet";
             aiming = true;
             charging = false;
@@ -66,6 +66,12 @@ void Player::Update() {
                     aiming = false;
                     charging = false;
                     playerAim.isTurn = false;
+                }
+                else if (PlayerHud.CheckBox() == 4) {
+                    currentWeapon = "underBullet";
+                    aiming = true;
+                    charging = false;
+                    playerAim.isTurn = true;
                 }
                 HUDactive = false;
             }
@@ -131,7 +137,7 @@ void  Player::BulletEquipped() {
 
 
 void  Player::underBulletEquipped() {
-    PlayerHud.changeImg(1);
+    PlayerHud.changeImg(4);
 
     if (isTurn) {
         if (IsKeyDown(KEY_SPACE)) {
