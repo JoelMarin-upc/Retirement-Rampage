@@ -15,7 +15,7 @@ public:
     Vector2 actualVelocity = { 0, 0 };
     float velocityModule = 0.0f;
     float velocityIncrease = 15;
-    int maxVelocity = 6000;
+    int maxVelocity = 6750;
     float bulletRadius = 10.0f;
     float explosionRadius = 50.0f;
     int explosionMiliseconds = 600;
@@ -42,6 +42,7 @@ public:
     void Shoot();
     void InitialVelocity(Vector2 direction);
     void Draw() override;
+    void DrawBar();
     bool HasCollision();
     void Explode();
 };

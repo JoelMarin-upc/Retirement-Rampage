@@ -13,6 +13,7 @@ private:
 	double secondsBetweenTurns = 2;
 	double currentBetweenTurnsSeconds = 2;
 	bool betweenTurns = false;
+	Texture2D topHUD = LoadTexture("hud_green2.png");
 
 public:
 	int turns = 1;

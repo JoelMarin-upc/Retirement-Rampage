@@ -19,6 +19,7 @@ void Player::Update() {
         }
         if (IsKeyDown(KEY_FOUR)) {
             currentWeapon = "underBullet";
+            teleporting = false;
             aiming = true;
             charging = false;
             playerAim.isTurn = true;
@@ -53,12 +54,14 @@ void Player::Update() {
             if (HUDactive == true) {
                 if (PlayerHud.CheckBox() == 1) {
                     currentWeapon = "bullet";
+                    teleporting = false;
                     aiming = true;
                     charging = false;
                     playerAim.isTurn = true;
                 }
                 else if (PlayerHud.CheckBox() == 2) {
                     currentWeapon = "shotgun";
+                    teleporting = false;
                     aiming = true;
                     charging = false;
                     playerAim.isTurn = true;
@@ -71,6 +74,7 @@ void Player::Update() {
                 }
                 else if (PlayerHud.CheckBox() == 4) {
                     currentWeapon = "underBullet";
+                    teleporting = false;
                     aiming = true;
                     charging = false;
                     playerAim.isTurn = true;
@@ -86,7 +90,7 @@ void Player::Update() {
     }
 
     if (currentWeapon == "underBullet") underBulletEquipped();
-    else if (currentWeapon == "bullet") BulletEquipped();
+    else if (currentWeapon == "bullet" && teleportActive) BulletEquipped();
     else if (currentWeapon == "shotgun") ShotgunEquipped();
     else if (currentWeapon == "teleport") TeleportEquipped();
     else if (currentWeapon == "none") {
@@ -133,7 +137,7 @@ void  Player::BulletEquipped() {
         }
         if (!charging) playerAim.Update();
     }
-    if (!aiming) playerLauncher.Update();
+    if (!aiming && teleportActive) playerLauncher.Update();
     if (!isTurn && playerLauncher.destroyed) isActive = false;
 }
 
@@ -204,13 +208,12 @@ void  Player::TeleportEquipped() {
         position.y = GetMouseY() - 15;
         playerAim.position.x = GetMouseX() - 15;
         playerAim.position.y = GetMouseY() - 15;
+        playerAim.isTurn = false;
         teleportActive = false;
         teleporting = false;
-
-        currentWeapon = "bullet";
-        aiming = true;
+        aiming = false;
         charging = false;
-        playerAim.isTurn = true;
+        //playerAim.isTurn = true;
 
         playerUnderBulletEmpty.position.x = position.x + size.x / 2;
         playerLauncherEmpty.position.x = position.x+size.x/2;
@@ -284,12 +287,6 @@ void Player::Draw() {
     const char* cstr = healthString.c_str();
     DrawText(cstr, position.x, position.y - 30, 20, WHITE);
     if (isTurn) {
-        DrawRectangle(1500 - 10, (float)(Game::screenHeight)-100, 20, 20, BLACK);
-        if (wind > 0) DrawRectangle(1500, (float)(Game::screenHeight)-100, wind * 20, 20, BLUE);     
-        else DrawRectangle(1500 + (wind * 20), (float)(Game::screenHeight)-100, -wind * 20, 20, BLUE);
-
-        const char* cstr2 = currentWeapon.c_str();
-        DrawText(cstr2, 45, (float)(Game::screenHeight)-100, 20, WHITE);
         DrawTriangle({ position.x,position.y - size.y*2}, {position.x + (size.x / 2),position.y - size.y}, {position.x + size.x,position.y - size.y * 2 }, YELLOW);
     }
     // DIBUJAR COLLIDER
@@ -298,6 +295,12 @@ void Player::Draw() {
     //DrawRectangle(position.x, position.y, size.x, size.y, BLUE);
 
     //Weapon HUD trigger
+   
+
+    if (teleporting) DrawRectangle(GetMouseX() - 15, GetMouseY() - 15, 30, 30, ORANGE);
+}
+
+void Player::DrawHUD() {
     if (HUDactive == true) {
         PlayerHud.DrawSprite();
         PlayerHud.HUDmove();
@@ -307,9 +310,8 @@ void Player::Draw() {
         PlayerHud.DrawSprite();
         PlayerHud.HUDretract();
     }
-
-    if (teleporting) DrawRectangle(GetMouseX() - 15, GetMouseY() - 15, 30, 30, ORANGE);
 }
+
 
 Rectangle Player::GetFloorCollider() {
     return { position.x+(size.x/3), position.y + (size.y/2), size.x/3, size.y / 2 };
@@ -329,8 +331,12 @@ void Player::Fall() {
             hitObstacle = true;
             speed = 0;
             ResetWeapons();
-
-
+            if (isTurn && !teleportActive) {
+                isTurn = false;
+                isActive = false;
+                currentWeapon = "bullet";
+                
+            }
             if (position.y + size.y / 2 > floorRect.y) {
                 MoveY(floorRect.y - size.y, false);
                 speed = 0;

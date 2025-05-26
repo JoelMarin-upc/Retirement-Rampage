@@ -12,7 +12,7 @@ void UnderBullet::Update() {
         return;
     }
 
-    if (position.x > Game::screenWidth || position.x < 0 || position.y < 0 || position.y > Game::screenHeight) destroyed = true;
+    if (position.x > Game::screenWidth * 1.35 || position.x < -Game::screenWidth * 0.35 || position.y < -Game::screenHeight * 0.35 || position.y > Game::screenHeight * 1.35) destroyed = true;
 
     if (HasCollision()) {
         enteredGround = true;
@@ -55,9 +55,12 @@ void UnderBullet::Draw() {
         /*DrawCircle(position.x, position.y, bulletRadius, RED);*/
         animation.Draw();
     }
-    else {
+}
+
+void UnderBullet::DrawBar() {
+    if (!destroyed && isProjectileOnAir == false) {
         float lenght = barCounter / 60;
-        barPosition = { 40, (float)(Game::screenHeight)-100 };
+        barPosition = { 1500-200, 60 };
         for (int i = 0; i < lenght; i++) {
             DrawRectangle(i * barSize.x + barPosition.x, barPosition.y, barSize.x, barSize.y, ORANGE);
         }

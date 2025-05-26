@@ -60,6 +60,7 @@ public:
 
 	void Update() override;
 	void Draw() override;
+	void DrawHUD();
 	void Move(Vector2 ammount, bool add);
 	void MoveX(int ammount, bool add);
 	void MoveY(int ammount, bool add);
