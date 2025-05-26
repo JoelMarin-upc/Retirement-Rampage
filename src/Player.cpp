@@ -68,6 +68,7 @@ void Player::Update() {
                 }
                 else if (PlayerHud.CheckBox() == 3) {
                     currentWeapon = "Teleport";
+                    teleporting = true;
                     aiming = false;
                     charging = false;
                     playerAim.isTurn = false;
@@ -90,9 +91,9 @@ void Player::Update() {
     }
 
     if (currentWeapon == "Drill") underBulletEquipped();
-    else if (currentWeapon == "Launcher" && teleportActive) BulletEquipped();
+    else if (currentWeapon == "Launcher") BulletEquipped();
     else if (currentWeapon == "Shotgun") ShotgunEquipped();
-    else if (currentWeapon == "Teleport") TeleportEquipped();
+    else if (currentWeapon == "Teleport" && teleportActive) TeleportEquipped();
     else if (currentWeapon == "No weapon") {
         aiming = false;
         charging = false;
@@ -137,7 +138,7 @@ void  Player::BulletEquipped() {
         }
         if (!charging) playerAim.Update();
     }
-    if (!aiming && teleportActive) playerLauncher.Update();
+    if (!aiming && playerLauncher.isProjectileOnAir) playerLauncher.Update();
     if (!isTurn && playerLauncher.destroyed) isActive = false;
 }
 
@@ -211,7 +212,7 @@ void  Player::TeleportEquipped() {
         playerAim.isTurn = false;
         teleportActive = false;
         teleporting = false;
-        aiming = false;
+        //aiming = false;
         charging = false;
         //playerAim.isTurn = true;
 
@@ -334,7 +335,7 @@ void Player::Fall() {
             if (isTurn && !teleportActive) {
                 isTurn = false;
                 isActive = false;
-                currentWeapon = "Launcher";
+                //currentWeapon = "Launcher";
                 
             }
             if (position.y + size.y / 2 > floorRect.y) {
