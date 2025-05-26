@@ -70,7 +70,7 @@ void TurnManager::Draw() {
 
     std::string s = std::to_string(currentPlayer + 1);
     const char* cstr = s.c_str();
-    DrawText("player", 550, 20, 30, WHITE);
+    DrawText("Player", 550, 20, 30, WHITE);
     DrawText(cstr, 655, 20, 30, WHITE);
     const char* cstr2 = playerList[currentPlayer]->currentWeapon.c_str();
     DrawText(cstr2, 550, 50, 30, ORANGE);

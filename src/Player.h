@@ -44,7 +44,7 @@ public:
 	std::string healthString = "100";
 	bool isTurn = false;
 
-	std::string currentWeapon = "none";
+	std::string currentWeapon = "No weapon";
 
 	Player() : GameObject() {}
 

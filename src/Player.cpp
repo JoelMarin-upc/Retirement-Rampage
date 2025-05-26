@@ -18,7 +18,7 @@ void Player::Update() {
             generateWind = false;
         }
         if (IsKeyDown(KEY_FOUR)) {
-            currentWeapon = "underBullet";
+            currentWeapon = "Drill";
             teleporting = false;
             aiming = true;
             charging = false;
@@ -26,7 +26,7 @@ void Player::Update() {
 
         }
         if (IsKeyDown(KEY_ONE)) {
-            currentWeapon = "bullet";
+            currentWeapon = "Launcher";
             teleporting = false;
             aiming = true;
             charging = false;
@@ -34,14 +34,14 @@ void Player::Update() {
 
         }
         if (IsKeyDown(KEY_TWO)) {
-            currentWeapon = "shotgun";
+            currentWeapon = "Shotgun";
             teleporting = false;
             aiming = true;
             charging = false;
             playerAim.isTurn = true;
         }
         if (IsKeyDown(KEY_THREE) && teleportActive) {
-            currentWeapon = "teleport";
+            currentWeapon = "Teleport";
             teleporting = true;
             aiming = false;
             charging = false;
@@ -53,27 +53,27 @@ void Player::Update() {
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
             if (HUDactive == true) {
                 if (PlayerHud.CheckBox() == 1) {
-                    currentWeapon = "bullet";
+                    currentWeapon = "Launcher";
                     teleporting = false;
                     aiming = true;
                     charging = false;
                     playerAim.isTurn = true;
                 }
                 else if (PlayerHud.CheckBox() == 2) {
-                    currentWeapon = "shotgun";
+                    currentWeapon = "Shotgun";
                     teleporting = false;
                     aiming = true;
                     charging = false;
                     playerAim.isTurn = true;
                 }
                 else if (PlayerHud.CheckBox() == 3) {
-                    currentWeapon = "teleport";
+                    currentWeapon = "Teleport";
                     aiming = false;
                     charging = false;
                     playerAim.isTurn = false;
                 }
                 else if (PlayerHud.CheckBox() == 4) {
-                    currentWeapon = "underBullet";
+                    currentWeapon = "Drill";
                     teleporting = false;
                     aiming = true;
                     charging = false;
@@ -89,11 +89,11 @@ void Player::Update() {
         HUDactive = false;
     }
 
-    if (currentWeapon == "underBullet") underBulletEquipped();
-    else if (currentWeapon == "bullet" && teleportActive) BulletEquipped();
-    else if (currentWeapon == "shotgun") ShotgunEquipped();
-    else if (currentWeapon == "teleport") TeleportEquipped();
-    else if (currentWeapon == "none") {
+    if (currentWeapon == "Drill") underBulletEquipped();
+    else if (currentWeapon == "Launcher" && teleportActive) BulletEquipped();
+    else if (currentWeapon == "Shotgun") ShotgunEquipped();
+    else if (currentWeapon == "Teleport") TeleportEquipped();
+    else if (currentWeapon == "No weapon") {
         aiming = false;
         charging = false;
         playerAim.isTurn = false;
@@ -282,8 +282,8 @@ void Player::Draw() {
     playerLauncher.Draw();
     //if (currentWeapon == "bullet" && playerLauncher.isisProjectileOnAir) playerLauncher.Draw();
     //shotgun is not in the object list
-    if (currentWeapon == "shotgun")playerShotgun.Draw();
-    if (currentWeapon == "underBullet")playerUnderBullet.Draw();
+    if (currentWeapon == "Shotgun")playerShotgun.Draw();
+    if (currentWeapon == "Drill")playerUnderBullet.Draw();
     const char* cstr = healthString.c_str();
     DrawText(cstr, position.x, position.y - 30, 20, WHITE);
     if (isTurn) {
@@ -334,7 +334,7 @@ void Player::Fall() {
             if (isTurn && !teleportActive) {
                 isTurn = false;
                 isActive = false;
-                currentWeapon = "bullet";
+                currentWeapon = "Launcher";
                 
             }
             if (position.y + size.y / 2 > floorRect.y) {
