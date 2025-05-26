@@ -34,7 +34,7 @@ public:
 
     UnderBullet() : GameObject() {}
     UnderBullet(Vector2 center) : GameObject(center, Vector2()) {
-        animation = AnimationController(position, size, "grenade.png", true, false, 32, 40);
+        animation = AnimationController(position, size, "sheepfal.png", true, false, 32, 35);
     }
 
     void Update() override;
