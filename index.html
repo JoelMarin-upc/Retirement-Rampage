@@ -30,6 +30,10 @@
             color: #fff;
             padding: 20px;
             text-align: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 10px;
         }
 
         h1 {
@@ -64,7 +68,7 @@
 
         .member {
             background: #fff;
-            padding: 15px;
+            padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             width: 200px;
@@ -111,13 +115,103 @@
             font-size: 14px;
             color: #ccc;
         }
+
+        .slider {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .slides {
+            display: flex;
+            width: 300%;
+            animation: slide 18s infinite;
+            transition: transform 2s ease-in-out;
+        } 
+
+        .slides img {
+            width: 100%;
+            flex-shrink: 0;
+            object-fit: cover;
+        }
+
+        @keyframes slide {
+            0%, 25%   { transform: translateX(0%); }
+            33%, 58%  { transform: translateX(-100%); }
+            66%, 91%  { transform: translateX(-200%); }
+            100%      { transform: translateX(0%); }
+        }
+
+        .group-photo {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .group-photo img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .worm {
+            position: relative;
+            width: 40px;
+            height: 60px;
+            background: #f78da7;
+            border-radius: 50% 50% 20% 20% / 40% 40% 60% 60%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .eyes {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 6px;
+        }
+
+        .eye {
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pupil {
+            width: 5px;
+            height: 5px;
+            background: black;
+            border-radius: 50%;
+            position: absolute;
+            transition: top 0.2s ease, left 0.2s ease;
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Worms</h1>
+        <div>
+        <h1>Projecte 1: Worms</h1>
         <p>A tribute to the classic 1995 Worms game</p>
+        </div>
+        <div class="worm">
+            <div class="eyes">
+                <div class="eye"><div class="pupil" id="pupil1"></div></div>
+                <div class="eye"><div class="pupil" id="pupil2"></div></div>
+            </div>
+        </div>
     </header>
 
     <main>
@@ -126,31 +220,36 @@
             <div class="team-members">
                 <div class="member">
                     <h3>Luying Bao</h3>
-                    <p>Feature and HUD Developer</p>
+                    <p style="margin-top: 15px;">Feature and HUD Developer</p>
                 </div>
                 <div class="member">
                     <h3>Oscar Jiménez</h3>
-                    <p>Mechanics Developer</p>
+                    <p style="margin-top: 15px;">Mechanics Developer</p>
                 </div>
                 <div class="member">
                     <h3>Joel Marin</h3>
-                    <p>Engine Developer</p>
+                    <p style="margin-top: 15px;">Engine Developer</p>
                 </div>
                 <!-- Add more members as needed -->
+            </div>
+            <div class="group-photo">
+                <img src="group_photo.png" alt="Team Group Photo">
             </div>
         </section>
 
         <section class="gallery-section">
-            <h2>Game Images</h2>
-            <div class="gallery-images">
-                <img src="screenshot1.png" alt="Screenshot 1">
-                <img src="screenshot2.png" alt="Screenshot 2">
-                <img src="screenshot3.png" alt="Screenshot 3">
+            <h2>Game Screenshots</h2>
+            <div class="slider">
+                <div class="slides">
+                    <img src="screenshot1.png" alt="Screenshot 1">
+                    <img src="screenshot2.png" alt="Screenshot 2">
+                    <img src="screenshot3.png" alt="Screenshot 3">
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
+    <footer class="footer">  
         <div class="footer-content">
             <div class="footer-images">
                 <img src="logo1.png" alt="Logo 1">
@@ -164,5 +263,25 @@
         </div>
     </footer>
 
+    <script>
+        const pupil1 = document.getElementById("pupil1");
+        const pupil2 = document.getElementById("pupil2");
+      
+        document.addEventListener("mousemove", (e) => {
+          document.querySelectorAll('.eye').forEach((eye, index) => {
+            const rect = eye.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const dx = e.clientX - centerX;
+            const dy = e.clientY - centerY;
+            const angle = Math.atan2(dy, dx);
+            const distance = 3;
+      
+            const pupil = index === 0 ? pupil1 : pupil2;
+            pupil.style.left = `${5 + distance * Math.cos(angle)}px`;
+            pupil.style.top = `${5 + distance * Math.sin(angle)}px`;
+          });
+        });
+      </script>
 </body>
 </html>
