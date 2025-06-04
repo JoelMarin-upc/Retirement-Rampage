@@ -5,9 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Worms - 1995 Inspired Game</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
+            box-sizing: border-box;
             margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             color: #333;
         }
@@ -15,7 +28,7 @@
         header {
             background-color: #3a3a3a;
             color: #fff;
-            padding: 20px 0;
+            padding: 20px;
             text-align: center;
         }
 
@@ -23,7 +36,15 @@
             margin: 0;
         }
 
-        .team-section, .gallery-section, .footer {
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .team-section, .gallery-section {
             padding: 40px 20px;
             max-width: 1000px;
             margin: auto;
@@ -99,33 +120,35 @@
         <p>A tribute to the classic 1995 Worms game</p>
     </header>
 
-    <section class="team-section">
-        <h2>Team Members</h2>
-        <div class="team-members">
-            <div class="member">
-                <h3>Member 1</h3>
-                <p>Developer</p>
+    <main>
+        <section class="team-section">
+            <h2>Team Members</h2>
+            <div class="team-members">
+                <div class="member">
+                    <h3>Member 1</h3>
+                    <p>Developer</p>
+                </div>
+                <div class="member">
+                    <h3>Member 2</h3>
+                    <p>Designer</p>
+                </div>
+                <div class="member">
+                    <h3>Member 3</h3>
+                    <p>Artist</p>
+                </div>
+                <!-- Add more members as needed -->
             </div>
-            <div class="member">
-                <h3>Member 2</h3>
-                <p>Designer</p>
-            </div>
-            <div class="member">
-                <h3>Member 3</h3>
-                <p>Artist</p>
-            </div>
-            <!-- Add more members as needed -->
-        </div>
-    </section>
+        </section>
 
-    <section class="gallery-section">
-        <h2>Game Images</h2>
-        <div class="gallery-images">
-            <img src="screenshot1.png" alt="Screenshot 1">
-            <img src="screenshot2.png" alt="Screenshot 2">
-            <img src="screenshot3.png" alt="Screenshot 3">
-        </div>
-    </section>
+        <section class="gallery-section">
+            <h2>Game Images</h2>
+            <div class="gallery-images">
+                <img src="screenshot1.png" alt="Screenshot 1">
+                <img src="screenshot2.png" alt="Screenshot 2">
+                <img src="screenshot3.png" alt="Screenshot 3">
+            </div>
+        </section>
+    </main>
 
     <footer class="footer">
         <div class="footer-content">
