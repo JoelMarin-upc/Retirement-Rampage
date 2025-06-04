@@ -147,11 +147,11 @@
 
         .group-photo {
             text-align: center;
-            margin-top: 40px;
+            margin: 40px;
         }
 
         .group-photo img {
-            max-width: 100%;
+            max-width: 40%;
             height: auto;
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
@@ -197,6 +197,107 @@
             position: absolute;
             transition: top 0.2s ease, left 0.2s ease;
         }
+
+        .toggle-tasks {
+            margin-top: 10px;
+            padding: 4px 10px;
+            font-size: 16px;
+            border: none;
+            background-color: #3a3a3a;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .toggle-tasks:hover {
+            background-color: #555;
+        }
+
+        .task-list {
+            display: none;
+            margin-top: 10px;
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        .task-list li {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .description-section {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .description-content {
+            max-width: 600px;
+        }
+
+        .download-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #3a3a3a;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-button:hover {
+            background-color: #555;
+        }
+
+        .secondary-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: transparent;
+            color: #3a3a3a;
+            border: 2px solid #3a3a3a;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .secondary-button:hover {
+            background-color: #3a3a3a;
+            color: #fff;
+        }
+
+        .video-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .video-section h2 {
+            margin-bottom: 20px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
     </style>
 </head>
 <body>
@@ -215,25 +316,64 @@
     </header>
 
     <main>
+        <section class="description-section">
+            <div class="description-content">
+                <p>Worms 1995 is a turn based multiplayer artillery game about throwing projectiles at your opponent until their health bar depletes.</p>
+                <a href="Trufa_Worms1995_v1.0.zip" download class="download-button">Download Game</a>
+                <a href="https://github.com/JoelMarin-upc/Retirement-Rampage.github.io/releases/tag/v1.0" target="_blank" class="secondary-button">Download from GitHub</a>
+                <a href="https://github.com/JoelMarin-upc/Retirement-Rampage.github.io" target="_blank" class="secondary-button">Visit our GitHub</a>
+            </div>
+        </section>
         <section class="team-section">
             <h2>Team Members</h2>
+            <div class="group-photo">
+                <img src="resources/Trufa.jpg" alt="Team Group Photo">
+            </div>
             <div class="team-members">
+                <div class="member">
+                    <h3>Joel Marin</h3>
+                    <p style="margin-top: 15px;">Engine Developer</p>
+                    <button class="toggle-tasks">+</button>
+                    <ul class="task-list">
+                        <li>Game code structure (Game loop, game objects)</li>
+                        <li>Map terrain generation</li>
+                        <li>Map terrain destruction</li>
+                        <li>Explosions and ground collisions</li>
+                        <li>End screen</li>
+                        <li>Start screen with map choosing</li>
+                        <li>Turn time logic</li>
+                        <li>Game restart</li>
+                        <li>Death logic</li>
+                        <li>In-game HUD (turn count and timer)</li>
+                        <li>Maps (5 variants)</li>
+                        <li>Map generation from image</li>
+                        <li>Theme creation and choosing logic</li>
+                        <li>Game pause logic</li>
+                        <li>Bug fixing</li>
+                        <li>Feature merging and adapting (multiple features)</li>
+                        <li>Website</li>
+                    </ul>
+                </div>
                 <div class="member">
                     <h3>Luying Bao</h3>
                     <p style="margin-top: 15px;">Feature and HUD Developer</p>
+                    <button class="toggle-tasks">+</button>
+                    <ul class="task-list">
+                        <li>task 1</li>
+                        <li>task 2</li>
+                        <li>task 3</li>
+                    </ul>
                 </div>
                 <div class="member">
                     <h3>Oscar Jiménez</h3>
                     <p style="margin-top: 15px;">Mechanics Developer</p>
+                    <button class="toggle-tasks">+</button>
+                    <ul class="task-list">
+                        <li>task 1</li>
+                        <li>task 2</li>
+                        <li>task 3</li>
+                    </ul>
                 </div>
-                <div class="member">
-                    <h3>Joel Marin</h3>
-                    <p style="margin-top: 15px;">Engine Developer</p>
-                </div>
-                <!-- Add more members as needed -->
-            </div>
-            <div class="group-photo">
-                <img src="group_photo.png" alt="Team Group Photo">
             </div>
         </section>
 
@@ -247,6 +387,21 @@
                 </div>
             </div>
         </section>
+
+        <section class="video-section">
+            <h2>Gameplay Demo</h2>
+            <div class="video-container">
+                <iframe 
+                    width="560" 
+                    height="315" 
+                    src="https://www.youtube.com/embed/EqicyGE5C4k" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">  
@@ -254,12 +409,10 @@
             <div class="footer-images">
                 <img src="resources\logo1.png" alt="Logo 1">
                 <img src="resources\logo2.png" alt="Logo 2">
-                <!-- Add more logos if needed -->
             </div>
             <div class="footer-text">
                 <p>&copy; 2025 Worms Tribute. All rights reserved.</p>
                 <p>This is a fan-made game based on the classic 1995 Worms by Team17.</p>
-                <p>Worms 1995 is a turn based multiplayer artillery game about throwing projectiles at your opponent until their health bar depletes.</p>
             </div>
         </div>
     </footer>
@@ -282,6 +435,17 @@
             pupil.style.left = `${5 + distance * Math.cos(angle)}px`;
             pupil.style.top = `${5 + distance * Math.sin(angle)}px`;
           });
+        });
+
+        const toggleButtons = document.querySelectorAll(".toggle-tasks");
+
+        toggleButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                const taskList = button.nextElementSibling;
+                const isVisible = taskList.style.display === "block";
+                taskList.style.display = isVisible ? "none" : "block";
+                button.textContent = isVisible ? "+" : "−";
+            });
         });
       </script>
 </body>
